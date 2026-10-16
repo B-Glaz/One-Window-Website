@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { ArrowRight, Bot, GraduationCap, Landmark, Plane, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, Landmark } from "lucide-react";
+import { CountryOrbit } from "./components/country-orbit";
 import { LeadForm } from "./components/lead-form";
 import { Footer } from "./components/footer";
 import { Navigation } from "./components/navigation";
-import { destinationPages } from "./content";
 
 const services = [
   ["Admissions", "Our admission specialists handle every step of your application, from filling out details to securing your spot at top universities."],
@@ -26,11 +25,7 @@ const proof = [["16 Years+", "Solid Industry Experience"], ["10K+", "Student Pro
 
 export default function Home() {
   return <main><Navigation />
-    <section className="hero section-pad"><div className="orb orb-one" /><div className="orb orb-two" /><div className="shell hero-grid">
-      <div className="hero-copy reveal"><p className="eyebrow"><Sparkles size={15} /> One Window overseas education</p><h1>We make studying abroad <span>easier.</span></h1><p className="lede">Combining expert advice with cutting-edge AI to seamlessly find your perfect university and course from over 1,200 universities and 70,000+ programs, ensuring the best fit for your future.</p><div className="button-row"><a className="button button-primary" href="#destinations">Choose your destination <ArrowRight size={17} /></a><a className="button button-ghost" href="#consultation">Talk to a student advisor</a></div></div>
-      <div className="hero-art glass reveal" aria-label="One Window student journey"><div className="journey-card journey-main"><GraduationCap size={30} /><strong>Your global education journey</strong><span>Expert guidance, powered by technology.</span></div><div className="journey-card journey-float top"><Bot size={22} /><span>AI course matching</span></div><div className="journey-card journey-float bottom"><Plane size={22} /><span>Visa guidance</span></div></div>
-    </div></section>
-    <section id="destinations" className="section-pad"><div className="shell"><div className="section-heading reveal"><p className="eyebrow">Choose your path</p><h2>Where do you want to study?</h2><p>Start with a destination, a programme focus, or ask us to help you decide.</p></div><div className="destination-grid">{destinationPages.map((item, index) => <Link className={`destination-card reveal accent-${(index % 3) + 1}`} href={`/${item.slug}`} key={item.slug}><span className="card-kicker">{item.kicker}</span><h3>{item.title}</h3><p>{item.cardText}</p><span className="text-link">Explore this path <ArrowRight size={16} /></span></Link>)}</div></div></section>
+    <CountryOrbit />
     <section id="consultation" className="section-pad consultation-section"><div className="shell split-panel glass reveal"><div><p className="eyebrow">Not sure where to begin?</p><h2>Free counselling for you</h2><p>At One Window, our competent counselors can help make your dreams of studying abroad come true. For free counseling speak to us today to sort all your worries about doing undergraduate, postgraduate, Ph.D., and MBA courses to most parts of the world.</p><ul className="check-list"><li>Discuss your goals with a student advisor</li><li>Understand suitable destinations and courses</li><li>Plan the next clear step in your journey</li></ul></div><LeadForm formCode="homepage_consultation" sourcePath="/" title="Book your free consultation" /></div></section>
     <section className="section-pad tinted"><div className="shell"><div className="section-heading reveal"><p className="eyebrow">Powerful academic solutions</p><h2>From vision to victory</h2><p>Tailored support to start your educational journey abroad.</p></div><div className="service-grid">{services.map(([title, text], i) => <article className="service-card reveal" key={title}><span>{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
     <section className="section-pad"><div className="shell platform-grid reveal"><div className="platform-visual"><div className="platform-window"><span className="window-dot" /><span className="window-dot" /><span className="window-dot" /><div className="search-line">Find the course that fits your future</div><div className="result-lines"><i /><i /><i /></div></div></div><div><p className="eyebrow"><Bot size={15} /> CampusRoot AI Course Finder</p><h2>Make a confident shortlist</h2><p>Supercharge your abroad education journey by creating your profile and get started by shortlisting universities using our state-of-the-art AI tool.</p><a className="button button-primary" href="https://campusroot.com/recommendations">Open AI Course Finder <ArrowRight size={17} /></a><p className="transition-note">You’ll continue to CampusRoot, One Window’s digital study-abroad platform.</p></div></div></section>
