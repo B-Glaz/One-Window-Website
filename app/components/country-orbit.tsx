@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 const countries = [
-  { name: "USA", value: 234, image: "/monument-usa.webp", href: "https://onewindow.co/countries/study-abroad-usa/", accent: "coral" },
-  { name: "Australia", value: 40, image: "/monument-australia.webp", href: "https://onewindow.co/countries/study-abroad-australia/", accent: "aqua" },
-  { name: "Japan", value: 5, image: "/monument-japan.webp", href: "#consultation", accent: "periwinkle" },
-  { name: "Germany", value: 146, image: "/monument-germany.webp", href: "/study-in-germany", accent: "orange" },
+  { name: "USA", image: "/monument-usa.webp", href: "/countries/usa", accent: "coral" },
+  { name: "UK", image: "/monuments/monument-uk.svg", href: "/countries/uk", accent: "aqua" },
+  { name: "Australia", image: "/monuments/monument-australia.svg", href: "/countries/australia", accent: "periwinkle" },
+  { name: "Ireland", image: "/monuments/monument-ireland.svg", href: "/countries/ireland", accent: "orange" },
+  { name: "More", image: "/monument-germany.webp", href: "/countries", accent: "aqua" },
 ];
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));
@@ -15,6 +16,13 @@ const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, v
 export function CountryOrbit() {
   const section = useRef<HTMLElement>(null);
   const [progress, setProgress] = useState(0);
+  const [counts, setCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    fetch("/Data/students.json").then((response) => response.json() as Promise<{ country: string }[]>).then((students) => {
+      setCounts(students.reduce<Record<string, number>>((result, student) => { result[student.country.toLowerCase()] = (result[student.country.toLowerCase()] ?? 0) + 1; return result; }, {}));
+    }).catch(() => setCounts({}));
+  }, []);
 
   useEffect(() => {
     let frame = 0;
@@ -40,7 +48,8 @@ export function CountryOrbit() {
         {countries.map((country, index) => {
           const phase = progress - index;
           const distance = Math.abs(phase);
-          const count = Math.round(country.value * clamp(phase + 1));
+          const realCount = counts[country.name.toLowerCase()] ?? 0;
+          const count = Math.round(realCount * clamp(phase + 1));
           const visible = distance <= 1.08;
           const opacity = visible ? clamp(1.22 - distance) : 0;
           const style = {
@@ -52,9 +61,9 @@ export function CountryOrbit() {
             "--z": Math.round(10 - distance * 2),
             pointerEvents: visible ? "auto" : "none",
           } as React.CSSProperties;
-          return <a className={`orbit-card ${country.accent}`} href={country.href} key={country.name} style={style} aria-label={`Explore study options in ${country.name}`}>
+          return <a className={`orbit-card ${country.accent} ${country.name === "More" ? "orbit-more" : ""}`} href={country.href} key={country.name} style={style} aria-label={country.name === "More" ? "See all countries" : `Explore study options in ${country.name}`}>
             <span className="country-index">0{index + 1}</span>
-            <span className="country-count"><strong>{count}</strong><small>student journeys</small></span>
+            <span className="country-count">{country.name === "More" ? <small>Browse every</small> : <><strong>{count}</strong><small>student journeys</small></>}</span>
             <img src={country.image} alt={`Stylised landmark representing ${country.name}`} />
             <span className="country-name">{country.name}</span>
             <span className="card-arrow"><ArrowUpRight size={18} /></span>
