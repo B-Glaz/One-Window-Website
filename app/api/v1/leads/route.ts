@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   if (!parsed.success) { const fields: Record<string, string> = {}; for (const issue of parsed.error.issues) fields[String(issue.path[0])] ??= issue.message; return errorResponse(400, "VALIDATION_ERROR", "Please review the highlighted fields.", fields); }
   if (!allowedFormCodes.has(parsed.data.formCode)) return errorResponse(400, "UNSUPPORTED_FORM", "This form is not available.");
   try {
-    const db = getDb(); const existing = await db.select({ submissionReference: leadSubmissions.submissionReference }).from(leadSubmissions).where(eq(leadSubmissions.idempotencyKey, idempotencyKey)).limit(1);
+    const db = await getDb(); const existing = await db.select({ submissionReference: leadSubmissions.submissionReference }).from(leadSubmissions).where(eq(leadSubmissions.idempotencyKey, idempotencyKey)).limit(1);
     if (existing[0]) return Response.json({ submissionReference: existing[0].submissionReference, redirectTo: `/thank-you?ref=${encodeURIComponent(existing[0].submissionReference)}`, duplicate: true });
     const submissionReference = `OW-${crypto.randomUUID().replaceAll("-", "").slice(0, 10).toUpperCase()}`;
     await db.insert(leadSubmissions).values({ id: crypto.randomUUID(), idempotencyKey, formCode: parsed.data.formCode, sourcePath: parsed.data.sourcePath, fullName: parsed.data.name, email: parsed.data.email.toLowerCase(), phone: parsed.data.phone, message: parsed.data.message || null, submissionReference, status: "accepted", createdAt: new Date() });
