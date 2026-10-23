@@ -210,3 +210,7 @@ h3 { margin-bottom:10px; color:var(--navy); font-size:21px; font-weight:600; lin
 @keyframes development-float { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(0,16px,0) scale(1.04); } }
 @media (max-width: 640px) { .development-hero { min-height: 78vh; padding-top: 8rem; } .development-status { margin-top: 3rem; font-size: .74rem; } }
 @media (prefers-reduced-motion: reduce) { .development-orb { animation: none; } }
+.stories-header-actions { display:flex; align-items:center; gap:10px; }
+.stories-countries { display:inline-flex; align-items:center; gap:7px; padding:12px 17px; border:1px solid rgba(255,255,255,.9); border-radius:999px; color:var(--navy); background:rgba(255,255,255,.72); box-shadow:0 8px 20px -13px rgba(20,51,105,.35); backdrop-filter:blur(20px); font-size:13px; font-weight:600; text-decoration:none; transition:transform .45s ease,background .45s ease,box-shadow .45s ease; }
+.stories-countries:hover { transform:translateY(-2px); background:rgba(255,255,255,.92); box-shadow:0 12px 25px -14px rgba(20,51,105,.5); }
+@media (max-width:620px) { .stories-header-actions { gap:6px; } .stories-countries { padding:10px 11px; font-size:11px; } }
