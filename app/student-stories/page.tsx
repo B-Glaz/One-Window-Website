@@ -18,7 +18,25 @@ export default function StudentStoriesPage() {
 
   useEffect(() => { const requested = new URLSearchParams(window.location.search).get("country")?.trim().toLowerCase(); fetch("/Data/students.json").then((response) => response.json() as Promise<Student[]>).then((data) => { setStudents(data); if (requested) { const match = data.find((student) => student.country.toLowerCase() === requested); if (match) setCountry(match.country); } }).catch(() => setStudents([])); }, []);
   useEffect(() => { if (!students.length) return; setLiveCount(students.length); }, [students.length]);
-  useEffect(() => { let timer: ReturnType<typeof setTimeout>; const schedule = () => { timer = setTimeout(() => { setLiveCount((value) => value + 1); setCountPulse((value) => value + 1); schedule(); }, 60 * 60 * 1000 + Math.floor(Math.random() * 3 * 60 * 60 * 1000)); }; schedule(); return () => clearTimeout(timer); }, []);
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const schedule = () => {
+      const now = new Date();
+      const start = new Date(now);
+      start.setHours(10, 0, 0, 0);
+      const end = new Date(now);
+      end.setHours(19, 0, 0, 0);
+      if (now >= end) start.setDate(start.getDate() + 1);
+      const windowStart = now < start ? start : now;
+      const windowEnd = new Date(start);
+      windowEnd.setHours(19, 0, 0, 0);
+      const available = Math.max(60_000, windowEnd.getTime() - windowStart.getTime());
+      const delay = now >= end ? (start.getTime() - now.getTime()) + Math.floor(Math.random() * 9 * 60 * 60 * 1000) : Math.floor(Math.random() * available);
+      timer = setTimeout(() => { setLiveCount((value) => value + 1); setCountPulse((value) => value + 1); schedule(); }, delay);
+    };
+    schedule();
+    return () => clearTimeout(timer);
+  }, []);
 
   const availableCountries = useMemo(() => ["All countries", ...Array.from(new Set(students.map((student) => student.country))).sort()], [students]);
   const filtered = useMemo(() => country === "All countries" ? students : students.filter((student) => student.country === country), [country, students]);
