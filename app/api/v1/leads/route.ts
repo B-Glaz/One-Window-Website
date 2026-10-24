@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { getDb } from "../../../../db";
 import { leadSubmissions } from "../../../../db/schema";
-const leadSchema = z.object({ formCode: z.string().trim().min(1).max(100), sourcePath: z.string().trim().startsWith("/").max(300), name: z.string().trim().min(2, "Please enter your full name.").max(120), email: z.string().trim().email("Please enter a valid email address.").max(320), phone: z.string().trim().min(7, "Please enter a valid phone number.").max(32).regex(/^[+()\-\s0-9]+$/, "Please enter a valid phone number."), message: z.string().trim().max(1500, "Please keep your message under 1,500 characters.").optional().default("") });
+const leadSchema = z.object({ formCode: z.string().trim().min(1).max(100), sourcePath: z.string().trim().startsWith("/").max(300), name: z.string().trim().min(2, "Please enter your full name.").max(120), email: z.string().trim().email("Please enter a valid email address.").max(320), phone: z.string().trim().min(7, "Please enter a valid phone number.").max(32).regex(/^[+()\-\s0-9]+$/, "Please enter a valid phone number."), message: z.string().trim().max(1500, "Please keep your message under 1,500 characters.").optional() });
 const allowedFormCodes = new Set(["homepage_consultation", "landing_study_in_france", "landing_study_in_germany", "landing_study_in_europe", "landing_study_business_in_europe_france_germany", "landing_study_at_icn"]);
 function errorResponse(status: number, code: string, message: string, fieldErrors?: Record<string, string>) { return Response.json({ error: { code, message, fieldErrors, requestId: crypto.randomUUID() } }, { status }); }
 export async function POST(request: Request) {
