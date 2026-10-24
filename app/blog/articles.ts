@@ -1,6 +1,8 @@
+import { manualArticles } from "./manual-articles";
+
 export type BlogArticle = { slug: string; title: string; tag: string; published: string; sourceUrl: string; imageUrl: string; intro: string; sections: Array<{ heading: string; paragraphs?: string[]; bullets?: string[] }> };
 
-export const articles: BlogArticle[] = [
+const importedArticles: BlogArticle[] = [
   {
     "slug": "wichita-state-university-digital-badge-program-2026-1",
     "title": "Wichita State University Digital Badge Program 2026",
@@ -7447,5 +7449,5 @@ export const articles: BlogArticle[] = [
     ]
   }
 ];
-
+export const articles: BlogArticle[] = [...importedArticles, ...manualArticles];
 export const articleBySlug = Object.fromEntries(articles.map((article) => [article.slug, article]));

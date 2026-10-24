@@ -22,7 +22,7 @@ const isHeading = (line, next) => line.length > 18 && line.length < 125 && !/[.!
 const clean = (value) => value.replace(/\r/g, "").trim();
 const classify = (title) => /visa/i.test(title) ? "Visa" : /scholar|loan/i.test(title) ? "Funding" : /exam|ielts|gre|gmat/i.test(title) ? "Exams" : /finance|accommodation|homesick|friend|cultur|instagram/i.test(title) ? "Life abroad" : /university|admission|sop|backlog|gap|dentistry|law|mba|master/i.test(title) ? "Admissions" : "Destinations";
 const articles = records.filter((record) => record.length >= header.length).map((record, serial) => {
-  const title = clean(record[index.title]);
+  const title = clean(record[index.title]).replace(/^Value:\s*\d+,\s*/i, "");
   const lines = clean(record[index.content]).split(/\n+/).map(clean).filter(Boolean);
   const sections = [];
   let current = { heading: "The guide", paragraphs: [], bullets: [] };
@@ -37,6 +37,6 @@ const articles = records.filter((record) => record.length >= header.length).map(
   if (sections[0]?.paragraphs?.length) sections[0].paragraphs = sections[0].paragraphs.slice(3);
   return { slug: `${slugify(title)}-${serial + 1}`, title, tag: classify(title), published: "One Window archive", sourceUrl: clean(record[index.url]), imageUrl: clean(record[index.thumbnail_url]), intro, sections: sections.filter((section) => section.paragraphs.length || section.bullets.length) };
 });
-const output = `export type BlogArticle = { slug: string; title: string; tag: string; published: string; sourceUrl: string; imageUrl: string; intro: string; sections: Array<{ heading: string; paragraphs?: string[]; bullets?: string[] }> };\n\nexport const articles: BlogArticle[] = ${JSON.stringify(articles, null, 2)};\n\nexport const articleBySlug = Object.fromEntries(articles.map((article) => [article.slug, article]));\n`;
+const output = `import { manualArticles } from "./manual-articles";\n\nexport type BlogArticle = { slug: string; title: string; tag: string; published: string; sourceUrl: string; imageUrl: string; intro: string; sections: Array<{ heading: string; paragraphs?: string[]; bullets?: string[] }> };\n\nconst importedArticles: BlogArticle[] = ${JSON.stringify(articles, null, 2)};\nexport const articles: BlogArticle[] = [...importedArticles, ...manualArticles];\nexport const articleBySlug = Object.fromEntries(articles.map((article) => [article.slug, article]));\n`;
 fs.writeFileSync(target, output);
 console.log(`Imported ${articles.length} blog articles`);
