@@ -423,7 +423,9 @@ html[data-theme="dark"] .brand .logo-mobile.brand-logo-light { display:none!impo
 html[data-theme="dark"] .brand .logo-desktop.brand-logo-dark { display:block!important; }
 html[data-theme="dark"] .brand .logo-mobile.brand-logo-dark { display:none!important; }
 @media (max-width:900px) {
-  .brand .logo-desktop { display:none!important; }
+  .brand .logo-desktop,
+  html[data-theme="dark"] .brand .logo-desktop,
+  html[data-theme="dark"] .brand .logo-desktop.brand-logo-dark { display:none!important; }
   .brand .logo-mobile.brand-logo-light { display:block!important; }
   html[data-theme="dark"] .brand .logo-mobile.brand-logo-light { display:none!important; }
   html[data-theme="dark"] .brand .logo-mobile.brand-logo-dark { display:block!important; }
