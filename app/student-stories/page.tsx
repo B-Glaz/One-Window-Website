@@ -16,8 +16,7 @@ export default function StudentStoriesPage() {
   const [liveCount, setLiveCount] = useState(750);
   const [countPulse, setCountPulse] = useState(0);
 
-  useEffect(() => { const requested = new URLSearchParams(window.location.search).get("country")?.trim().toLowerCase(); fetch("/Data/students.json").then((response) => response.json() as Promise<Student[]>).then((data) => { setStudents(data); if (requested) { const match = data.find((student) => student.country.toLowerCase() === requested); if (match) setCountry(match.country); } }).catch(() => setStudents([])); }, []);
-  useEffect(() => { if (!students.length) return; setLiveCount(students.length); }, [students.length]);
+  useEffect(() => { const requested = new URLSearchParams(window.location.search).get("country")?.trim().toLowerCase(); fetch("/Data/students.json").then((response) => response.json() as Promise<Student[]>).then((data) => { setStudents(data); setLiveCount(data.length || 750); if (requested) { const match = data.find((student) => student.country.toLowerCase() === requested); if (match) setCountry(match.country); } }).catch(() => setStudents([])); }, []);
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     const schedule = () => {
