@@ -1,6 +1,6 @@
 # Blog content maintenance
 
-The live blog archive is rendered from `app/blog/articles.ts`.
+The live blog archive is rendered from `app/blog/blog.ts`. This is the single source file for imported and manually added blog content.
 
 ## Update imported articles
 
@@ -8,4 +8,4 @@ Update `OW Scrape/onewindow_blogs.csv`, then from this `site` directory run `nod
 
 ## Add an article manually
 
-Edit `app/blog/manual-articles.ts` and add an object matching `BlogArticle`. Use a unique lowercase `slug`; it will automatically appear in the archive and be available at `/blog/<slug>`. Manual articles are merged after CSV records and are not overwritten by the importer.
+Edit `app/blog/blog.ts` and add an object to the manual merge, or use `app/blog/manual-articles.ts` for hand-authored entries. Use a unique lowercase `slug`; it will automatically appear in the archive and be available at `/blog/<slug>`. The importer updates only the generated imported records and preserves manual entries.

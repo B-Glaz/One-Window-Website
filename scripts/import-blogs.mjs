@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const source = "C:/Digital Manager/CODE/OW Website/OW Scrape/onewindow_blogs.csv";
-const target = path.resolve("app/blog/articles.ts");
+const target = path.resolve("app/blog/blog.ts");
 const csv = fs.readFileSync(source, "utf8");
 const rows = [];
 let row = [], cell = "", quoted = false;
