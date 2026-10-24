@@ -377,6 +377,9 @@ html[data-theme="dark"] .audience-options a:hover,html[data-theme="dark"] .quick
 html[data-theme="dark"] .accreditation-card:hover,html[data-theme="dark"] .accreditation-core:hover,
 html[data-theme="dark"] .service-card:hover,html[data-theme="dark"] .institution-related-grid a:hover,
 html[data-theme="dark"] .blog-card:hover { background:rgba(34,117,184,.55); }
+html[data-theme="dark"] .audience-options a:hover,
+html[data-theme="dark"] .quick-path-list a:hover,
+html[data-theme="dark"] .audience-nav a:hover { color:#fff!important; }
 html[data-theme="dark"] .institution-hero-art,html[data-theme="dark"] .platform-visual,
 html[data-theme="dark"] .hero-art { background:linear-gradient(145deg,rgba(20,83,147,.7),rgba(21,53,106,.55)); box-shadow:0 30px 70px -35px rgba(0,0,0,.72); }
 html[data-theme="dark"] .site-footer { background:#04132d; color:#d8eaff; }
