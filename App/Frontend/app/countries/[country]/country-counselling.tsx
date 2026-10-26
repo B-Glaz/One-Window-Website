@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowRight, X } from "lucide-react";
-import { LeadForm } from "../../components/lead-form";
+import { ZohoContactForm } from "../../components/zoho-contact-form";
 
 export function CountryCounselling({ country }: { country: string }) {
   const [noticeVisible, setNoticeVisible] = useState(false);
@@ -69,11 +69,7 @@ export function CountryCounselling({ country }: { country: string }) {
           </button>
         </div>
         <div className="country-counselling-form">
-          <LeadForm
-            formCode="homepage_consultation"
-            sourcePath={`/countries/${country.toLowerCase().replaceAll(" ", "-")}`}
-            title="Book free counselling session"
-          />
+          <ZohoContactForm country={country} />
         </div>
       </section>
 
@@ -98,11 +94,7 @@ export function CountryCounselling({ country }: { country: string }) {
             >
               <X size={19} />
             </button>
-            <LeadForm
-              formCode="homepage_consultation"
-              sourcePath={`/countries/${country.toLowerCase().replaceAll(" ", "-")}`}
-              title="Book free counselling session"
-            />
+            <ZohoContactForm country={country} autoOpen={false} />
           </div>
         </div>
       ) : null}

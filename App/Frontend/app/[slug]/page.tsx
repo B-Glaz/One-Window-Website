@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Check, GraduationCap } from "lucide-react";
 import { destinationPages, getDestination } from "../content";
 import { Footer } from "../components/footer";
-import { LeadForm } from "../components/lead-form";
+import { ZohoContactForm } from "../components/zoho-contact-form";
 import { Navigation } from "../components/navigation";
 export function generateStaticParams() {
   return destinationPages.map(({ slug }) => ({
@@ -42,11 +42,7 @@ export default async function Destination({
             </a>
           </div>
           <div id="enquire" className="glass form-wrap reveal">
-            <LeadForm
-              formCode={`landing_${slug.replaceAll("-", "_")}`}
-              sourcePath={`/${slug}`}
-              title={`Enquire about ${page.title}`}
-            />
+            <ZohoContactForm />
           </div>
         </div>
       </section>

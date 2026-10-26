@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { ArrowRight, Bot, Landmark } from "lucide-react";
 import { CountryOrbit } from "./components/country-orbit";
-import { LeadForm } from "./components/lead-form";
+import { ZohoContactForm } from "./components/zoho-contact-form";
 import { Footer } from "./components/footer";
 import { Navigation } from "./components/navigation";
 import { articles } from "./blog/blog";
@@ -219,11 +219,7 @@ export default function Home() {
               <li>Plan the next clear step in your journey</li>
             </ul>
           </div>
-          <LeadForm
-            formCode="homepage_consultation"
-            sourcePath="/"
-            title="Free counselling session"
-          />
+          <ZohoContactForm />
         </div>
       </section>
       {/* Services and Course Discovery */}

@@ -26,7 +26,7 @@ export default function YourCountryPage() {
         <div className="your-country-intro">
           <p className="eyebrow">Choose your next chapter</p>
           <h1>
-            Book free counselling
+            Book free counselling{" "}
             <span>session</span>
           </h1>
         </div>
