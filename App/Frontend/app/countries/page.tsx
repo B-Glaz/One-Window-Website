@@ -60,12 +60,12 @@ export default function CountriesPage() {
         <Link className="stories-logo" href="/" aria-label="One Window home">
           <img
             className="brand-logo brand-logo-light"
-            src="/Logos/OW%20Logo%20Blue.png"
+            src="/Logos/OW%20web%20desktop%20logos%20(200%20x%2040%20px)/OW%20Blue%20Logo%20desktop.png"
             alt="One Window"
           />
           <img
             className="brand-logo brand-logo-dark"
-            src="/Logos/OW%20Logo%20White.png"
+            src="/Logos/OW%20web%20desktop%20logos%20(200%20x%2040%20px)/OW%20White%20Logo%20desktop.png"
             alt=""
             aria-hidden="true"
           />

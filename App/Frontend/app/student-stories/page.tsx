@@ -14,6 +14,7 @@ type Student = {
 };
 const years = ["2025–26", "2024–25"];
 const pageSize = 24;
+const liveCounterKey = "ow-students-counselled-counter";
 export default function StudentStoriesPage() {
   // ─── Page State ───
 
@@ -35,7 +36,6 @@ export default function StudentStoriesPage() {
       .then((response) => response.json() as Promise<Student[]>)
       .then((data) => {
         setStudents(data);
-        setLiveCount(data.length || 750);
         if (requested) {
           const match = data.find(
             (student) => student.country.toLowerCase() === requested,
@@ -49,35 +49,51 @@ export default function StudentStoriesPage() {
   // ─── Live Counselling Counter ───
 
   useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const todayKey = () => {
+      const now = new Date();
+      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    };
+    const readCounter = () => {
+      try {
+        const stored = JSON.parse(localStorage.getItem(liveCounterKey) || "null");
+        if (stored?.date === todayKey()) return stored;
+        const next = { date: todayKey(), count: stored?.count || 750, added: 0, target: Math.floor(Math.random() * 10) };
+        localStorage.setItem(liveCounterKey, JSON.stringify(next));
+        return next;
+      } catch {
+        return { date: todayKey(), count: 750, added: 0, target: 0 };
+      }
+    };
     const schedule = () => {
+      const state = readCounter();
+      setLiveCount(state.count);
+      if (state.added >= state.target) return;
       const now = new Date();
       const start = new Date(now);
       start.setHours(10, 0, 0, 0);
       const end = new Date(now);
       end.setHours(19, 0, 0, 0);
-      if (now >= end) start.setDate(start.getDate() + 1);
+      if (now >= end) {
+        start.setDate(start.getDate() + 1);
+      }
       const windowStart = now < start ? start : now;
       const windowEnd = new Date(start);
       windowEnd.setHours(19, 0, 0, 0);
-      const available = Math.max(
-        60_000,
-        windowEnd.getTime() - windowStart.getTime(),
-      );
-      const delay =
-        now >= end
-          ? start.getTime() -
-            now.getTime() +
-            Math.floor(Math.random() * 9 * 60 * 60 * 1000)
-          : Math.floor(Math.random() * available);
+      const delay = Math.max(1_000, windowStart.getTime() - now.getTime() + Math.floor(Math.random() * Math.max(1, windowEnd.getTime() - windowStart.getTime())));
       timer = setTimeout(() => {
-        setLiveCount((value) => value + 1);
+        const current = readCounter();
+        const updated = { ...current, count: current.count + 1, added: current.added + 1 };
+        localStorage.setItem(liveCounterKey, JSON.stringify(updated));
+        setLiveCount(updated.count);
         setCountPulse((value) => value + 1);
         schedule();
       }, delay);
     };
     schedule();
-    return () => clearTimeout(timer);
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   // ─── Filtering and Pagination ───
@@ -111,12 +127,12 @@ export default function StudentStoriesPage() {
         <Link className="stories-logo" href="/" aria-label="One Window home">
           <img
             className="brand-logo brand-logo-light"
-            src="/Logos/OW%20Logo%20Blue.png"
+            src="/Logos/OW%20web%20desktop%20logos%20(200%20x%2040%20px)/OW%20Blue%20Logo%20desktop.png"
             alt="One Window"
           />
           <img
             className="brand-logo brand-logo-dark"
-            src="/Logos/OW%20Logo%20White.png"
+            src="/Logos/OW%20web%20desktop%20logos%20(200%20x%2040%20px)/OW%20White%20Logo%20desktop.png"
             alt=""
             aria-hidden="true"
           />
@@ -168,7 +184,6 @@ export default function StudentStoriesPage() {
               {liveCount.toLocaleString()}
             </strong>
             <span>students counselled</span>
-            <small>One new student is added throughout the day</small>
           </div>
         </div>
       </section>
