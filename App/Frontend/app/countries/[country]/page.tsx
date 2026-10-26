@@ -5,6 +5,7 @@ import { Navigation } from "../../components/navigation";
 import { Footer } from "../../components/footer";
 import { countryProfiles } from "../content";
 import { supplementalProfiles } from "../supplemental";
+import { CountryCounselling } from "./country-counselling";
 export default async function CountryDetailPage({
   params,
 }: {
@@ -49,6 +50,7 @@ export default async function CountryDetailPage({
           </div>
         </div>
       </section>
+      <CountryCounselling country={profile.name} />
       <section className="country-detail-content">
         <div className="shell country-detail-layout">
           <aside className="country-detail-aside">
