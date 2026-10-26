@@ -1,0 +1,8 @@
+{
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 100,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
