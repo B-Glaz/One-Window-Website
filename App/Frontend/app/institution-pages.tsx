@@ -4,21 +4,458 @@ import { ArrowRight, Check, Globe2, Sparkles } from "lucide-react";
 import { Navigation } from "./components/navigation";
 import { Footer } from "./components/footer";
 
-export type InstitutionPage = { audience: string; title: string; intro: string; visual: string; offers: Array<[string,string]>; initiatives: Array<[string,string]>; related?: Array<[string,string]> };
+// ─── Page Model ───
+
+export type InstitutionPage = {
+  audience: string;
+  title: string;
+  intro: string;
+  visual: string;
+  offers: Array<[string, string]>;
+  initiatives: Array<[string, string]>;
+  related?: Array<[string, string]>;
+};
+
+// ─── Institution Content ───
 
 export const institutionPages: Record<string, InstitutionPage> = {
-  foreign: { audience: "For foreign universities", title: "Build a stronger bridge to ambitious students.", intro: "Empowering futures with seamless student recruitment, bridging aspirations to world-class educational opportunities.", visual: "/monument-usa.webp", offers: [["Bachelor recruitment", "Empower undergraduate programmes with thoughtful recruitment strategies, personalised outreach, and meaningful student connections."],["Masters recruitment", "Attract high-potential postgraduate candidates through focused campaigns, AI-informed insights, and strategic outreach."],["2+2 twinning programmes", "Create clear pathways between institutions with aligned curricula, student readiness, and global collaboration."],["Summer programmes", "Connect short-term global programmes with students seeking academic enrichment, cultural immersion, and real-world exposure."]], initiatives: [["Targeted student campaigns", "Reach the right student communities through focused digital and campus-led initiatives."],["University showcases", "Give prospective students a clear, memorable view of your curriculum, campus, and opportunities."],["Parent and student sessions", "Answer practical questions around affordability, transition, culture, and academic fit."],["Readiness workshops", "Prepare students for the academic expectations and cultural context of studying abroad."]], related:[["bachelors-recruitment","Bachelor recruitment"],["masters-recruitment","Masters recruitment"],["two-plus-two-twinning-program","2+2 twinning programme"],["summer-program","Summer programme"]] },
-  indian: { audience: "For Indian universities", title: "Turn international ambition into lasting partnerships.", intro: "We set up and manage your International Relations Office, connecting your university to leading institutions across the US, UK, Australia, Germany, and the EU.", visual: "/monument-europe.webp", offers: [["Twinning programmes", "Create 2+2, 3+1, and 4+1 pathways that give students meaningful exposure to Indian and international campuses."],["Semester abroad", "Design immersive one-semester experiences that broaden perspective and strengthen academic credentials."],["Short programmes", "Build specialised summer and short-term programmes for skill-building and cross-cultural learning."],["International language centre & test prep", "Prepare students for IELTS, TOEFL, GRE, and other language and admissions requirements."],["Higher education abroad", "Use AI-powered guidance and matching to help students pursue masters and PhD opportunities worldwide."],["International faculty visits", "Bring global expertise to campus through lectures, workshops, and academic collaborations."]], initiatives: [["Global networking", "Build stronger connections with universities, counsellors, and stakeholders across borders."],["A centre of transformation", "Position your campus as a hub for international learning, collaboration, and cultural exchange."],["Strengthened capabilities", "Grow global readiness through new programmes, resources, and expertise."],["Innovation and empowerment", "Give students and faculty the confidence to thrive in a connected academic landscape."]] },
-  schools: { audience: "For schools", title: "Give every learner a clearer next chapter.", intro: "We partner with progressive institutions to deliver a 360° student-first ecosystem for academic, career, and personal guidance across students, parents, and educators.", visual: "/monument-uk.webp", offers: [["Psychometric testing", "Understand interests, skills, aptitude, personality, and learning preferences before planning the next step."],["1-on-1 student counselling", "Give each learner dedicated guidance for academic and personal choices, career uncertainty, and confidence."],["Career assessment tools", "Use interest inventories, stream selectors, and future-focused career maps aligned with global benchmarks."],["International test preparation", "Prepare students for SAT, IELTS, TOEFL, and AP through expert-led sessions, mocks, and tailored plans."],["Profile-building support", "Help students build portfolios that reflect leadership, creativity, initiative, research, and community impact."],["Indian and international guidance", "Navigate Indian institutions and global destinations with clear comparisons of costs, scholarships, and outcomes."],["Research publication programmes", "Introduce students to academic writing and research methodology with PhD holders and scholars."],["Project-based learning", "Build practical problem-solving, collaboration, and creative execution through guided real-world projects."]], initiatives: [["Scholarship drives", "Create opportunities that attract talented students seeking financial support."],["Student-parent sessions", "Make affordability, academic transition, and cultural adaptation easier to understand."],["Seminar series", "Bring focused exposure to students through engaging sessions across schools and colleges."],["On-campus counselling days", "Give learners direct access to expert guidance and individual conversations."]] }
+  foreign: {
+    audience: "For foreign universities",
+    title: "Build a stronger bridge to ambitious students.",
+    intro:
+      "Empowering futures with seamless student recruitment, bridging aspirations to world-class educational opportunities.",
+    visual: "/monument-usa.webp",
+    offers: [
+      [
+        "Bachelor recruitment",
+        "Empower undergraduate programmes with thoughtful recruitment strategies, personalised outreach, and meaningful student connections.",
+      ],
+      [
+        "Masters recruitment",
+        "Attract high-potential postgraduate candidates through focused campaigns, AI-informed insights, and strategic outreach.",
+      ],
+      [
+        "2+2 twinning programmes",
+        "Create clear pathways between institutions with aligned curricula, student readiness, and global collaboration.",
+      ],
+      [
+        "Summer programmes",
+        "Connect short-term global programmes with students seeking academic enrichment, cultural immersion, and real-world exposure.",
+      ],
+    ],
+    initiatives: [
+      [
+        "Targeted student campaigns",
+        "Reach the right student communities through focused digital and campus-led initiatives.",
+      ],
+      [
+        "University showcases",
+        "Give prospective students a clear, memorable view of your curriculum, campus, and opportunities.",
+      ],
+      [
+        "Parent and student sessions",
+        "Answer practical questions around affordability, transition, culture, and academic fit.",
+      ],
+      [
+        "Readiness workshops",
+        "Prepare students for the academic expectations and cultural context of studying abroad.",
+      ],
+    ],
+    related: [
+      ["bachelors-recruitment", "Bachelor recruitment"],
+      ["masters-recruitment", "Masters recruitment"],
+      ["two-plus-two-twinning-program", "2+2 twinning programme"],
+      ["summer-program", "Summer programme"],
+    ],
+  },
+  indian: {
+    audience: "For Indian universities",
+    title: "Turn international ambition into lasting partnerships.",
+    intro:
+      "We set up and manage your International Relations Office, connecting your university to leading institutions across the US, UK, Australia, Germany, and the EU.",
+    visual: "/monument-europe.webp",
+    offers: [
+      [
+        "Twinning programmes",
+        "Create 2+2, 3+1, and 4+1 pathways that give students meaningful exposure to Indian and international campuses.",
+      ],
+      [
+        "Semester abroad",
+        "Design immersive one-semester experiences that broaden perspective and strengthen academic credentials.",
+      ],
+      [
+        "Short programmes",
+        "Build specialised summer and short-term programmes for skill-building and cross-cultural learning.",
+      ],
+      [
+        "International language centre & test prep",
+        "Prepare students for IELTS, TOEFL, GRE, and other language and admissions requirements.",
+      ],
+      [
+        "Higher education abroad",
+        "Use AI-powered guidance and matching to help students pursue masters and PhD opportunities worldwide.",
+      ],
+      [
+        "International faculty visits",
+        "Bring global expertise to campus through lectures, workshops, and academic collaborations.",
+      ],
+    ],
+    initiatives: [
+      [
+        "Global networking",
+        "Build stronger connections with universities, counsellors, and stakeholders across borders.",
+      ],
+      [
+        "A centre of transformation",
+        "Position your campus as a hub for international learning, collaboration, and cultural exchange.",
+      ],
+      [
+        "Strengthened capabilities",
+        "Grow global readiness through new programmes, resources, and expertise.",
+      ],
+      [
+        "Innovation and empowerment",
+        "Give students and faculty the confidence to thrive in a connected academic landscape.",
+      ],
+    ],
+  },
+  schools: {
+    audience: "For schools",
+    title: "Give every learner a clearer next chapter.",
+    intro:
+      "We partner with progressive institutions to deliver a 360° student-first ecosystem for academic, career, and personal guidance across students, parents, and educators.",
+    visual: "/monument-uk.webp",
+    offers: [
+      [
+        "Psychometric testing",
+        "Understand interests, skills, aptitude, personality, and learning preferences before planning the next step.",
+      ],
+      [
+        "1-on-1 student counselling",
+        "Give each learner dedicated guidance for academic and personal choices, career uncertainty, and confidence.",
+      ],
+      [
+        "Career assessment tools",
+        "Use interest inventories, stream selectors, and future-focused career maps aligned with global benchmarks.",
+      ],
+      [
+        "International test preparation",
+        "Prepare students for SAT, IELTS, TOEFL, and AP through expert-led sessions, mocks, and tailored plans.",
+      ],
+      [
+        "Profile-building support",
+        "Help students build portfolios that reflect leadership, creativity, initiative, research, and community impact.",
+      ],
+      [
+        "Indian and international guidance",
+        "Navigate Indian institutions and global destinations with clear comparisons of costs, scholarships, and outcomes.",
+      ],
+      [
+        "Research publication programmes",
+        "Introduce students to academic writing and research methodology with PhD holders and scholars.",
+      ],
+      [
+        "Project-based learning",
+        "Build practical problem-solving, collaboration, and creative execution through guided real-world projects.",
+      ],
+    ],
+    initiatives: [
+      [
+        "Scholarship drives",
+        "Create opportunities that attract talented students seeking financial support.",
+      ],
+      [
+        "Student-parent sessions",
+        "Make affordability, academic transition, and cultural adaptation easier to understand.",
+      ],
+      [
+        "Seminar series",
+        "Bring focused exposure to students through engaging sessions across schools and colleges.",
+      ],
+      [
+        "On-campus counselling days",
+        "Give learners direct access to expert guidance and individual conversations.",
+      ],
+    ],
+  },
 };
-
 export const servicePages: Record<string, InstitutionPage> = {
-  "bachelors-recruitment": { audience:"Bachelor recruitment", title:"Meet the next generation of global learners.", intro:"Empower undergraduate programmes with innovative recruitment strategies, personalised outreach, and meaningful student connections.", visual:"/monument-australia.webp", offers:[["Audience-led outreach","Reach prospective undergraduates through the communities, campuses, and conversations that matter to them."],["Programme storytelling","Translate your course experience into a clear story students and families can understand."],["Campus engagement","Create information sessions, workshops, and university showcases that move interest forward."]], initiatives:[["School and college campaigns","Build awareness early with focused campus initiatives."],["Student-parent conversations","Make entry requirements, affordability, and transition feel clear."],["Application readiness","Help prospective students understand the next practical step."]] },
-  "masters-recruitment": { audience:"Masters recruitment", title:"Attract postgraduate talent with intent.", intro:"Collaborate with One Window to attract top talent for your Master’s programmes through innovative campaigns, AI-informed insights, and strategic outreach.", visual:"/monument-germany.webp", offers:[["Profile-led matching","Connect programme strengths with students’ academic backgrounds and aspirations."],["Focused digital campaigns","Build high-intent awareness around the right programmes and intakes."],["Decision support","Give candidates the information needed to compare fit, cost, and next steps."]], initiatives:[["Graduate information sessions","Turn complex programme questions into useful conversations."],["Faculty and alumni touchpoints","Show the academic and career experience behind the course."],["Application momentum","Keep prospective candidates moving from curiosity to action."]] },
-  "two-plus-two-twinning-program": { audience:"2+2 twinning programme", title:"Make international degree pathways easier to enter.", intro:"Foster global collaboration and student success through aligned curricula, readiness support, and clear transitions between institutions.", visual:"/monument-france.webp", offers:[["Course mapping and articulation","Support seamless credit transfer and academic alignment between institutions."],["Pathway subjects and pre-training","Build foundational knowledge so students can transition with confidence."],["Education loan assistance","Help students understand funding options and reduce financial barriers."],["Cultural and academic readiness","Prepare learners for academic expectations and cultural nuances abroad."],["AI-powered university matching","Use AI-informed guidance to connect students with suitable programmes."],["Badge programmes","Recognise the preparation students complete before a twinning opportunity."]], initiatives:[["Curriculum showcases","Let partner universities highlight distinctive curriculum and learning experiences."],["Student-parent sessions","Address affordability, academic transition, and cultural adaptation."],["Global readiness boot camps","Build academic, cultural, and practical confidence before departure."],["On-campus counselling days","Offer one-to-one guidance around pathway choices."]] },
-  "summer-program": { audience:"Summer programme", title:"Turn a summer into a global advantage.", intro:"Connect ambitious students with short-term global exposure, academic enrichment, and cultural immersion.", visual:"/monument-italy.webp", offers:[["Curated academic experiences","Highlight summer programmes across STEM, business, arts, and humanities."],["Experiential learning","Showcase internships, industry visits, research projects, and practical exposure."],["Global cultural immersion","Bring together cultural tours, language learning, and local experiences."],["Application support","Guide students through applications, documents, visas, finances, and travel planning."],["AI-powered recommendations","Match programmes to aspirations and eligibility with intelligent guidance."],["Pre-departure orientation","Prepare students for academic expectations, safety, and soft skills."]], initiatives:[["Summer programme awareness weeks","Create targeted events in schools and colleges."],["Interactive information sessions","Bring alumni and university representatives into the conversation."],["Profile-building workshops","Help students strengthen competitive summer applications."],["Faculty networking events","Create meaningful connections with visiting university faculty."]] }
+  "bachelors-recruitment": {
+    audience: "Bachelor recruitment",
+    title: "Meet the next generation of global learners.",
+    intro:
+      "Empower undergraduate programmes with innovative recruitment strategies, personalised outreach, and meaningful student connections.",
+    visual: "/monument-australia.webp",
+    offers: [
+      [
+        "Audience-led outreach",
+        "Reach prospective undergraduates through the communities, campuses, and conversations that matter to them.",
+      ],
+      [
+        "Programme storytelling",
+        "Translate your course experience into a clear story students and families can understand.",
+      ],
+      [
+        "Campus engagement",
+        "Create information sessions, workshops, and university showcases that move interest forward.",
+      ],
+    ],
+    initiatives: [
+      [
+        "School and college campaigns",
+        "Build awareness early with focused campus initiatives.",
+      ],
+      [
+        "Student-parent conversations",
+        "Make entry requirements, affordability, and transition feel clear.",
+      ],
+      [
+        "Application readiness",
+        "Help prospective students understand the next practical step.",
+      ],
+    ],
+  },
+  "masters-recruitment": {
+    audience: "Masters recruitment",
+    title: "Attract postgraduate talent with intent.",
+    intro:
+      "Collaborate with One Window to attract top talent for your Master’s programmes through innovative campaigns, AI-informed insights, and strategic outreach.",
+    visual: "/monument-germany.webp",
+    offers: [
+      [
+        "Profile-led matching",
+        "Connect programme strengths with students’ academic backgrounds and aspirations.",
+      ],
+      [
+        "Focused digital campaigns",
+        "Build high-intent awareness around the right programmes and intakes.",
+      ],
+      [
+        "Decision support",
+        "Give candidates the information needed to compare fit, cost, and next steps.",
+      ],
+    ],
+    initiatives: [
+      [
+        "Graduate information sessions",
+        "Turn complex programme questions into useful conversations.",
+      ],
+      [
+        "Faculty and alumni touchpoints",
+        "Show the academic and career experience behind the course.",
+      ],
+      [
+        "Application momentum",
+        "Keep prospective candidates moving from curiosity to action.",
+      ],
+    ],
+  },
+  "two-plus-two-twinning-program": {
+    audience: "2+2 twinning programme",
+    title: "Make international degree pathways easier to enter.",
+    intro:
+      "Foster global collaboration and student success through aligned curricula, readiness support, and clear transitions between institutions.",
+    visual: "/monument-france.webp",
+    offers: [
+      [
+        "Course mapping and articulation",
+        "Support seamless credit transfer and academic alignment between institutions.",
+      ],
+      [
+        "Pathway subjects and pre-training",
+        "Build foundational knowledge so students can transition with confidence.",
+      ],
+      [
+        "Education loan assistance",
+        "Help students understand funding options and reduce financial barriers.",
+      ],
+      [
+        "Cultural and academic readiness",
+        "Prepare learners for academic expectations and cultural nuances abroad.",
+      ],
+      [
+        "AI-powered university matching",
+        "Use AI-informed guidance to connect students with suitable programmes.",
+      ],
+      [
+        "Badge programmes",
+        "Recognise the preparation students complete before a twinning opportunity.",
+      ],
+    ],
+    initiatives: [
+      [
+        "Curriculum showcases",
+        "Let partner universities highlight distinctive curriculum and learning experiences.",
+      ],
+      [
+        "Student-parent sessions",
+        "Address affordability, academic transition, and cultural adaptation.",
+      ],
+      [
+        "Global readiness boot camps",
+        "Build academic, cultural, and practical confidence before departure.",
+      ],
+      [
+        "On-campus counselling days",
+        "Offer one-to-one guidance around pathway choices.",
+      ],
+    ],
+  },
+  "summer-program": {
+    audience: "Summer programme",
+    title: "Turn a summer into a global advantage.",
+    intro:
+      "Connect ambitious students with short-term global exposure, academic enrichment, and cultural immersion.",
+    visual: "/monument-italy.webp",
+    offers: [
+      [
+        "Curated academic experiences",
+        "Highlight summer programmes across STEM, business, arts, and humanities.",
+      ],
+      [
+        "Experiential learning",
+        "Showcase internships, industry visits, research projects, and practical exposure.",
+      ],
+      [
+        "Global cultural immersion",
+        "Bring together cultural tours, language learning, and local experiences.",
+      ],
+      [
+        "Application support",
+        "Guide students through applications, documents, visas, finances, and travel planning.",
+      ],
+      [
+        "AI-powered recommendations",
+        "Match programmes to aspirations and eligibility with intelligent guidance.",
+      ],
+      [
+        "Pre-departure orientation",
+        "Prepare students for academic expectations, safety, and soft skills.",
+      ],
+    ],
+    initiatives: [
+      [
+        "Summer programme awareness weeks",
+        "Create targeted events in schools and colleges.",
+      ],
+      [
+        "Interactive information sessions",
+        "Bring alumni and university representatives into the conversation.",
+      ],
+      [
+        "Profile-building workshops",
+        "Help students strengthen competitive summer applications.",
+      ],
+      [
+        "Faculty networking events",
+        "Create meaningful connections with visiting university faculty.",
+      ],
+    ],
+  },
 };
-
-export function InstitutionalPage({ page, related }: { page: InstitutionPage; related?: Array<[string,string]> }) {
-  return <main><Navigation /><section className="institution-hero"><div className="institution-hero-orb" /><div className="shell institution-hero-grid"><div><p className="eyebrow"><Globe2 size={15} /> {page.audience}</p><h1>{page.title}</h1><p className="institution-intro">{page.intro}</p><div className="institution-actions"><a className="button button-primary" href="/#consultation">Start a conversation <ArrowRight size={17} /></a><Link className="text-link" href="/">Back to One Window <ArrowRight size={16} /></Link></div></div><div className="institution-hero-art"><img src={page.visual} alt="" /><span><Sparkles size={15} /> Built around people, pathways, and possibility</span></div></div></section><section className="section-pad institution-section"><div className="shell"><div className="section-heading"><p className="eyebrow">What we bring together</p><h2>Support that makes the opportunity clearer.</h2></div><div className="institution-card-grid">{page.offers.map(([title,text],i)=><article className="institution-card" key={title}><strong>{String(i+1).padStart(2,"0")}</strong><h3>{title}</h3><p>{text}</p></article>)}</div></div></section><section className="section-pad institution-section institution-section-tinted"><div className="shell"><div className="section-heading"><p className="eyebrow">Ways to create momentum</p><h2>Turn interest into meaningful engagement.</h2></div><div className="institution-initiative-grid">{page.initiatives.map(([title,text])=><article key={title}><Check size={18}/><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></div></section>{(related ?? page.related) && <section className="section-pad institution-related"><div className="shell"><div className="section-heading"><p className="eyebrow">Explore the pathways</p><h2>Choose the programme conversation you want to start.</h2></div><div className="institution-related-grid">{(related ?? page.related)!.map(([slug,label])=><Link href={`/for-foreign-universities/${slug}`} key={slug}>{label}<ArrowRight size={17}/></Link>)}</div></div></section>}<section className="institution-end"><div className="shell institution-end-inner"><div><p className="eyebrow">A clearer next step</p><h2>Let’s shape the right route together.</h2></div><a className="button button-light" href="/#consultation">Connect with One Window <ArrowRight size={17}/></a></div></section><Footer /></main>;
+export function InstitutionalPage({
+  page,
+  related,
+}: {
+  page: InstitutionPage;
+  related?: Array<[string, string]>;
+}) {
+  return (
+    <main>
+      <Navigation />
+      <section className="institution-hero">
+        <div className="institution-hero-orb" />
+        <div className="shell institution-hero-grid">
+          <div>
+            <p className="eyebrow">
+              <Globe2 size={15} /> {page.audience}
+            </p>
+            <h1>{page.title}</h1>
+            <p className="institution-intro">{page.intro}</p>
+            <div className="institution-actions">
+              <a className="button button-primary" href="/#consultation">
+                Start a conversation <ArrowRight size={17} />
+              </a>
+              <Link className="text-link" href="/">
+                Back to One Window <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+          <div className="institution-hero-art">
+            <img src={page.visual} alt="" />
+            <span>
+              <Sparkles size={15} /> Built around people, pathways, and
+              possibility
+            </span>
+          </div>
+        </div>
+      </section>
+      <section className="section-pad institution-section">
+        <div className="shell">
+          <div className="section-heading">
+            <p className="eyebrow">What we bring together</p>
+            <h2>Support that makes the opportunity clearer.</h2>
+          </div>
+          <div className="institution-card-grid">
+            {page.offers.map(([title, text], i) => (
+              <article className="institution-card" key={title}>
+                <strong>{String(i + 1).padStart(2, "0")}</strong>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section-pad institution-section institution-section-tinted">
+        <div className="shell">
+          <div className="section-heading">
+            <p className="eyebrow">Ways to create momentum</p>
+            <h2>Turn interest into meaningful engagement.</h2>
+          </div>
+          <div className="institution-initiative-grid">
+            {page.initiatives.map(([title, text]) => (
+              <article key={title}>
+                <Check size={18} />
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      {(related ?? page.related) && (
+        <section className="section-pad institution-related">
+          <div className="shell">
+            <div className="section-heading">
+              <p className="eyebrow">Explore the pathways</p>
+              <h2>Choose the programme conversation you want to start.</h2>
+            </div>
+            <div className="institution-related-grid">
+              {(related ?? page.related)!.map(([slug, label]) => (
+                <Link href={`/for-foreign-universities/${slug}`} key={slug}>
+                  {label}
+                  <ArrowRight size={17} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+      <section className="institution-end">
+        <div className="shell institution-end-inner">
+          <div>
+            <p className="eyebrow">A clearer next step</p>
+            <h2>Let’s shape the right route together.</h2>
+          </div>
+          <a className="button button-light" href="/#consultation">
+            Connect with One Window <ArrowRight size={17} />
+          </a>
+        </div>
+      </section>
+      <Footer />
+    </main>
+  );
 }

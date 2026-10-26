@@ -1,9 +1,86 @@
-export type DestinationPage = { slug: string; kicker: string; title: string; cardText: string; heroText: string; bullets: string[]; status?: "verified" | "content-pending" };
+export type DestinationPage = {
+  slug: string;
+  kicker: string;
+  title: string;
+  cardText: string;
+  heroText: string;
+  bullets: string[];
+  status?: "verified" | "content-pending";
+};
 export const destinationPages: DestinationPage[] = [
-  { slug: "study-in-france", kicker: "Destination", title: "Study in France", cardText: "France’s exceptional higher education system and prestigious institutions make it a top choice for international students.", heroText: "Explore higher education in France with expert guidance at every step.", bullets: ["Understand universities and programme choices", "Plan applications and documentation", "Get personalised admissions and visa guidance"] },
-  { slug: "study-in-germany", kicker: "Destination", title: "Study in Germany", cardText: "Explore Germany as a study destination with a clear plan for programmes, applications and next steps.", heroText: "Build a clear route to studying in Germany with personalised support.", bullets: ["Compare programmes that suit your goals", "Prepare a stronger application", "Plan your study journey with an expert advisor"] },
-  { slug: "study-in-europe", kicker: "Region", title: "Study in Europe", cardText: "Compare European destinations by course fit, budget, career goals, work opportunities and lifestyle.", heroText: "Find the European study path that fits your academic and career goals.", bullets: ["Compare destinations with more clarity", "Shortlist suitable courses and universities", "Understand the application journey"] },
-  { slug: "study-business-in-europe-france-germany", kicker: "Programme focus", title: "Study Business in Europe", cardText: "Explore business study pathways across Europe, France and Germany.", heroText: "Choose a business programme based on your goals, experience and preferred destination.", bullets: ["Compare specialised master’s and MBA pathways", "Explore France, Germany and wider Europe", "Build an application plan with expert support"], status: "content-pending" },
-  { slug: "study-at-icn", kicker: "Institution", title: "Study at ICN", cardText: "A direct enquiry path for students exploring ICN programmes and admissions.", heroText: "Explore your study path at ICN with dedicated admissions guidance.", bullets: ["Discuss programme fit", "Understand the application process", "Plan your next step with a student advisor"], status: "content-pending" },
+  {
+    slug: "study-in-france",
+    kicker: "Destination",
+    title: "Study in France",
+    cardText:
+      "France’s exceptional higher education system and prestigious institutions make it a top choice for international students.",
+    heroText:
+      "Explore higher education in France with expert guidance at every step.",
+    bullets: [
+      "Understand universities and programme choices",
+      "Plan applications and documentation",
+      "Get personalised admissions and visa guidance",
+    ],
+  },
+  {
+    slug: "study-in-germany",
+    kicker: "Destination",
+    title: "Study in Germany",
+    cardText:
+      "Explore Germany as a study destination with a clear plan for programmes, applications and next steps.",
+    heroText:
+      "Build a clear route to studying in Germany with personalised support.",
+    bullets: [
+      "Compare programmes that suit your goals",
+      "Prepare a stronger application",
+      "Plan your study journey with an expert advisor",
+    ],
+  },
+  {
+    slug: "study-in-europe",
+    kicker: "Region",
+    title: "Study in Europe",
+    cardText:
+      "Compare European destinations by course fit, budget, career goals, work opportunities and lifestyle.",
+    heroText:
+      "Find the European study path that fits your academic and career goals.",
+    bullets: [
+      "Compare destinations with more clarity",
+      "Shortlist suitable courses and universities",
+      "Understand the application journey",
+    ],
+  },
+  {
+    slug: "study-business-in-europe-france-germany",
+    kicker: "Programme focus",
+    title: "Study Business in Europe",
+    cardText:
+      "Explore business study pathways across Europe, France and Germany.",
+    heroText:
+      "Choose a business programme based on your goals, experience and preferred destination.",
+    bullets: [
+      "Compare specialised master’s and MBA pathways",
+      "Explore France, Germany and wider Europe",
+      "Build an application plan with expert support",
+    ],
+    status: "content-pending",
+  },
+  {
+    slug: "study-at-icn",
+    kicker: "Institution",
+    title: "Study at ICN",
+    cardText:
+      "A direct enquiry path for students exploring ICN programmes and admissions.",
+    heroText:
+      "Explore your study path at ICN with dedicated admissions guidance.",
+    bullets: [
+      "Discuss programme fit",
+      "Understand the application process",
+      "Plan your next step with a student advisor",
+    ],
+    status: "content-pending",
+  },
 ];
-export function getDestination(slug: string) { return destinationPages.find((page) => page.slug === slug); }
+export function getDestination(slug: string) {
+  return destinationPages.find((page) => page.slug === slug);
+}

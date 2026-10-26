@@ -1,4 +1,5 @@
 "use client";
+
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 export function ThemeToggle() {
@@ -12,16 +13,29 @@ export function ThemeToggle() {
     setDark(stored);
     document.documentElement.dataset.theme = stored ? "dark" : "light";
   }, []);
-  useEffect(() => { document.documentElement.dataset.theme = dark ? "dark" : "light"; }, [dark]);
+  useEffect(() => {
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+  }, [dark]);
   function toggle() {
     const next = !dark;
     const update = () => {
       setDark(next);
       window.localStorage.setItem("ow-theme", next ? "dark" : "light");
     };
-    const doc = document as Document & { startViewTransition?: (callback: () => void) => void };
+    const doc = document as Document & {
+      startViewTransition?: (callback: () => void) => void;
+    };
     if (doc.startViewTransition) doc.startViewTransition(update);
     else update();
   }
-  return <button className="theme-toggle" type="button" onClick={toggle} aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}>{dark ? <Sun size={16} /> : <Moon size={16} />}</button>;
+  return (
+    <button
+      className="theme-toggle"
+      type="button"
+      onClick={toggle}
+      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+    >
+      {dark ? <Sun size={16} /> : <Moon size={16} />}
+    </button>
+  );
 }

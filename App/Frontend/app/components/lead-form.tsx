@@ -1,15 +1,208 @@
 "use client";
+
 import { FormEvent, useRef, useState } from "react";
 import { ArrowRight, LoaderCircle } from "lucide-react";
-type LeadFormProps = { formCode: string; sourcePath: string; title: string };
-type Fields = { name?: string; firstName?: string; lastName?: string; email?: string; phone?: string; message?: string };
-type LeadResponse = { submissionReference?: string; redirectTo?: string; error?: { message?: string; fieldErrors?: Fields } };
+
+// ─── Types ───
+
+type LeadFormProps = {
+  formCode: string;
+  sourcePath: string;
+  title: string;
+};
+type Fields = {
+  name?: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+};
+type LeadResponse = {
+  submissionReference?: string;
+  redirectTo?: string;
+  error?: {
+    message?: string;
+    fieldErrors?: Fields;
+  };
+};
 export function LeadForm({ formCode, sourcePath, title }: LeadFormProps) {
-  const [errors, setErrors] = useState<Fields & { form?: string }>({}); const [pending, setPending] = useState(false); const idempotencyKey = useRef<string | null>(null);
-  async function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); setPending(true); setErrors({}); const form = event.currentTarget; const data = new FormData(form);
-    const firstName = String(data.get("firstName") ?? "").trim(); const lastName = String(data.get("lastName") ?? "").trim(); if (!firstName || !lastName) { setErrors({ ...(firstName ? {} : { firstName: "Please enter your first name." }), ...(lastName ? {} : { lastName: "Please enter your last name." }) }); setPending(false); return; }
-    try { idempotencyKey.current ??= crypto.randomUUID(); const response = await fetch("/api/v1/leads", { method: "POST", headers: { "content-type": "application/json", "idempotency-key": idempotencyKey.current }, body: JSON.stringify({ formCode, sourcePath, name: `${firstName} ${lastName}`, email: data.get("email"), phone: data.get("phone"), message: data.get("message") }) }); const result = await response.json() as LeadResponse; if (!response.ok) { setErrors({ ...(result.error?.fieldErrors ?? {}), form: result.error?.message ?? "We couldn’t submit your request. Please try again." }); return; } if (!result.submissionReference || !result.redirectTo) { setErrors({ form: "We couldn’t confirm your enquiry. Please try again." }); return; } sessionStorage.setItem("ow:lastSubmissionReference", result.submissionReference); window.location.assign(result.redirectTo); }
-    catch { setErrors({ form: "We couldn’t connect right now. Please check your connection and try again." }); } finally { setPending(false); }
+  // ─── Form State ───
+
+  const [errors, setErrors] = useState<
+    Fields & {
+      form?: string;
+    }
+  >({});
+  const [pending, setPending] = useState(false);
+  const idempotencyKey = useRef<string | null>(null);
+
+  // ─── Submission Handler ───
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setPending(true);
+    setErrors({});
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const firstName = String(data.get("firstName") ?? "").trim();
+    const lastName = String(data.get("lastName") ?? "").trim();
+    if (!firstName || !lastName) {
+      setErrors({
+        ...(firstName
+          ? {}
+          : {
+              firstName: "Please enter your first name.",
+            }),
+        ...(lastName
+          ? {}
+          : {
+              lastName: "Please enter your last name.",
+            }),
+      });
+      setPending(false);
+      return;
+    }
+    try {
+      idempotencyKey.current ??= crypto.randomUUID();
+      const response = await fetch("/api/v1/leads", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "idempotency-key": idempotencyKey.current,
+        },
+        body: JSON.stringify({
+          formCode,
+          sourcePath,
+          name: `${firstName} ${lastName}`,
+          email: data.get("email"),
+          phone: data.get("phone"),
+          message: data.get("message"),
+        }),
+      });
+      const result = (await response.json()) as LeadResponse;
+      if (!response.ok) {
+        setErrors({
+          ...(result.error?.fieldErrors ?? {}),
+          form:
+            result.error?.message ??
+            "We couldn’t submit your request. Please try again.",
+        });
+        return;
+      }
+      if (!result.submissionReference || !result.redirectTo) {
+        setErrors({
+          form: "We couldn’t confirm your enquiry. Please try again.",
+        });
+        return;
+      }
+      sessionStorage.setItem(
+        "ow:lastSubmissionReference",
+        result.submissionReference,
+      );
+      window.location.assign(result.redirectTo);
+    } catch {
+      setErrors({
+        form: "We couldn’t connect right now. Please check your connection and try again.",
+      });
+    } finally {
+      setPending(false);
+    }
   }
-  return <form className="lead-form" onSubmit={submit} noValidate><div><p className="form-kicker">Talk to an expert</p><h3>{title}</h3><p>Share your details and our team will get in touch.</p></div><div className="field-row"><label>First name<input name="firstName" autoComplete="given-name" required aria-invalid={Boolean(errors.firstName)} />{errors.firstName && <span className="field-error">{errors.firstName}</span>}</label><label>Last name<input name="lastName" autoComplete="family-name" required aria-invalid={Boolean(errors.lastName)} />{errors.lastName && <span className="field-error">{errors.lastName}</span>}</label></div><div className="field-row"><label>Email address<input name="email" type="email" autoComplete="email" required aria-invalid={Boolean(errors.email)} />{errors.email && <span className="field-error">{errors.email}</span>}</label><label>Phone number<input name="phone" type="tel" autoComplete="tel" required aria-invalid={Boolean(errors.phone)} />{errors.phone && <span className="field-error">{errors.phone}</span>}</label></div><label>Message<textarea name="message" rows={3} aria-invalid={Boolean(errors.message)} />{errors.message && <span className="field-error">{errors.message}</span>}</label><label className="form-check"><input name="detailsConfirmed" type="checkbox" required /> <span>I’d like the One Window team to contact me</span></label>{errors.form && <p className="form-error" role="alert">{errors.form}</p>}<button className="button button-primary form-submit" disabled={pending}>{pending ? <><LoaderCircle className="spin" size={18} /> Submitting…</> : <>Submit now <ArrowRight size={17} /></>}</button><p className="form-note">Your details are used only to respond to your enquiry.</p></form>;
+
+  // ─── Form UI ───
+
+  return (
+    <form className="lead-form" onSubmit={submit} noValidate>
+      <div>
+        <p className="form-kicker">Talk to an expert</p>
+        <h3>{title}</h3>
+        <p>Share your details and our team will get in touch.</p>
+      </div>
+      <div className="field-row">
+        <label>
+          First name
+          <input
+            name="firstName"
+            autoComplete="given-name"
+            required
+            aria-invalid={Boolean(errors.firstName)}
+          />
+          {errors.firstName && (
+            <span className="field-error">{errors.firstName}</span>
+          )}
+        </label>
+        <label>
+          Last name
+          <input
+            name="lastName"
+            autoComplete="family-name"
+            required
+            aria-invalid={Boolean(errors.lastName)}
+          />
+          {errors.lastName && (
+            <span className="field-error">{errors.lastName}</span>
+          )}
+        </label>
+      </div>
+      <div className="field-row">
+        <label>
+          Email address
+          <input
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            aria-invalid={Boolean(errors.email)}
+          />
+          {errors.email && <span className="field-error">{errors.email}</span>}
+        </label>
+        <label>
+          Phone number
+          <input
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            required
+            aria-invalid={Boolean(errors.phone)}
+          />
+          {errors.phone && <span className="field-error">{errors.phone}</span>}
+        </label>
+      </div>
+      <label>
+        Message
+        <textarea
+          name="message"
+          rows={3}
+          aria-invalid={Boolean(errors.message)}
+        />
+        {errors.message && (
+          <span className="field-error">{errors.message}</span>
+        )}
+      </label>
+      <label className="form-check">
+        <input name="detailsConfirmed" type="checkbox" required />{" "}
+        <span>I’d like the One Window team to contact me</span>
+      </label>
+      {errors.form && (
+        <p className="form-error" role="alert">
+          {errors.form}
+        </p>
+      )}
+      <button className="button button-primary form-submit" disabled={pending}>
+        {pending ? (
+          <>
+            <LoaderCircle className="spin" size={18} /> Submitting…
+          </>
+        ) : (
+          <>
+            Submit now <ArrowRight size={17} />
+          </>
+        )}
+      </button>
+      <p className="form-note">
+        Your details are used only to respond to your enquiry.
+      </p>
+    </form>
+  );
 }

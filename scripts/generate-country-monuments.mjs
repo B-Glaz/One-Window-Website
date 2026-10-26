@@ -2,11 +2,9 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import sharp from "sharp";
-
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const out = join(root, "public", "monuments");
 const premium = join(root, "public", "monuments-premium");
-
 const sourceBySlug = {
   usa: join(root, "public", "monument-usa.webp"),
   uk: join(premium, "monument-uk.png"),
@@ -25,17 +23,27 @@ const sourceBySlug = {
   "hong-kong": join(premium, "monument-hong-kong.png"),
   sweden: join(premium, "monument-sweden.png"),
 };
-
 const labelBySlug = {
-  usa: "the United States", uk: "the United Kingdom", australia: "Australia",
-  ireland: "Ireland", singapore: "Singapore", france: "France", italy: "Italy",
-  germany: "Germany", canada: "Canada", dubai: "Dubai", netherlands: "the Netherlands",
-  "new-zealand": "New Zealand", spain: "Spain", switzerland: "Switzerland",
-  "hong-kong": "Hong Kong", sweden: "Sweden",
+  usa: "the United States",
+  uk: "the United Kingdom",
+  australia: "Australia",
+  ireland: "Ireland",
+  singapore: "Singapore",
+  france: "France",
+  italy: "Italy",
+  germany: "Germany",
+  canada: "Canada",
+  dubai: "Dubai",
+  netherlands: "the Netherlands",
+  "new-zealand": "New Zealand",
+  spain: "Spain",
+  switzerland: "Switzerland",
+  "hong-kong": "Hong Kong",
+  sweden: "Sweden",
 };
-
-await mkdir(out, { recursive: true });
-
+await mkdir(out, {
+  recursive: true,
+});
 for (const [slug, source] of Object.entries(sourceBySlug)) {
   const sourceBytes = await readFile(source);
   const image = sharp(sourceBytes);
@@ -51,5 +59,6 @@ for (const [slug, source] of Object.entries(sourceBySlug)) {
 </svg>\n`;
   await writeFile(join(out, `monument-${slug}.svg`), svg, "utf8");
 }
-
-console.log(`Packaged ${Object.keys(sourceBySlug).length} premium transparent monument SVGs in ${out}`);
+console.log(
+  `Packaged ${Object.keys(sourceBySlug).length} premium transparent monument SVGs in ${out}`,
+);

@@ -1,11 +1,45 @@
 import type { CountryProfile } from "./content";
-
 export const supplementalProfiles: Record<string, CountryProfile> = {
-  singapore: { name: "Singapore", sourceUrl: "https://www.moe.gov.sg/", rawContent: "Singapore offers an English-language academic environment with strong links to technology, business, engineering, finance and the wider Asia-Pacific economy. Students should compare programme accreditation, tuition, living costs and scholarship terms directly with each institution. Common application materials include academic records, proof of English proficiency where required, a statement or personal essay, references and proof of funds. International students normally need a Student's Pass after receiving an offer. Universities publish their own admissions, scholarship and accommodation rules." },
-  dubai: { name: "Dubai", sourceUrl: "https://www.khda.gov.ae/en/", rawContent: "Dubai is a regional education hub with UAE institutions and international university branch campuses. Students commonly explore business, finance, engineering, computing, architecture, hospitality and media. Entry requirements, tuition, accreditation and visa arrangements differ by institution and programme, so students should confirm the awarding body and campus approvals before applying. After admission, the institution normally guides students through student residence arrangements and local requirements. Living costs depend strongly on accommodation, transport and lifestyle." },
-  "new-zealand": { name: "New Zealand", sourceUrl: "https://www.studywithnewzealand.govt.nz/en/visas", rawContent: "New Zealand combines a research-led university sector with a practical, welcoming student environment. Popular directions include business, information technology, engineering, environmental science, health and hospitality. Requirements vary by provider, but applications usually include academic records, an offer of place, English evidence where required and proof of funds. Students studying a full-time course longer than three months generally need a student visa. Official guidance says visa conditions may allow up to 25 hours of work per week during term and full-time work during holidays; students must check their own visa conditions before relying on this." },
-  spain: { name: "Spain", sourceUrl: "https://www.educacionfpydeportes.gob.es/portada.html", rawContent: "Spain offers public and private universities, business schools and specialised institutions across business, engineering, computer science, tourism, design, social sciences and the arts. Students may find programmes taught in Spanish, English or both, so language requirements should be checked for the exact course. Applications can require academic recognition or equivalence, transcripts, language evidence, references and proof of funds. Non-EU students should confirm the current student-visa process with the Spanish consulate and the institution. Tuition and living costs vary widely by region and provider." },
-  switzerland: { name: "Switzerland", sourceUrl: "https://www.swissuniversities.ch/en/topics/studying", rawContent: "Switzerland is known for research-intensive universities, applied sciences and internationally recognised hospitality and business education. Students explore finance, engineering, computer science, life sciences, hospitality and management. Teaching language differs by institution and programme, with English especially common at graduate level. Admissions, tuition, residence permits and financial evidence are handled under institution and cantonal rules, so applicants should confirm the exact requirements before applying. Living costs can be high and should be modelled carefully by city." },
-  "hong-kong": { name: "Hong Kong", sourceUrl: "https://www.studyinhongkong.edu.hk/en/apply-to-study/visas.php", rawContent: "Hong Kong offers a compact, internationally connected higher-education environment with strong pathways into business, finance, technology, engineering, medicine, law and the creative industries. English is used as the teaching medium in many university programmes. Institutions set their own admission requirements; applicants may need academic records and English evidence such as IELTS, TOEFL or an equivalent. Non-local students need a student visa or entry permit, and the institution commonly acts as sponsor. Scholarships are administered by institutions and government schemes, with eligibility varying by programme." },
-  sweden: { name: "Sweden", sourceUrl: "https://studyinsweden.se/", rawContent: "Sweden is a strong option for students seeking research-led education, English-taught master's programmes and an innovation-oriented student culture. Popular areas include engineering, computer science, sustainability, design, business and life sciences. Applicants normally apply to a specific programme, submit academic records and meet English-language requirements; exact rules vary by course. Tuition, scholarships, residence permits and proof-of-funds requirements should be checked through the official programme and migration guidance. Student life is independent, collaborative and closely connected to sustainability and technology." }
+  singapore: {
+    name: "Singapore",
+    sourceUrl: "https://www.moe.gov.sg/",
+    rawContent:
+      "Singapore offers an English-language academic environment with strong links to technology, business, engineering, finance and the wider Asia-Pacific economy. Students should compare programme accreditation, tuition, living costs and scholarship terms directly with each institution. Common application materials include academic records, proof of English proficiency where required, a statement or personal essay, references and proof of funds. International students normally need a Student's Pass after receiving an offer. Universities publish their own admissions, scholarship and accommodation rules.",
+  },
+  dubai: {
+    name: "Dubai",
+    sourceUrl: "https://www.khda.gov.ae/en/",
+    rawContent:
+      "Dubai is a regional education hub with UAE institutions and international university branch campuses. Students commonly explore business, finance, engineering, computing, architecture, hospitality and media. Entry requirements, tuition, accreditation and visa arrangements differ by institution and programme, so students should confirm the awarding body and campus approvals before applying. After admission, the institution normally guides students through student residence arrangements and local requirements. Living costs depend strongly on accommodation, transport and lifestyle.",
+  },
+  "new-zealand": {
+    name: "New Zealand",
+    sourceUrl: "https://www.studywithnewzealand.govt.nz/en/visas",
+    rawContent:
+      "New Zealand combines a research-led university sector with a practical, welcoming student environment. Popular directions include business, information technology, engineering, environmental science, health and hospitality. Requirements vary by provider, but applications usually include academic records, an offer of place, English evidence where required and proof of funds. Students studying a full-time course longer than three months generally need a student visa. Official guidance says visa conditions may allow up to 25 hours of work per week during term and full-time work during holidays; students must check their own visa conditions before relying on this.",
+  },
+  spain: {
+    name: "Spain",
+    sourceUrl: "https://www.educacionfpydeportes.gob.es/portada.html",
+    rawContent:
+      "Spain offers public and private universities, business schools and specialised institutions across business, engineering, computer science, tourism, design, social sciences and the arts. Students may find programmes taught in Spanish, English or both, so language requirements should be checked for the exact course. Applications can require academic recognition or equivalence, transcripts, language evidence, references and proof of funds. Non-EU students should confirm the current student-visa process with the Spanish consulate and the institution. Tuition and living costs vary widely by region and provider.",
+  },
+  switzerland: {
+    name: "Switzerland",
+    sourceUrl: "https://www.swissuniversities.ch/en/topics/studying",
+    rawContent:
+      "Switzerland is known for research-intensive universities, applied sciences and internationally recognised hospitality and business education. Students explore finance, engineering, computer science, life sciences, hospitality and management. Teaching language differs by institution and programme, with English especially common at graduate level. Admissions, tuition, residence permits and financial evidence are handled under institution and cantonal rules, so applicants should confirm the exact requirements before applying. Living costs can be high and should be modelled carefully by city.",
+  },
+  "hong-kong": {
+    name: "Hong Kong",
+    sourceUrl: "https://www.studyinhongkong.edu.hk/en/apply-to-study/visas.php",
+    rawContent:
+      "Hong Kong offers a compact, internationally connected higher-education environment with strong pathways into business, finance, technology, engineering, medicine, law and the creative industries. English is used as the teaching medium in many university programmes. Institutions set their own admission requirements; applicants may need academic records and English evidence such as IELTS, TOEFL or an equivalent. Non-local students need a student visa or entry permit, and the institution commonly acts as sponsor. Scholarships are administered by institutions and government schemes, with eligibility varying by programme.",
+  },
+  sweden: {
+    name: "Sweden",
+    sourceUrl: "https://studyinsweden.se/",
+    rawContent:
+      "Sweden is a strong option for students seeking research-led education, English-taught master's programmes and an innovation-oriented student culture. Popular areas include engineering, computer science, sustainability, design, business and life sciences. Applicants normally apply to a specific programme, submit academic records and meet English-language requirements; exact rules vary by course. Tuition, scholarships, residence permits and proof-of-funds requirements should be checked through the official programme and migration guidance. Student life is independent, collaborative and closely connected to sustainability and technology.",
+  },
 };

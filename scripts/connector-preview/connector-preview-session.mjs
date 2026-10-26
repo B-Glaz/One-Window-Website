@@ -29,10 +29,18 @@ import {
 const { positionals, values } = parseArgs({
   allowPositionals: true,
   options: {
-    concurrency: { type: "string" },
-    "timeout-ms": { type: "string" },
-    "lifetime-ms": { type: "string" },
-    "max-calls": { type: "string" },
+    concurrency: {
+      type: "string",
+    },
+    "timeout-ms": {
+      type: "string",
+    },
+    "lifetime-ms": {
+      type: "string",
+    },
+    "max-calls": {
+      type: "string",
+    },
   },
 });
 const [project, grantsFile] = positionals;
@@ -90,14 +98,20 @@ const binding = createPreviewBinding({
         },
       });
       if (!closing)
-        emit("receipt", { id: requestId, at: new Date().toISOString() });
+        emit("receipt", {
+          id: requestId,
+          at: new Date().toISOString(),
+        });
       if (response.error)
         throw new Error("The agent did not confirm a connector result.");
       return response.result;
     },
   })),
 });
-await mkdir(directory, { recursive: true, mode: 0o700 });
+await mkdir(directory, {
+  recursive: true,
+  mode: 0o700,
+});
 try {
   // One owner per project. A crashed session must be explicitly cleaned up;
   // never silently take over another agent's connector session.
@@ -110,11 +124,17 @@ try {
       timeoutMs: limits.timeoutMs,
       connectorIds: [...new Set(grants.map((grant) => grant.connectorId))],
     }),
-    { flag: "wx", mode: 0o600 },
+    {
+      flag: "wx",
+      mode: 0o600,
+    },
   );
 } catch (error) {
   binding.close();
-  await rm(directory, { recursive: true, force: true });
+  await rm(directory, {
+    recursive: true,
+    force: true,
+  });
   throw error;
 }
 async function serve(name) {
@@ -122,20 +142,27 @@ async function serve(name) {
   try {
     const body = await readFile(path.join(directory, name), "utf8");
     const response = await binding.fetch(
-      new Request("http://preview/invoke", { method: "POST", body }),
+      new Request("http://preview/invoke", {
+        method: "POST",
+        body,
+      }),
     );
     if (!closing) {
       const output = path.join(
         directory,
         name.replace(".request", ".response"),
       );
-      await writeFile(`${output}.tmp`, await response.text(), { mode: 0o600 });
+      await writeFile(`${output}.tmp`, await response.text(), {
+        mode: 0o600,
+      });
       await rename(`${output}.tmp`, output);
     }
   } catch {
     // A timed-out caller can remove its request. The native call is never retried.
   } finally {
-    await rm(path.join(directory, name), { force: true });
+    await rm(path.join(directory, name), {
+      force: true,
+    });
     active.delete(name);
   }
 }
@@ -152,7 +179,9 @@ const poller = setInterval(async () => {
     }
   } catch (error) {
     if (!closing) {
-      emit("session_error", { code: error.code });
+      emit("session_error", {
+        code: error.code,
+      });
       void close();
     }
   } finally {
@@ -166,7 +195,10 @@ const expiry =
         void close();
       }, limits.lifetimeMs);
 if (process.stdin.isTTY) process.stdin.setRawMode(true);
-const input = createInterface({ input: process.stdin, terminal: false });
+const input = createInterface({
+  input: process.stdin,
+  terminal: false,
+});
 input.on("line", (line) => {
   try {
     const message = driverMessageSchema.parse(JSON.parse(line));
@@ -186,8 +218,13 @@ async function close() {
   clearTimeout(expiry);
   binding.close();
   rpc.rejectAllPendingRequests("The connector preview session ended.");
-  await rm(descriptor, { force: true });
-  await rm(directory, { recursive: true, force: true });
+  await rm(descriptor, {
+    force: true,
+  });
+  await rm(directory, {
+    recursive: true,
+    force: true,
+  });
   if (process.stdin.isTTY) process.stdin.setRawMode(false);
   input.close();
   process.stdin.pause();

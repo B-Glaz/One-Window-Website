@@ -89,16 +89,12 @@
       "indexes": {
         "lead_submissions_idempotency_key_unique": {
           "name": "lead_submissions_idempotency_key_unique",
-          "columns": [
-            "idempotency_key"
-          ],
+          "columns": ["idempotency_key"],
           "isUnique": true
         },
         "lead_submissions_submission_reference_unique": {
           "name": "lead_submissions_submission_reference_unique",
-          "columns": [
-            "submission_reference"
-          ],
+          "columns": ["submission_reference"],
           "isUnique": true
         }
       },

@@ -12,7 +12,6 @@ import { constants as osConstants } from "node:os";
 import path from "node:path";
 import { createInterface } from "node:readline";
 import { fileURLToPath } from "node:url";
-
 const MAX_PACKAGES = 100_000;
 
 // npm reports tarball cache reads separately from registry metadata requests.
@@ -21,14 +20,12 @@ const MAX_PACKAGES = 100_000;
 export class NpmCacheProgress {
   entries = new Map();
   invalid = false;
-
   constructor(registry) {
     try {
       const value = new URL(registry);
       if (["http:", "https:"].includes(value.protocol)) this.registry = value;
     } catch {}
   }
-
   accept(line) {
     const match = line.match(
       /^npm http (?:cache |fetch GET 200 )(\S+) \d+ms(?: attempt #\d+)? \(cache (hit|miss|revalidated|updated|skip)\)$/,
@@ -47,7 +44,6 @@ export class NpmCacheProgress {
     const downloaded = !["hit", "revalidated"].includes(status);
     this.entries.set(url, downloaded || this.entries.get(url) === true);
   }
-
   counts(lock) {
     if (this.invalid || lock?.lockfileVersion !== 3 || !lock.packages)
       return {};
@@ -96,7 +92,6 @@ export class NpmCacheProgress {
     };
   }
 }
-
 export async function runNpmInstall(command, cacheSeed = "not_applicable") {
   let descriptor;
   try {
@@ -118,7 +113,9 @@ export async function runNpmInstall(command, cacheSeed = "not_applicable") {
     }
     descriptor = undefined;
   }
-  const env = { ...process.env };
+  const env = {
+    ...process.env,
+  };
   delete env.SITES_INSTALL_REPORT_PATH;
   const [executable, ...args] = command;
   let registry;
@@ -148,13 +145,19 @@ export async function runNpmInstall(command, cacheSeed = "not_applicable") {
     process.on(signal, handler);
     return [signal, handler];
   });
-  let result = { code: 1, signal: null };
+  let result = {
+    code: 1,
+    signal: null,
+  };
   try {
     const child = spawn(executable, [...args, "--loglevel=http"], {
       env,
       stdio: ["inherit", "inherit", "pipe"],
     });
-    const lines = createInterface({ input: child.stderr, crlfDelay: Infinity });
+    const lines = createInterface({
+      input: child.stderr,
+      crlfDelay: Infinity,
+    });
     lines.on("line", (line) => {
       progress.accept(line);
       // Do not add package URLs to normal helper output just for telemetry.
@@ -213,7 +216,6 @@ export async function runNpmInstall(command, cacheSeed = "not_applicable") {
   }
   return result;
 }
-
 if (
   process.argv[1] &&
   path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
@@ -222,7 +224,7 @@ if (
   const result = await runNpmInstall(command, cacheSeed);
   process.exitCode = result.signal
     ? 128 + (osConstants.signals[result.signal] ?? 0)
-    : result.code ?? 1;
+    : (result.code ?? 1);
   if (result.signal) {
     try {
       process.kill(process.pid, result.signal);

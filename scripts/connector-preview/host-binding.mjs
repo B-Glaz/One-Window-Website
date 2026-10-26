@@ -25,9 +25,16 @@ const messages = {
   upstream_error:
     "The app did not return a confirmed result. The action may have completed; check before trying again.",
 };
-const failure = (status) => ({ status, message: messages[status] });
+const failure = (status) => ({
+  status,
+  message: messages[status],
+});
 const reply = (result) =>
-  Response.json(result, { headers: { "Cache-Control": "no-store" } });
+  Response.json(result, {
+    headers: {
+      "Cache-Control": "no-store",
+    },
+  });
 const requestIdSchema = z
   .string()
   .regex(/^[A-Za-z0-9._:-]{1,128}$/)
@@ -36,12 +43,17 @@ const requestIdSchema = z
 const resultSchema = z.object({
   error: z.never().optional(),
   status: z.never().optional(),
-  content: z.array(z.object({ type: z.string() }).catchall(z.json())),
+  content: z.array(
+    z
+      .object({
+        type: z.string(),
+      })
+      .catchall(z.json()),
+  ),
   structuredContent: z.json().optional(),
   isError: z.boolean().optional(),
   requestId: requestIdSchema,
 });
-
 export function createPreviewBinding({ tools, ...options }) {
   const { lifetimeMs, timeoutMs, maxCalls, maxConcurrent } =
     sessionOptionsSchema.parse(options);
@@ -70,7 +82,6 @@ export function createPreviewBinding({ tools, ...options }) {
   expiry?.unref();
   let remaining = maxCalls ?? Infinity;
   let active = 0;
-
   return {
     close() {
       clearTimeout(expiry);
@@ -121,7 +132,9 @@ export function createPreviewBinding({ tools, ...options }) {
           }),
           new Promise((resolve) => {
             onEnd = () => resolve(failure("upstream_error"));
-            ended.signal.addEventListener("abort", onEnd, { once: true });
+            ended.signal.addEventListener("abort", onEnd, {
+              once: true,
+            });
           }),
         ]);
         if (ended.signal.aborted || Date.now() >= expiresAt)
@@ -141,21 +154,23 @@ export function createPreviewBinding({ tools, ...options }) {
     },
   };
 }
-
 export async function readBounded(request, limit) {
   if (!request.body) throw new Error("Missing body");
   const stream = Readable.fromWeb(request.body);
   try {
     // raw-body owns byte limits and stream errors; strict decoding rejects
     // malformed UTF-8 instead of silently changing the caller's arguments.
-    return new TextDecoder("utf-8", { fatal: true }).decode(
-      await getRawBody(stream, { limit }),
+    return new TextDecoder("utf-8", {
+      fatal: true,
+    }).decode(
+      await getRawBody(stream, {
+        limit,
+      }),
     );
   } finally {
     stream.destroy();
   }
 }
-
 function publicResult(result) {
   const parsed = resultSchema.safeParse(result);
   if (!parsed.success) return failure("upstream_error");
@@ -166,11 +181,17 @@ function publicResult(result) {
     content: result.content,
     // Like the hosted binding, preserve every JSON value, including null.
     ...(result.structuredContent !== undefined
-      ? { structuredContent: result.structuredContent }
+      ? {
+          structuredContent: result.structuredContent,
+        }
       : {}),
   };
   const requestId =
-    result.requestId === undefined ? {} : { requestId: result.requestId };
+    result.requestId === undefined
+      ? {}
+      : {
+          requestId: result.requestId,
+        };
   if (result.isError === true) {
     const detail = result.structuredContent;
     if (detail?.error_code === "RATE_LIMITED") {
@@ -180,7 +201,11 @@ function publicResult(result) {
       return {
         ...failure("rate_limited"),
         ...requestId,
-        ...(retryAfterMs === undefined ? {} : { retryAfterMs }),
+        ...(retryAfterMs === undefined
+          ? {}
+          : {
+              retryAfterMs,
+            }),
       };
     }
     const invalidArguments =
@@ -193,9 +218,12 @@ function publicResult(result) {
       ...requestId,
     };
   }
-  return { status: "success", result: payload, ...requestId };
+  return {
+    status: "success",
+    result: payload,
+    ...requestId,
+  };
 }
-
 function readRetryAfterMs(value) {
   let milliseconds;
   if (
