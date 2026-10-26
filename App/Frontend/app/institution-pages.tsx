@@ -73,7 +73,7 @@ export const institutionPages: Record<string, InstitutionPage> = {
     title: "Turn international ambition into lasting partnerships.",
     intro:
       "We set up and manage your International Relations Office, connecting your university to leading institutions across the US, UK, Australia, Germany, and the EU.",
-    visual: "/monument-europe.webp",
+    visual: "/monuments/monument-germany.svg",
     offers: [
       [
         "Twinning programmes",
@@ -124,7 +124,7 @@ export const institutionPages: Record<string, InstitutionPage> = {
     title: "Give every learner a clearer next chapter.",
     intro:
       "We partner with progressive institutions to deliver a 360° student-first ecosystem for academic, career, and personal guidance across students, parents, and educators.",
-    visual: "/monument-uk.webp",
+    visual: "/monuments/monument-uk.svg",
     offers: [
       [
         "Psychometric testing",

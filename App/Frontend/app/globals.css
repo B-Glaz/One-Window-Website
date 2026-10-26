@@ -6149,3 +6149,166 @@ html[data-theme="dark"] .orbit-stage {
   }
 
 }
+/* Careers page and mobile student-story refinements */
+.careers-home-cta-inner { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; padding:clamp(1.5rem,4vw,3rem); }
+.careers-home-cta-inner h2 { margin:.35rem 0 .5rem; }
+.careers-home-cta-inner p:last-child { color:var(--muted-text); }
+.careers-page { min-height: 100vh; background: var(--page-bg); }
+.careers-hero { padding: clamp(6rem, 12vw, 10rem) 1.25rem 4rem; text-align: center; }
+.careers-hero h1 { max-width: 800px; margin: .75rem auto 1rem; font-size: clamp(2.8rem, 8vw, 6rem); line-height: .98; letter-spacing: -.05em; }
+.careers-lede { max-width: 620px; margin: 0 auto 2rem; color: var(--muted-text); font-size: clamp(1rem, 2vw, 1.25rem); }
+.careers-form-section { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: clamp(1.5rem,5vw,4rem); align-items: start; padding: 2rem 1.25rem 6rem; }
+.careers-form-copy h2 { margin: .5rem 0 1rem; font-size: clamp(2rem,4vw,3.5rem); line-height: 1; }
+.careers-form-copy p:last-child { color: var(--muted-text); }
+.careers-form-shell { height: auto; min-height: 977px; overflow: hidden; }
+.careers-form-shell iframe { display: block; width: 100%; height: 977px; min-height: 977px; border: 0; }
+html[data-theme="dark"] .careers-page, html[data-theme="dark"] .careers-form-shell { background: linear-gradient(145deg, rgba(22,61,112,.72), rgba(9,31,69,.86)); color: #f4f8ff; }
+html[data-theme="dark"] .careers-lede, html[data-theme="dark"] .careers-form-copy p:last-child { color: #c8d9f3; }
+html[data-theme="dark"] .stories-page { color: #f4f8ff; }
+html[data-theme="dark"] .stories-logo .brand-logo-light { display: none !important; }
+html[data-theme="dark"] .stories-logo .brand-logo-dark { display: block !important; }
+html:not([data-theme="dark"]) .stories-logo .brand-logo-light { display: block !important; }
+html:not([data-theme="dark"]) .stories-logo .brand-logo-dark { display: none !important; }
+html[data-theme="dark"] .stories-page .stories-hero-copy > p:not(.eyebrow), html[data-theme="dark"] .stories-page .stories-year-label, html[data-theme="dark"] .stories-page .stories-toolbar > p, html[data-theme="dark"] .stories-page .story-meta p, html[data-theme="dark"] .stories-page .story-university { color: #c8d9f3; }
+html[data-theme="dark"] .stories-page .story-card { background: rgba(34,79,132,.72); border-color: rgba(147,201,255,.34); box-shadow: 0 18px 45px rgba(0,9,30,.28); }
+html[data-theme="dark"] .stories-page .story-card h2, html[data-theme="dark"] .stories-page .story-program, html[data-theme="dark"] .stories-page .stories-toolbar > p strong { color: #f7fbff; }
+html[data-theme="dark"] .stories-page select { color: #f7fbff; background: rgba(18,51,96,.9); border-color: rgba(147,201,255,.38); }
+@media (max-width: 720px) { .careers-form-section { grid-template-columns: 1fr; padding-bottom: 3rem; } .careers-form-shell { min-height: 977px; } }
+@media (max-width: 640px) { .stories-page .stories-header { padding-inline: 1rem; } .stories-page .stories-countries { padding: .55rem .7rem; font-size: .72rem; } .stories-page .stories-hero-grid { gap: 1rem; } .stories-page .stories-hero-copy h1 { font-size: clamp(2.8rem,14vw,4.5rem); } .stories-page .stories-toolbar { gap: .75rem; align-items: stretch; } .stories-page .stories-toolbar label { width: 100%; } .stories-page .story-card { min-height: 180px; padding: 1rem; } }
+@media (max-width: 640px) { .careers-home-cta-inner { flex-direction:column; align-items:flex-start; } .careers-home-cta-inner .button { width:100%; justify-content:center; } }
+
+/* Compact, self-contained mobile navigation. */
+@media (max-width: 900px) {
+  .site-header {
+    top: 8px;
+    padding-inline: 8px;
+  }
+
+  .site-header .nav-pill {
+    position: relative;
+    width: 100%;
+    min-height: 50px;
+    gap: 7px;
+    padding: 6px 7px 6px 11px;
+  }
+
+  .site-header .brand {
+    flex: 0 1 108px;
+    width: 108px;
+    min-width: 0;
+    height: 28px;
+    overflow: hidden;
+  }
+
+  .site-header .brand .logo-desktop,
+  html:not([data-theme="dark"]) .site-header .brand .logo-desktop.brand-logo-light,
+  html[data-theme="dark"] .site-header .brand .logo-desktop.brand-logo-dark {
+    display: none !important;
+  }
+
+  .site-header .brand .logo-mobile {
+    width: 108px;
+    height: 28px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  html:not([data-theme="dark"]) .site-header .brand .logo-mobile.brand-logo-light,
+  html[data-theme="dark"] .site-header .brand .logo-mobile.brand-logo-dark {
+    display: block !important;
+  }
+
+  html:not([data-theme="dark"]) .site-header .brand .logo-mobile.brand-logo-dark,
+  html[data-theme="dark"] .site-header .brand .logo-mobile.brand-logo-light {
+    display: none !important;
+  }
+
+  .site-header .nav-links {
+    display: none;
+  }
+
+  .site-header .nav-actions {
+    gap: 6px;
+    margin-left: auto;
+  }
+
+  .site-header .theme-toggle {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+
+  .site-header .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 7px 10px;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .site-header .nav-mobile-menu {
+    position: static;
+    flex: 0 0 34px;
+    width: 34px;
+  }
+
+  .site-header .nav-mobile-menu summary {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 17px;
+    line-height: 1;
+  }
+
+  .site-header .nav-mobile-panel {
+    position: absolute;
+    z-index: 50;
+    top: calc(100% + 8px);
+    right: 0;
+    display: grid;
+    width: min(286px, calc(100vw - 16px));
+    max-height: calc(100svh - 82px);
+    gap: 3px;
+    padding: 10px;
+    overflow-y: auto;
+    border: 1px solid rgba(121, 181, 235, .28);
+    border-radius: 22px;
+    background: rgba(247, 251, 255, .96);
+    box-shadow: 0 24px 60px -28px rgba(8, 30, 66, .65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .site-header .nav-mobile-panel a {
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  html[data-theme="dark"] .site-header .nav-mobile-panel {
+    background: rgba(8, 35, 75, .96);
+    border-color: rgba(133, 204, 255, .28);
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header .brand {
+    flex-basis: 94px;
+    width: 94px;
+  }
+
+  .site-header .brand .logo-mobile {
+    width: 94px;
+  }
+
+  .site-header .nav-cta {
+    padding-inline: 8px;
+    font-size: 10px;
+  }
+}

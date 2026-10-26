@@ -20,10 +20,10 @@ declare global {
 }
 
 declare namespace VinextRouteTypes {
-  type PageRoute = "/" | "/[slug]" | "/about" | "/blog" | "/blog/[slug]" | "/countries" | "/countries/[country]" | "/events" | "/for-foreign-universities" | "/for-foreign-universities/[service]" | "/for-indian-universities" | "/for-schools" | "/free-resources" | "/india" | "/newsroom" | "/premium" | "/student-stories" | "/thank-you" | "/yourcountry";
+  type PageRoute = "/" | "/[slug]" | "/about" | "/blog" | "/blog/[slug]" | "/careers" | "/countries" | "/countries/[country]" | "/events" | "/for-foreign-universities" | "/for-foreign-universities/[service]" | "/for-indian-universities" | "/for-schools" | "/free-resources" | "/india" | "/newsroom" | "/premium" | "/student-stories" | "/thank-you" | "/yourcountry";
   type LayoutRoute = "/";
   type RouteHandlerRoute = "/api/v1/leads";
-  type AppRoute = "/" | "/[slug]" | "/about" | "/api/v1/leads" | "/blog" | "/blog/[slug]" | "/countries" | "/countries/[country]" | "/events" | "/for-foreign-universities" | "/for-foreign-universities/[service]" | "/for-indian-universities" | "/for-schools" | "/free-resources" | "/india" | "/newsroom" | "/premium" | "/student-stories" | "/thank-you" | "/yourcountry";
+  type AppRoute = "/" | "/[slug]" | "/about" | "/api/v1/leads" | "/blog" | "/blog/[slug]" | "/careers" | "/countries" | "/countries/[country]" | "/events" | "/for-foreign-universities" | "/for-foreign-universities/[service]" | "/for-indian-universities" | "/for-schools" | "/free-resources" | "/india" | "/newsroom" | "/premium" | "/student-stories" | "/thank-you" | "/yourcountry";
 
   interface ParamMap {
     "/": {};
@@ -32,6 +32,7 @@ declare namespace VinextRouteTypes {
     "/api/v1/leads": {};
     "/blog": {};
     "/blog/[slug]": { slug: string; };
+    "/careers": {};
     "/countries": {};
     "/countries/[country]": { country: string; };
     "/events": {};

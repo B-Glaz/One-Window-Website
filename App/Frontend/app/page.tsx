@@ -415,6 +415,18 @@ export default function Home() {
           </a>
         </div>
       </section>
+      <section className="section-pad careers-home-cta">
+        <div className="shell careers-home-cta-inner glass reveal">
+          <div>
+            <p className="eyebrow">Careers</p>
+            <h2>Make the next move matter.</h2>
+            <p>Help students turn ambitious plans into clear next steps.</p>
+          </div>
+          <a className="button button-primary" href="/careers">
+            View careers <ArrowRight size={17} />
+          </a>
+        </div>
+      </section>
       <Footer />
     </main>
   );
