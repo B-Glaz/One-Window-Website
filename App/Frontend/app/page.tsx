@@ -67,7 +67,7 @@ const proof = [
   ["13K+", "Student Profile Processed"],
   ["98%", "Admissions & Visas Approved"],
   ["$ 12 Million", "Successful Scholarships"],
-];
+] as const;
 export default function Home() {
   return (
     <main>
