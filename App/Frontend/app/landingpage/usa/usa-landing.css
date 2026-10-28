@@ -1,0 +1,220 @@
+/* USA LANDING PAGE
+   This stylesheet is intentionally isolated under .usa-page.
+   Edit colours in the variables below to retheme the whole page safely. */
+
+.usa-page {
+  --usa-navy: #071b3a;
+  --usa-blue: #1556b8;
+  --usa-red: #e6534f;
+  --usa-ice: #eef4ff;
+  --usa-ink: #101828;
+  --usa-muted: #5d6879;
+  --usa-line: rgba(7, 27, 58, .12);
+  min-height: 100vh;
+  padding: 18px;
+  overflow: hidden;
+  color: var(--usa-ink);
+  background: #dfe8f6;
+  font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.usa-page *, .usa-page *::before, .usa-page *::after { box-sizing: border-box; }
+.usa-page a { text-decoration: none; }
+
+/* Header */
+.usa-header {
+  position: relative;
+  z-index: 20;
+  width: min(1240px, 100%);
+  min-height: 70px;
+  display: grid;
+  grid-template-columns: 210px 1fr auto;
+  align-items: center;
+  gap: 24px;
+  margin: 0 auto;
+  padding: 10px 18px;
+  border-radius: 24px 24px 0 0;
+  background: rgba(255,255,255,.96);
+}
+
+.usa-brand img, .usa-footer img { display: block; width: 175px; height: auto; }
+.usa-header nav { display: flex; justify-content: center; gap: 30px; }
+.usa-header nav a { color: #344054; font-size: 14px; font-weight: 650; }
+.usa-header-call { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 999px; color: white; background: var(--usa-navy); font-size: 13px; font-weight: 700; }
+
+/* Hero */
+.usa-hero {
+  position: relative;
+  isolation: isolate;
+  width: min(1240px, 100%);
+  min-height: min(700px, 82vh);
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 96px);
+  overflow: hidden;
+  border-radius: 0 0 30px 30px;
+  color: white;
+  background-position: center;
+  background-size: cover;
+}
+
+.usa-hero-overlay { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(5,20,48,.94) 0%, rgba(6,31,68,.68) 48%, rgba(6,31,68,.12) 100%); }
+.usa-hero-copy { width: min(650px, 100%); }
+.usa-kicker { margin: 0 0 14px; color: #65a4ff; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.usa-hero h1 { max-width: 650px; margin: 0 0 22px; color: white; font-size: clamp(52px, 7vw, 94px); font-weight: 700; line-height: .92; letter-spacing: -.06em; }
+.usa-hero-copy > p:not(.usa-kicker) { max-width: 570px; color: #e6edf8; font-size: clamp(17px, 2vw, 21px); line-height: 1.6; }
+.usa-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.usa-button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 20px; border-radius: 999px; font-weight: 750; transition: transform .25s ease, box-shadow .25s ease; }
+.usa-button:hover { transform: translateY(-2px); }
+.usa-button-primary { color: white; background: var(--usa-blue); box-shadow: 0 16px 34px -20px #001a47; }
+.usa-button-ghost { border: 1px solid rgba(255,255,255,.45); color: white; background: rgba(8,25,53,.3); backdrop-filter: blur(12px); }
+.usa-button-dark { color: white; background: var(--usa-navy); }
+.usa-hero-note { position: absolute; right: 28px; bottom: 26px; display: grid; gap: 3px; padding: 14px 18px; border: 1px solid rgba(255,255,255,.28); border-radius: 18px; background: rgba(8,25,53,.48); backdrop-filter: blur(18px); }
+.usa-hero-note span { color: #c9d8ef; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+
+/* Horizontal guide navigation */
+.usa-guide-nav { position: sticky; z-index: 15; top: 8px; width: min(1180px, calc(100% - 32px)); display: flex; gap: 8px; margin: 16px auto 0; padding: 8px; overflow-x: auto; border: 1px solid rgba(255,255,255,.8); border-radius: 999px; background: rgba(250,252,255,.9); box-shadow: 0 16px 40px -28px rgba(7,27,58,.55); backdrop-filter: blur(18px); scrollbar-width: none; }
+.usa-guide-nav::-webkit-scrollbar { display: none; }
+.usa-guide-nav a { flex: 1 0 auto; padding: 9px 16px; border-radius: 999px; color: #40506a; text-align: center; font-size: 13px; font-weight: 700; }
+.usa-guide-nav a:hover { color: white; background: var(--usa-navy); }
+
+/* Shared section layout */
+.usa-section, .usa-city-section, .usa-footer { width: min(1240px, 100%); margin-inline: auto; background: #f9fbff; }
+.usa-section { padding: clamp(64px, 8vw, 110px) clamp(24px, 6vw, 78px); scroll-margin-top: 90px; }
+.usa-section-heading { max-width: 720px; }
+.usa-section-heading-wide { max-width: 880px; }
+.usa-section h2, .usa-city-section h2 { margin: 0 0 20px; color: var(--usa-navy); font-size: clamp(38px, 5vw, 68px); font-weight: 700; line-height: .98; letter-spacing: -.05em; }
+.usa-section h3 { margin: 0 0 9px; color: var(--usa-navy); font-size: 22px; font-weight: 750; }
+.usa-section p { color: var(--usa-muted); }
+.usa-text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--usa-blue); font-weight: 750; }
+
+/* Overview */
+.usa-overview { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px 70px; }
+.usa-overview-copy { align-self: end; padding-bottom: 6px; }
+.usa-overview-copy > p { font-size: 18px; }
+.usa-highlight-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.usa-highlight-grid article { min-height: 180px; display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--usa-line); border-radius: 24px; background: white; }
+.usa-highlight-grid svg { color: var(--usa-blue); }
+.usa-highlight-grid strong { margin-top: auto; color: var(--usa-navy); font-size: 27px; }
+.usa-highlight-grid span { color: var(--usa-muted); font-size: 13px; }
+
+/* Cost bento */
+.usa-bento { display: grid; grid-template-columns: 1.35fr .65fr .65fr; gap: 14px; background: #f4f6fb; }
+.usa-bento-intro { grid-row: span 2; padding-right: 30px; }
+.usa-bento-intro > p:not(.usa-kicker) { max-width: 580px; font-size: 17px; }
+.usa-cost-card { min-height: 235px; display: flex; flex-direction: column; padding: 24px; border-radius: 24px; }
+.usa-cost-card span { margin-top: auto; font-size: 14px; }
+.usa-cost-card strong { font-size: 29px; line-height: 1.1; }
+.usa-cost-card small { margin-top: 5px; opacity: .72; }
+.usa-cost-card-light { color: var(--usa-navy); background: #dfe8ff; }
+.usa-cost-card-dark { color: white; background: var(--usa-navy); }
+.usa-cost-card-blue { grid-column: 2 / -1; color: white; background: linear-gradient(135deg, #174b97, #276fd1); }
+
+/* Courses */
+.usa-courses { display: grid; grid-template-columns: .9fr 1.1fr; align-items: stretch; gap: 18px; }
+.usa-courses-copy { padding: 35px 30px 35px 0; }
+.usa-course-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+.usa-course-list span { padding: 10px 14px; border: 1px solid var(--usa-line); border-radius: 999px; color: #31415d; background: white; font-size: 13px; font-weight: 700; }
+.usa-photo-card { min-height: 560px; display: flex; align-items: flex-end; padding: 24px; border-radius: 28px; background-position: center; background-size: cover; }
+.usa-photo-card > div { display: grid; gap: 4px; width: 100%; padding: 18px; border: 1px solid rgba(255,255,255,.38); border-radius: 18px; color: white; background: rgba(5,24,52,.68); backdrop-filter: blur(14px); }
+.usa-photo-card span { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; }
+.usa-photo-card strong { font-size: 22px; }
+
+/* Requirements */
+.usa-requirements { background: white; }
+.usa-requirement-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 42px; }
+.usa-requirement-grid article { padding: 25px; border: 1px solid var(--usa-line); border-radius: 24px; background: #f8faff; }
+.usa-requirement-grid svg { margin-bottom: 28px; color: var(--usa-blue); }
+.usa-requirement-grid p { margin-bottom: 0; font-size: 14px; }
+.usa-fine-print { margin-top: 22px; font-size: 12px; line-height: 1.6; }
+
+/* Intakes */
+.usa-intake-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 42px; }
+.usa-intake-grid article { min-height: 290px; display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--usa-line); border-radius: 26px; background: white; }
+.usa-intake-grid article.featured { color: white; background: var(--usa-navy); }
+.usa-intake-grid span { font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+.usa-intake-grid h3 { margin-top: auto; font-size: 42px; }
+.usa-intake-grid .featured h3, .usa-intake-grid .featured p { color: white; }
+.usa-intake-grid strong { margin-bottom: 8px; }
+.usa-intake-grid p { margin: 0; font-size: 14px; }
+
+/* Visa and career */
+.usa-pathways { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; background: #edf3ff; }
+.usa-pathways > article { padding: clamp(28px, 4vw, 52px); border-radius: 28px; background: white; scroll-margin-top: 100px; }
+.usa-pathways > article:last-child { color: white; background: var(--usa-navy); }
+.usa-pathways > article:last-child h2, .usa-pathways > article:last-child p { color: white; }
+.usa-pathways ul { display: grid; gap: 14px; margin: 28px 0; padding: 0; list-style: none; }
+.usa-pathways li { display: flex; align-items: flex-start; gap: 10px; color: #46546a; }
+.usa-pathways li svg { flex: 0 0 auto; margin-top: 4px; color: var(--usa-blue); }
+.usa-career-stat { display: grid; gap: 2px; padding: 20px 0; border-top: 1px solid rgba(255,255,255,.18); }
+.usa-career-stat strong { font-size: 32px; }
+.usa-career-stat span { color: #c8d7ee; }
+
+/* City image */
+.usa-city-section { position: relative; isolation: isolate; min-height: 650px; display: flex; align-items: flex-end; padding: clamp(36px, 7vw, 84px); overflow: hidden; color: white; background-position: center; background-size: cover; }
+.usa-city-overlay { position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, rgba(5,21,48,.94), rgba(5,21,48,.08) 75%); }
+.usa-city-copy { max-width: 850px; }
+.usa-city-section h2 { color: white; }
+.usa-city-section p:not(.usa-kicker) { max-width: 650px; color: #e4ebf6; font-size: 18px; }
+
+/* Application steps */
+.usa-step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 44px; }
+.usa-step-grid article { min-height: 240px; display: flex; flex-direction: column; padding: 25px; border: 1px solid var(--usa-line); border-radius: 24px; background: white; }
+.usa-step-grid span { color: var(--usa-red); font-size: 12px; font-weight: 800; }
+.usa-step-grid h3 { margin-top: auto; }
+.usa-step-grid p { margin-bottom: 0; font-size: 14px; }
+
+/* Consultation form */
+.usa-consultation { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: clamp(30px, 6vw, 80px); color: white; background: var(--usa-navy); }
+.usa-consultation h2, .usa-consultation p { color: white; }
+.usa-call-card { display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; padding: 14px 18px; border: 1px solid rgba(255,255,255,.2); border-radius: 18px; color: white; background: rgba(255,255,255,.08); }
+.usa-call-card span { display: grid; }
+.usa-call-card small { color: #b9cbe4; }
+.usa-form-card { padding: 10px; overflow: hidden; border-radius: 26px; background: white; }
+.usa-form-card .zoho-form-shell { border-radius: 18px; }
+
+/* Footer */
+.usa-footer { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 35px clamp(24px, 6vw, 78px); border-radius: 0 0 28px 28px; }
+.usa-footer p { margin: 8px 0 0; color: var(--usa-muted); }
+.usa-footer .usa-button-ghost { border-color: var(--usa-line); color: var(--usa-navy); background: white; }
+
+/* Tablet and mobile layouts */
+@media (max-width: 900px) {
+  .usa-page { padding: 8px; }
+  .usa-header { grid-template-columns: 1fr auto; border-radius: 20px 20px 0 0; }
+  .usa-header nav { display: none; }
+  .usa-header-call { font-size: 0; }
+  .usa-header-call svg { width: 18px; height: 18px; }
+  .usa-hero { min-height: 720px; align-items: flex-start; padding-top: 95px; }
+  .usa-hero-overlay { background: linear-gradient(90deg, rgba(5,20,48,.92), rgba(6,31,68,.45)); }
+  .usa-overview, .usa-courses, .usa-pathways, .usa-consultation { grid-template-columns: 1fr; }
+  .usa-highlight-grid, .usa-requirement-grid { grid-template-columns: repeat(2, 1fr); }
+  .usa-bento { grid-template-columns: 1fr 1fr; }
+  .usa-bento-intro { grid-row: auto; grid-column: 1 / -1; padding-right: 0; }
+  .usa-cost-card-blue { grid-column: 1 / -1; }
+  .usa-step-grid { grid-template-columns: repeat(2, 1fr); }
+  .usa-photo-card { min-height: 480px; }
+}
+
+@media (max-width: 620px) {
+  .usa-brand img { width: 145px; }
+  .usa-hero { min-height: 680px; padding: 72px 22px 30px; }
+  .usa-hero h1 { font-size: clamp(48px, 15vw, 72px); }
+  .usa-hero-note { right: 18px; bottom: 18px; left: 18px; }
+  .usa-guide-nav { width: calc(100% - 12px); }
+  .usa-section { padding: 58px 20px; }
+  .usa-section h2, .usa-city-section h2 { font-size: clamp(38px, 11vw, 52px); }
+  .usa-highlight-grid, .usa-requirement-grid, .usa-intake-grid, .usa-step-grid, .usa-bento { grid-template-columns: 1fr; }
+  .usa-cost-card-blue, .usa-bento-intro { grid-column: auto; }
+  .usa-highlight-grid article { min-height: 150px; }
+  .usa-cost-card { min-height: 210px; }
+  .usa-photo-card { min-height: 410px; }
+  .usa-city-section { min-height: 600px; padding: 36px 22px; }
+  .usa-footer { align-items: flex-start; flex-direction: column; }
+  .usa-footer .usa-actions, .usa-footer .usa-button { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usa-page *, .usa-page *::before, .usa-page *::after { scroll-behavior: auto !important; transition-duration: 0ms !important; }
+}

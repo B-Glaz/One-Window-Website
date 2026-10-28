@@ -1,0 +1,198 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "onMatchHeaders": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/blog/[slug]",
+      "regex": "^/blog/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/blog/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/countries/[country]",
+      "regex": "^/countries/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPcountry": "nxtPcountry"
+      },
+      "namedRegex": "^/countries/(?<nxtPcountry>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/for-foreign-universities/[service]",
+      "regex": "^/for\\-foreign\\-universities/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPservice": "nxtPservice"
+      },
+      "namedRegex": "^/for\\-foreign\\-universities/(?<nxtPservice>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/[slug]",
+      "regex": "^/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/(?<nxtPslug>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
+      "page": "/api/v1/leads",
+      "regex": "^/api/v1/leads(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/leads(?:/)?$"
+    },
+    {
+      "page": "/blog",
+      "regex": "^/blog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog(?:/)?$"
+    },
+    {
+      "page": "/careers",
+      "regex": "^/careers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/careers(?:/)?$"
+    },
+    {
+      "page": "/countries",
+      "regex": "^/countries(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/countries(?:/)?$"
+    },
+    {
+      "page": "/events",
+      "regex": "^/events(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/events(?:/)?$"
+    },
+    {
+      "page": "/for-foreign-universities",
+      "regex": "^/for\\-foreign\\-universities(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for\\-foreign\\-universities(?:/)?$"
+    },
+    {
+      "page": "/for-indian-universities",
+      "regex": "^/for\\-indian\\-universities(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for\\-indian\\-universities(?:/)?$"
+    },
+    {
+      "page": "/for-schools",
+      "regex": "^/for\\-schools(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/for\\-schools(?:/)?$"
+    },
+    {
+      "page": "/free-resources",
+      "regex": "^/free\\-resources(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/free\\-resources(?:/)?$"
+    },
+    {
+      "page": "/india",
+      "regex": "^/india(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/india(?:/)?$"
+    },
+    {
+      "page": "/landingpage/usa",
+      "regex": "^/landingpage/usa(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/landingpage/usa(?:/)?$"
+    },
+    {
+      "page": "/newsroom",
+      "regex": "^/newsroom(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/newsroom(?:/)?$"
+    },
+    {
+      "page": "/premium",
+      "regex": "^/premium(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/premium(?:/)?$"
+    },
+    {
+      "page": "/student-stories",
+      "regex": "^/student\\-stories(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/student\\-stories(?:/)?$"
+    },
+    {
+      "page": "/thank-you",
+      "regex": "^/thank\\-you(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/thank\\-you(?:/)?$"
+    },
+    {
+      "page": "/yourcountry",
+      "regex": "^/yourcountry(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/yourcountry(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

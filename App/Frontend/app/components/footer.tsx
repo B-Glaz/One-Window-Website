@@ -16,8 +16,8 @@ export function Footer() {
         <div>
           <strong>Explore</strong>
           <Link href="/#destinations">Study destinations</Link>
-          <a href="https://campusroot.com/explore">Universities</a>
-          <a href="https://campusroot.com/recommendations">AI Course Finder</a>
+          <Link href="/countries">Universities</Link>
+          <Link href="/#consultation">Course guidance</Link>
           <Link href="/careers">Careers</Link>
         </div>
         <div>

@@ -1,10 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
 // ─── Navigation Configuration ───
 
 type NavLink = [string, string];
 const serviceLinks: NavLink[] = [
+  ["For Schools", "/for-schools"],
+  ["For Foreign Universities", "/for-foreign-universities"],
+  ["For Indian Universities", "/for-indian-universities"],
   ["Undergraduate preparation", "/undergraduate-preparation"],
   ["Undergraduate admissions", "/undergraduate-admissions"],
   ["Postgraduate admissions", "/postgraduate-admissions"],
@@ -15,27 +22,66 @@ const resourceLinks: NavLink[] = [
   ["Free resources", "/free-resources"],
   ["Student stories", "/student-stories"],
 ];
-function Menu({ label, links }: { label: string; links: NavLink[] }) {
+function Menu({
+  label,
+  links,
+  open,
+  onToggle,
+  onClose,
+}: {
+  label: string;
+  links: NavLink[];
+  open: boolean;
+  onToggle: () => void;
+  onClose: () => void;
+}) {
   return (
-    <details className="nav-menu">
-      <summary>
+    <div className={`nav-menu${open ? " is-open" : ""}`}>
+      <button
+        aria-expanded={open}
+        className="nav-menu-trigger"
+        onClick={onToggle}
+        type="button"
+      >
         {label}
-        <span aria-hidden="true">⌄</span>
-      </summary>
-      <div className="nav-menu-panel">
+        <ChevronDown aria-hidden="true" size={14} strokeWidth={2.2} />
+      </button>
+      <div aria-hidden={!open} className="nav-menu-panel">
         {links.map(([text, href]) => (
-          <Link href={href} key={href}>
+          <Link href={href} key={href} onClick={onClose} tabIndex={open ? 0 : -1}>
             {text}
           </Link>
         ))}
       </div>
-    </details>
+    </div>
   );
 }
 
 // ─── Primary Navigation ───
 
 export function Navigation() {
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const navigation = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const close = () => setOpenMenu(null);
+    const onPointerDown = (event: PointerEvent) => {
+      if (!navigation.current?.contains(event.target as Node)) close();
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+    const onScroll = () => {
+      if (window.scrollY > window.innerHeight / 2) close();
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
   const mobileLinks: NavLink[] = [
     ["About Us", "/about"],
     ...serviceLinks,
@@ -44,7 +90,7 @@ export function Navigation() {
   ];
   return (
     <header className="site-header">
-      <nav className="shell nav-pill" aria-label="Primary navigation">
+      <nav className="shell nav-pill" aria-label="Primary navigation" ref={navigation}>
         <Link className="brand" href="/">
           <img
             className="brand-logo brand-logo-light logo-desktop"
@@ -71,8 +117,20 @@ export function Navigation() {
         </Link>
         <div className="nav-links">
           <Link href="/about">About Us</Link>
-          <Menu label="Services" links={serviceLinks} />
-          <Menu label="Resources" links={resourceLinks} />
+          <Menu
+            label="Services"
+            links={serviceLinks}
+            open={openMenu === "services"}
+            onToggle={() => setOpenMenu((current) => current === "services" ? null : "services")}
+            onClose={() => setOpenMenu(null)}
+          />
+          <Menu
+            label="Resources"
+            links={resourceLinks}
+            open={openMenu === "resources"}
+            onToggle={() => setOpenMenu((current) => current === "resources" ? null : "resources")}
+            onClose={() => setOpenMenu(null)}
+          />
           <Link className="nav-premium" href="/premium">
             Premium
           </Link>

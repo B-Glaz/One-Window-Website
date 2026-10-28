@@ -94,7 +94,7 @@ export function CountryCounselling({ country }: { country: string }) {
             >
               <X size={19} />
             </button>
-            <ZohoContactForm country={country} autoOpen={false} />
+            <ZohoContactForm country={country} />
           </div>
         </div>
       ) : null}

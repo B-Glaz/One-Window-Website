@@ -115,7 +115,7 @@ export function CountryOrbit() {
             Study abroad, with your <span>whole future</span> in view.
           </h1>
           <p>
-            Move through destinations. Pause where ambition feels most at home.
+            Explore best-fit destinations, programmes and pathways with expert guidance at every decision.
           </p>
         </div>
         <div className="orbit-stage" aria-label="Study destinations">

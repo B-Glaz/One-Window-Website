@@ -1,0 +1,25 @@
+1:"$Sreact.fragment"
+2:I[84168,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/3tpq3b29f6rwg.js","/_next/static/chunks/24tshvbgnq_i8.js"],"UsaLandingPage"]
+3:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+9:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+a:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+c:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+d:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+:HL["/_next/static/chunks/19c0t-nj1nble.css","style"]
+:HL["/_next/static/chunks/2q474ffa-9clr.css","style"]
+7:X
+f:X
+f:C
+0:{"buildId":"7TV3WSDnKGdgKVGmLMU3E","data":[{"rsc":["$","$1","c",{"children":[["$","$L2",null,{}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/19c0t-nj1nble.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3tpq3b29f6rwg.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/24tshvbgnq_i8.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Study in USA for Indian Students | One Window"}],["$","meta","1",{"name":"description","content":"Plan your USA education journey with guidance on universities, eligibility, applications, costs, scholarships, F-1 visas and student life."}],["$","meta","2",{"property":"og:title","content":"Study in USA for Indian Students | One Window"}],["$","meta","3",{"property":"og:description","content":"A practical guide to USA universities, admissions, costs, scholarships, visas and career preparation."}],["$","meta","4",{"property":"og:type","content":"website"}],["$","meta","5",{"name":"twitter:card","content":"summary"}],["$","meta","6",{"name":"twitter:title","content":"Study in USA for Indian Students | One Window"}],["$","meta","7",{"name":"twitter:description","content":"A practical guide to USA universities, admissions, costs, scholarships, visas and career preparation."}],["$","link","8",{"rel":"shortcut icon","href":"/one-window-orbital-logo.png"}],["$","link","9",{"rel":"icon","href":"/one-window-orbital-logo.png"}],["$","link","10",{"rel":"apple-touch-icon","href":"/one-window-orbital-logo.png"}],["$","$La","11",{}]]}]}]}],null]}],"isPartial":"$@b","staleTime":"$7","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"isPartial":"$@e","staleTime":"$7","varyParams":"$f"},{"rsc":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"isPartial":"$@10","staleTime":"$7","varyParams":"$f"},{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2q474ffa-9clr.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(()=>{try{const t=localStorage.getItem('ow-theme');document.documentElement.dataset.theme=t==='dark'?'dark':'light'}catch{}})()"}}]}],["$","body",null,{"children":["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]]}]]}],"isPartial":"$@11","staleTime":"$7","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
+5:null
+7:300
+13:true
+7:C
+12:0
+b:"$undefined"
+e:"$undefined"
+10:"$undefined"
+11:"$undefined"
+6:"$undefined"

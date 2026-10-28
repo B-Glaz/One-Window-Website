@@ -10,56 +10,60 @@ import { articles } from "./blog/blog";
 
 const services = [
   [
-    "Admissions",
-    "Our admission specialists handle every step of your application, from filling out details to securing your spot at top universities.",
+    "Profile & pathway strategy",
+    "We assess your academics, interests, experience and ambitions to build a practical roadmap for the right course, country and intake.",
   ],
   [
-    "Scholarships",
-    "Our experts are committed to help you with the perfect scholarship. We ensure you get the financial support you need to achieve your goals.",
+    "University shortlisting",
+    "We compare programmes, teaching styles, entry requirements, costs and career outcomes to create a balanced list built around your fit.",
   ],
   [
-    "Education Loans",
-    "Our team helps you secure the best education loans by guiding you through options, terms, and the application process.",
+    "Application management",
+    "From timelines and documents to recommendations and submissions, your advisor keeps every application accurate, organised and on track.",
   ],
   [
-    "Visas",
-    "Our visa team ensures a smooth process by guiding you through requirements, preparing documentation.",
+    "Essays & personal statements",
+    "Shape an authentic story with structured guidance on ideas, voice and multiple drafts for essays, SOPs and personal statements.",
   ],
   [
-    "Profile Building",
-    "Our team helps you build a standout profile, increasing your chances of admission and scholarships at top universities.",
+    "Interview preparation",
+    "Practise realistic admissions interviews and receive focused feedback that strengthens your answers, confidence and communication.",
+  ],
+  [
+    "Offers, finance & visas",
+    "Compare offers, plan scholarships and education loans, prepare visa documentation and make your final university decision with clarity.",
   ],
 ];
 const steps = [
   [
     "01",
-    "Ideal universities using AI",
-    "Supercharge your abroad education journey by creating your profile and get started by shortlisting universities using our state-of-art AI tool.",
+    "Understand your profile",
+    "Begin with a detailed review of your academics, goals, activities, budget and timeline so every recommendation starts with context.",
   ],
   [
     "02",
-    "Personalized expert advisors",
-    "Experience tailored support and insights that make your path to success with the guidance from our expert advisors with over 15 years of experience.",
+    "Build your best-fit shortlist",
+    "Compare countries, programmes and universities against your priorities—not rankings alone—and create a balanced application plan.",
   ],
   [
     "03",
-    "One application for all",
-    "With just one form, apply to multiple universities easily and get quick admissions into your dream universities.",
+    "Develop your application",
+    "Coordinate forms, documents, recommendations and deadlines while presenting your strengths consistently across every application.",
   ],
   [
     "04",
-    "Scholarships & education loan",
-    "Discover opportunities with scholarships and easy education loans, designed to ease your financial burden.",
+    "Tell your story",
+    "Work through essays and personal statements with thoughtful feedback that protects your voice and makes your application memorable.",
   ],
   [
     "05",
-    "Effortless visa process",
-    "Streamline visa application process with personalized guidance and reduce the risk of errors and delays.",
+    "Prepare with confidence",
+    "Use mock interviews, feedback and practical preparation to communicate clearly in university and visa conversations.",
   ],
   [
     "06",
-    "Internships & Jobs",
-    "From securing internships during your studies to landing your dream job after graduation, we’re here to ensure your success every step of the way.",
+    "Choose your next move",
+    "Evaluate offers, scholarships, finances and visa requirements with continued support through enrolment and departure.",
   ],
 ];
 const proof = [
@@ -75,7 +79,7 @@ export default function Home() {
       <Navigation />
       <a
         className="ai-float"
-        href="https://campusroot.com/recommendations"
+        href="/countries"
         aria-label="Open AI Course Finder"
       >
         <i className="ai-signal" aria-hidden="true" />
@@ -127,28 +131,6 @@ export default function Home() {
                 alt="USA Study Destination"
               />
             </div>
-          </div>
-        </div>
-      </section>
-      {/* Audience and Consultation Paths */}
-      <section className="audience-section" aria-label="Explore One Window">
-        <div className="shell audience-section-inner">
-          <div className="audience-options">
-            <a href="/for-foreign-universities">
-              <span>01</span>For Foreign Universities <ArrowRight size={16} />
-            </a>
-            <a href="/for-indian-universities">
-              <span>02</span>For Indian Universities <ArrowRight size={16} />
-            </a>
-            <a href="/for-schools">
-              <span>03</span>For Schools <ArrowRight size={16} />
-            </a>
-          </div>
-          <div className="quick-path-list">
-            <a href="#destinations">Countries</a>
-            <a href="#consultation">Finance</a>
-            <a href="#consultation">Counselling</a>
-            <a href="#consultation">Exams</a>
           </div>
         </div>
       </section>
@@ -228,7 +210,10 @@ export default function Home() {
           <div className="section-heading reveal">
             <p className="eyebrow">Powerful academic solutions</p>
             <h2>From vision to victory</h2>
-            <p>Tailored support to start your educational journey abroad.</p>
+            <p>
+              Personalised guidance from early planning to enrolment, shaped
+              around your strengths, goals and best-fit opportunities.
+            </p>
           </div>
           <div className="service-grid">
             {services.map(([title, text], i) => (
@@ -264,20 +249,16 @@ export default function Home() {
             </p>
             <h2>Make a confident shortlist</h2>
             <p>
-              Supercharge your abroad education journey by creating your profile
-              and get started by shortlisting universities using our
-              state-of-the-art AI tool.
+              Explore programmes with a clearer view of academic fit, entry
+              requirements and career direction, then refine your shortlist
+              with an experienced advisor.
             </p>
             <a
               className="button button-primary"
-              href="https://campusroot.com/recommendations"
+              href="/countries"
             >
               Open AI Course Finder <ArrowRight size={17} />
             </a>
-            <p className="transition-note">
-              You’ll continue to CampusRoot, One Window’s digital study-abroad
-              platform.
-            </p>
           </div>
         </div>
       </section>
@@ -286,10 +267,10 @@ export default function Home() {
         <div className="shell">
           <div className="section-heading light reveal">
             <p className="eyebrow">Empowering your study abroad journey</p>
-            <h2>A clearer route from ambition to arrival</h2>
+            <h2>Expert support through every admissions decision</h2>
             <p>
-              With technology and expert guidance, we handle the complexities so
-              you can focus on achieving your academic and career goals.
+              A structured, one-to-one process helps you make informed choices,
+              submit stronger applications and move forward with confidence.
             </p>
           </div>
           <div className="steps-grid">
@@ -335,7 +316,7 @@ export default function Home() {
               </span>
               <ArrowRight size={18} />
             </a>
-            <a href="https://campusroot.com/recommendations">
+            <a href="/countries">
               <strong>Course finder</strong>
               <span>
                 Use AI-supported discovery to shape a practical shortlist.
