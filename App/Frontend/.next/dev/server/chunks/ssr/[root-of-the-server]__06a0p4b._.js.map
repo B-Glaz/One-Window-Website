@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///C:/Blesson/Code/One%20Window%20Website/App/Frontend/app/landingpage/usa/page.tsx"],"sourcesContent":["import type { Metadata } from \"next\";\nimport { UsaLandingPage } from \"../../landingpages/usa/landing-page-usa\";\n\nexport const metadata: Metadata = {\n  title: \"Study in USA for Indian Students | One Window\",\n  description:\n    \"Plan your USA education journey with guidance on universities, eligibility, applications, costs, scholarships, F-1 visas and student life.\",\n  openGraph: {\n    title: \"Study in USA for Indian Students | One Window\",\n    description:\n      \"A practical guide to USA universities, admissions, costs, scholarships, visas and career preparation.\",\n    type: \"website\",\n  },\n};\n\nexport default function UsaLandingRoute() {\n  return <UsaLandingPage />;\n}\n\n"],"names":["metadata","title","description","openGraph","type","UsaLandingRoute","UsaLandingPage"],"mappings":";;;;;;;;;;;;;;AAGO,MAAMA,WAAqB;IAChCC,OAAO;IACPC,aACE;IACFC,WAAW;QACTF,OAAO;QACPC,aACE;QACFE,MAAM;IACR;AACF;AAEe,SAASC;IACtB,qBAAO,8OAACC;;;;;AACV"}}]
-}
