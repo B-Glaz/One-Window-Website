@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Home } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Navigation } from "../components/navigation";
 const countryOrder = [
   "USA",
   "UK",
@@ -56,24 +57,7 @@ export default function CountriesPage() {
   );
   return (
     <main className="story-countries-page">
-      <header className="stories-header">
-        <Link className="stories-logo" href="/" aria-label="One Window home">
-          <img
-            className="brand-logo brand-logo-light"
-            src="/Logos/OW%20web%20desktop%20logos%20(200%20x%2040%20px)/OW%20Blue%20Logo%20desktop.png"
-            alt="One Window"
-          />
-          <img
-            className="brand-logo brand-logo-dark"
-            src="/Logos/OW%20web%20desktop%20logos%20(200%20x%2040%20px)/OW%20White%20Logo%20desktop.png"
-            alt=""
-            aria-hidden="true"
-          />
-        </Link>
-        <Link className="stories-home" href="/">
-          <Home size={15} /> Home
-        </Link>
-      </header>
+      <Navigation />
       <section className="country-tabs">
         <div className="country-tabs-grid">
           {items.map(({ country, image }, index) => (

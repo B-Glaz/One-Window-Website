@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronDown, Globe2, MapPin } from "lucide-react";
+import { ArrowRight, ChevronDown, MapPin } from "lucide-react";
+import { Navigation } from "../components/navigation";
 
 // ─── Types and Configuration ───
 
@@ -68,26 +69,7 @@ export default function StudentStoriesPage() {
 
   return (
     <main className="stories-page">
-      <header className="stories-header">
-        <Link className="stories-logo" href="/" aria-label="One Window home">
-          <img
-            className="brand-logo brand-logo-light"
-            src="/Logos/OW%20web%20desktop%20logos%20(200%20x%2040%20px)/OW%20Blue%20Logo%20desktop.png"
-            alt="One Window"
-          />
-          <img
-            className="brand-logo brand-logo-dark"
-            src="/Logos/OW%20web%20desktop%20logos%20(200%20x%2040%20px)/OW%20White%20Logo%20desktop.png"
-            alt=""
-            aria-hidden="true"
-          />
-        </Link>
-        <div className="stories-header-actions">
-          <Link className="stories-countries" href="/countries">
-            <Globe2 size={15} /> Other countries
-          </Link>
-        </div>
-      </header>
+      <Navigation />
       <section className="stories-hero">
         <div className="shell stories-hero-grid">
           <div className="stories-hero-copy">
