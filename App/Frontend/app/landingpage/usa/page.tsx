@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { UsaLandingPage } from "../../landingpages/usa/landing-page-usa";
+import { UsaLandingPage } from "./landing-page-usa";
 
 export const metadata: Metadata = {
   title: "Study in USA for Indian Students | One Window",
