@@ -531,6 +531,9 @@
 .callCard { display: inline-flex; align-items: center; gap: 12px; margin-top: 28px; padding: 14px 17px; border: 1px solid rgba(255,255,255,.18); border-radius: 16px; }
 .callCard span { display: grid; color: #cbd5e6; font-size: 12px; }
 .callCard strong { color: white; font-size: 17px; }
+.consultationForm { min-width: 0; padding: clamp(16px, 2vw, 24px); border: 1px solid rgba(255,255,255,.18); border-radius: 28px; background: rgba(255,255,255,.08); scroll-margin-top: 150px; }
+.consultationForm h3 { margin: 0 0 16px; color: white; font-size: clamp(22px, 2.5vw, 30px); }
+.consultationForm :global(.zoho-form-shell), .consultationForm :global(.zoho-form-shell iframe) { height: 900px; }
 
 .nextSteps {
   padding: clamp(26px, 4vw, 42px);
@@ -544,36 +547,6 @@
 .nextSteps li::before { content: counter(next-step, decimal-leading-zero); position: absolute; left: 0; top: 20px; color: var(--usa-aqua); font-size: 12px; font-weight: 800; }
 .nextSteps strong { color: white; font-size: 18px; }
 .nextSteps p { margin: 6px 0 0; color: #cdd9ea; line-height: 1.5; }
-
-.modalBackdrop {
-  position: fixed;
-  z-index: 100;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 18px;
-  background: rgba(7, 26, 56, .72);
-  backdrop-filter: blur(12px);
-  animation: modalFade .2s ease both;
-}
-.formModal {
-  width: min(760px, 100%);
-  max-height: calc(100vh - 36px);
-  overflow: auto;
-  padding: clamp(18px, 3vw, 28px);
-  border-radius: 28px;
-  background: #f8fbff;
-  box-shadow: 0 32px 100px rgba(3, 20, 46, .42);
-  animation: modalRise .28s ease both;
-}
-.modalHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
-.modalHeader span { color: var(--usa-blue); font-size: 11px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
-.modalHeader h2 { margin: 6px 0 0; color: var(--usa-ink); font-size: clamp(28px, 4vw, 42px); line-height: 1.05; letter-spacing: -.04em; }
-.modalHeader button { display: grid; flex: 0 0 auto; place-items: center; width: 42px; height: 42px; border: 1px solid var(--usa-line); border-radius: 50%; color: var(--usa-navy); background: white; cursor: pointer; }
-.formModal :global(.zoho-form-shell) { border-radius: 20px; background: white; }
-
-@keyframes modalFade { from { opacity: 0; } }
-@keyframes modalRise { from { opacity: 0; transform: translateY(16px) scale(.985); } }
 
 .sources { padding: 28px 0; color: #9eabc0; background: #101d38; }
 .sources .container { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
@@ -634,7 +607,7 @@
   }
   .mobileConversionBar a,
   .mobileConversionBar button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 46px; border: 0; border-radius: 14px; color: var(--usa-navy); background: transparent; font-size: 13px; font-weight: 750; cursor: pointer; }
-  .mobileConversionBar button:last-child { color: white; background: var(--usa-navy); }
+  .mobileConversionBar a:last-child { color: white; background: var(--usa-navy); }
 }
 
 @media (max-width: 480px) {
@@ -645,8 +618,6 @@
   .heroBadge { left: 12px; right: 12px; }
   .sectionHeading h2, .consultation h2 { font-size: 38px; }
   .heroProof { display: grid; justify-content: start; width: fit-content; margin-inline: 0; text-align: left; }
-  .formModal { max-height: calc(100vh - 20px); padding: 16px; border-radius: 22px; }
-  .modalBackdrop { padding: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

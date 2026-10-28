@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -12,7 +12,6 @@ import {
   Landmark,
   Phone,
   ShieldCheck,
-  X,
 } from "lucide-react";
 import { Navigation } from "../../components/navigation";
 import { Footer } from "../../components/footer";
@@ -41,22 +40,26 @@ function SectionHeading({
 }
 
 export function UsaLandingPage() {
-  const [formOpen, setFormOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("overview");
+  const [showMobileBar, setShowMobileBar] = useState(false);
+
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    root.setAttribute("data-theme", "light");
+    return () => {
+      root.setAttribute("data-theme", localStorage.getItem("ow-theme") === "dark" ? "dark" : "light");
+    };
+  }, []);
 
   useEffect(() => {
-    if (!formOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setFormOpen(false);
+    const update = () => {
+      const hero = document.querySelector<HTMLElement>(`.${styles.hero}`);
+      setShowMobileBar(Boolean(hero && hero.getBoundingClientRect().bottom < 80));
     };
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", closeOnEscape);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", closeOnEscape);
-    };
-  }, [formOpen]);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
 
   useEffect(() => {
     const sections = content.navigation
@@ -77,7 +80,7 @@ export function UsaLandingPage() {
 
   return (
     <main className={styles.page}>
-      <Navigation />
+      <Navigation disableThemeToggle counsellingHref="#usa-enquiry-form" />
 
       {/* HERO: Edit hero copy and image in content.ts. */}
       <section className={styles.hero}>
@@ -87,9 +90,9 @@ export function UsaLandingPage() {
             <h1>{content.hero.title}</h1>
             <p className={styles.heroDescription}>{content.hero.description}</p>
             <div className={styles.heroActions}>
-              <button className={styles.primaryButton} onClick={() => setFormOpen(true)} type="button">
+              <a className={styles.primaryButton} href="#usa-enquiry-form">
                 {content.hero.primaryCta} <ArrowRight size={17} />
-              </button>
+              </a>
               <a className={styles.phoneLink} href={content.phone.href}>
                 <Phone size={16} /> {content.hero.secondaryCta}
               </a>
@@ -144,7 +147,7 @@ export function UsaLandingPage() {
             />
             <div className={styles.introStatement}>
               <strong>One Window helps you turn a large set of options into a focused shortlist based on evidence.</strong>
-              <button onClick={() => setFormOpen(true)} type="button">Discuss your profile <ArrowRight size={16} /></button>
+              <a href="#usa-enquiry-form">Discuss your profile <ArrowRight size={16} /></a>
             </div>
           </div>
           <div className={styles.highlightGrid}>
@@ -192,7 +195,7 @@ export function UsaLandingPage() {
               <div>
                 {content.universities.fields.map((field) => <i key={field}>{field}</i>)}
               </div>
-              <button onClick={() => setFormOpen(true)} type="button">Find universities that fit your goals <ArrowRight size={16} /></button>
+              <a href="#usa-enquiry-form">Find universities that fit your goals <ArrowRight size={16} /></a>
             </aside>
           </div>
         </div>
@@ -220,9 +223,9 @@ export function UsaLandingPage() {
               <span>{content.conversion.bandEyebrow}</span>
               <h3>{content.conversion.bandTitle}</h3>
             </div>
-            <button onClick={() => setFormOpen(true)} type="button">
+            <a href="#usa-enquiry-form">
               {content.conversion.bandCta} <ArrowRight size={17} />
-            </button>
+            </a>
           </aside>
         </div>
       </section>
@@ -243,9 +246,9 @@ export function UsaLandingPage() {
               </article>
             ))}
           </div>
-          <button className={styles.lightButton} onClick={() => setFormOpen(true)} type="button">
+          <a className={styles.lightButton} href="#usa-enquiry-form">
             Get help with your applications <ArrowRight size={17} />
-          </button>
+          </a>
         </div>
       </section>
 
@@ -287,7 +290,7 @@ export function UsaLandingPage() {
               <article key={title}><CheckCircle2 size={20} /><h3>{title}</h3><p>{text}</p></article>
             ))}
           </div>
-          <button className={styles.inlineCta} onClick={() => setFormOpen(true)} type="button">Explore scholarship opportunities <ArrowRight size={16} /></button>
+          <a className={styles.inlineCta} href="#usa-enquiry-form">Explore scholarship opportunities <ArrowRight size={16} /></a>
         </div>
       </section>
 
@@ -375,7 +378,7 @@ export function UsaLandingPage() {
         </div>
       </section>
 
-      {/* CONSULTATION CTA: The shared Zoho form opens in the modal below. */}
+      {/* CONSULTATION CTA */}
       <section className={styles.consultation} id="usa-consultation">
         <div className={`${styles.container} ${styles.consultationGrid}`}>
           <div>
@@ -389,39 +392,18 @@ export function UsaLandingPage() {
             </ul>
             <a className={styles.callCard} href={content.phone.href}><Phone size={20} /><span>Prefer to speak now?<strong>{content.phone.display}</strong></span></a>
           </div>
-          <aside className={styles.nextSteps}>
-            <span>What happens next</span>
-            <ol>
-              <li><strong>Share your profile</strong><p>Tell us your course, academic background, budget and preferred intake.</p></li>
-              <li><strong>Review your options</strong><p>Discuss universities and pathways that make sense for your goals.</p></li>
-              <li><strong>Build your action plan</strong><p>Leave with clearer priorities for applications, funding and visa preparation.</p></li>
-            </ol>
-            <button className={styles.lightButton} onClick={() => setFormOpen(true)} type="button">Start my USA plan <ArrowRight size={17} /></button>
-          </aside>
+          <div className={styles.consultationForm} id="usa-enquiry-form">
+            <h3>Tell us about your study plans</h3>
+            <ZohoContactForm country="USA" />
+          </div>
         </div>
       </section>
 
       <Footer />
-      <aside className={styles.mobileConversionBar} aria-label="USA counselling actions">
+      {showMobileBar ? <aside className={styles.mobileConversionBar} aria-label="USA counselling actions">
         <a href={content.phone.href}><Phone size={17} /> Call</a>
-        <button onClick={() => setFormOpen(true)} type="button">{content.conversion.mobileCta} <ArrowRight size={16} /></button>
-      </aside>
-      {formOpen ? (
-        <div className={styles.modalBackdrop} onMouseDown={(event) => {
-          if (event.target === event.currentTarget) setFormOpen(false);
-        }}>
-          <section aria-labelledby="usa-form-title" aria-modal="true" className={styles.formModal} role="dialog">
-            <div className={styles.modalHeader}>
-              <div>
-                <span>USA study guidance</span>
-                <h2 id="usa-form-title">Tell us about your study plans.</h2>
-              </div>
-              <button aria-label="Close enquiry form" autoFocus onClick={() => setFormOpen(false)} type="button"><X size={20} /></button>
-            </div>
-            <ZohoContactForm country="USA" />
-          </section>
-        </div>
-      ) : null}
+        <a href="#usa-enquiry-form">{content.conversion.mobileCta} <ArrowRight size={16} /></a>
+      </aside> : null}
     </main>
   );
 }

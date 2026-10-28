@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(()=>{try{const t=localStorage.getItem('ow-theme');document.documentElement.dataset.theme=t==='dark'?'dark':'light'}catch{}})()`,
+            __html: `(()=>{try{const t=localStorage.getItem('ow-theme');document.documentElement.dataset.theme=location.pathname.startsWith('/landingpage/')?'light':t==='dark'?'dark':'light'}catch{document.documentElement.dataset.theme='light'}})()`,
           }}
         />
       </head>

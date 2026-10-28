@@ -59,7 +59,7 @@ function Menu({
 
 // ─── Primary Navigation ───
 
-export function Navigation() {
+export function Navigation({ disableThemeToggle = false, counsellingHref = "/#consultation" }: { disableThemeToggle?: boolean; counsellingHref?: string } = {}) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const navigation = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -136,10 +136,8 @@ export function Navigation() {
           </Link>
         </div>
         <div className="nav-actions">
-          <ThemeToggle />
-          <Link className="nav-cta" href="/#consultation">
-            Free counselling
-          </Link>
+          {!disableThemeToggle ? <ThemeToggle /> : null}
+          <Link className="nav-cta" href={counsellingHref}>Free counselling</Link>
         </div>
         <details className="nav-mobile-menu">
           <summary aria-label="Open navigation menu">

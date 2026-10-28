@@ -3347,6 +3347,9 @@ h3 {
 html[data-theme="dark"] {
   color-scheme: dark;
   --ink: #edf6ff;
+  --dark-heading: #eef4f6;
+  --dark-text: #d7e5ec;
+  --dark-bright: #e4eff2;
   --muted: #a9c1dc;
   --line: rgba(132, 194, 255, .2);
   --pale: #0d2a52;
@@ -3439,7 +3442,7 @@ html[data-theme="dark"] h2,
 html[data-theme="dark"] h3,
 html[data-theme="dark"] .institution-card h3,
 html[data-theme="dark"] .institution-initiative-grid h3 {
-  color: #f0f8ff;
+  color: var(--dark-heading);
 }
 
 html[data-theme="dark"] p,
@@ -3453,7 +3456,14 @@ html[data-theme="dark"] .lead-form input,
 html[data-theme="dark"] .lead-form textarea {
   border-color: rgba(133, 204, 255, .25);
   background: rgba(5, 31, 68, .52);
-  color: #f4fbff;
+  color: var(--dark-bright);
+}
+
+html[data-theme="dark"] .button,
+html[data-theme="dark"] .nav-cta,
+html[data-theme="dark"] .your-country-cta,
+html[data-theme="dark"] .card-arrow {
+  color: var(--dark-bright);
 }
 
 html[data-theme="dark"] .accreditation-card:hover,
@@ -5215,6 +5225,10 @@ html[data-theme="dark"] .blog-cta {
   -webkit-backdrop-filter: blur(24px);
 }
 
+html[data-theme="dark"] .country-detail-aside span { color: #9ec4e7; }
+html[data-theme="dark"] .country-detail-aside strong { color: #f0f8ff; }
+html[data-theme="dark"] .country-detail-aside .country-aside-link { color: #6bd4f2; }
+
 html[data-theme="dark"] h1,
 html[data-theme="dark"] h2,
 html[data-theme="dark"] h3,
@@ -5278,7 +5292,7 @@ html[data-theme="dark"] .blog-card:hover {
 html[data-theme="dark"] .audience-options a:hover,
 html[data-theme="dark"] .quick-path-list a:hover,
 html[data-theme="dark"] .audience-nav a:hover {
-  color: #fff !important;
+  color: var(--dark-bright) !important;
 }
 
 html[data-theme="dark"] .institution-hero-art,
@@ -6142,6 +6156,39 @@ html[data-theme="dark"] .stories-page select { color: #f7fbff; background: rgba(
 @media (max-width: 640px) { .stories-page .stories-header { padding-inline: 1rem; } .stories-page .stories-countries { padding: .55rem .7rem; font-size: .72rem; } .stories-page .stories-hero-grid { gap: 1rem; } .stories-page .stories-hero-copy h1 { font-size: clamp(2.8rem,14vw,4.5rem); } .stories-page .stories-toolbar { gap: .75rem; align-items: stretch; } .stories-page .stories-toolbar label { width: 100%; } .stories-page .story-card { min-height: 180px; padding: 1rem; } }
 @media (max-width: 640px) { .careers-home-cta-inner { flex-direction:column; align-items:flex-start; } .careers-home-cta-inner .button { width:100%; justify-content:center; } }
 
+/* Mobile reading and touch targets: keep the desktop card and destination layouts intact. */
+@media (max-width: 620px) {
+  .stories-list > .shell { width: calc(100% - 32px); }
+  .stories-page .story-card {
+    height: auto;
+    min-height: 0;
+    grid-template-columns: 88px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: 0 14px;
+    padding: 16px;
+  }
+  .stories-page .story-avatar { width: 88px; height: 112px; margin: 0; }
+  .stories-page .story-meta { min-width: 0; }
+  .stories-page .story-meta h2 { margin: 2px 0 5px; font-size: 17px; line-height: 1.2; }
+  .stories-page .story-meta p { font-size: 13px; line-height: 1.35; }
+  .stories-page .story-card .story-university { white-space: normal; overflow-wrap: anywhere; }
+  .stories-page .story-program {
+    margin-top: 14px;
+    padding: 9px 12px;
+    color: #143369;
+    font-size: 12px;
+    font-weight: 650;
+    line-height: 1.3;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .stories-page .stories-pagination { flex-wrap: wrap; gap: 8px; }
+  .stories-page .stories-pagination button { width: auto; min-width: 36px; min-height: 36px; padding: 0 8px; aspect-ratio: auto; }
+  .stories-page .stories-pagination button:first-child,
+  .stories-page .stories-pagination button:last-child { padding-inline: 12px; }
+  .your-country-name { white-space: normal; overflow: visible; line-height: 1.15; }
+}
+
 /* Compact, self-contained mobile navigation. */
 @media (max-width: 900px) {
   .site-header {
@@ -6454,4 +6501,23 @@ html[data-theme="dark"] .orbit-stage {
   .service-card {
     transition-duration: 0ms;
   }
+}
+
+/* Shared interaction polish for links, controls, and keyboard navigation. */
+html[data-theme="dark"] .development-hero {
+  background: radial-gradient(circle at 75% 20%, rgba(92, 153, 227, .22), transparent 34%), linear-gradient(145deg, #081d3d, #0b315f 78%, #0b3b5a);
+}
+
+html[data-theme="dark"] .development-description { color: #c8d9f3; }
+html[data-theme="dark"] .development-text-link { color: #a9dcff; }
+html[data-theme="dark"] .institution-hero .text-link { color: #8ed8ff; }
+
+:where(a, button, summary, input, select, textarea):focus-visible {
+  outline: 3px solid #2ea3f2;
+  outline-offset: 3px;
+}
+
+@media (max-width: 620px) {
+  :where(button, summary, input, select, textarea) { touch-action: manipulation; }
+  :where(input, select, textarea) { font-size: max(16px, 1rem); }
 }
