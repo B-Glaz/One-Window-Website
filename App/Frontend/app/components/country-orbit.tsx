@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { ArrowUpRight } from "lucide-react";
 const countries = [
   {
@@ -38,29 +38,7 @@ const clamp = (value: number, min = 0, max = 1) =>
   Math.min(max, Math.max(min, value));
 export function CountryOrbit() {
   const section = useRef<HTMLElement>(null);
-  const [progress, setProgress] = useState(0);
-  const [counts, setCounts] = useState<Record<string, number>>({});
-  useEffect(() => {
-    fetch("/Data/students.json")
-      .then(
-        (response) =>
-          response.json() as Promise<
-            {
-              country: string;
-            }[]
-          >,
-      )
-      .then((students) => {
-        setCounts(
-          students.reduce<Record<string, number>>((result, student) => {
-            result[student.country.toLowerCase()] =
-              (result[student.country.toLowerCase()] ?? 0) + 1;
-            return result;
-          }, {}),
-        );
-      })
-      .catch(() => setCounts({}));
-  }, []);
+  const cards = useRef<(HTMLAnchorElement | null)[]>([]);
   useEffect(() => {
     let frame = 0;
     const update = () => {
@@ -68,10 +46,22 @@ export function CountryOrbit() {
       const node = section.current;
       if (!node) return;
       const range = node.offsetHeight - window.innerHeight;
-      setProgress(
+      const progress =
         clamp(-node.getBoundingClientRect().top / Math.max(range, 1)) *
-          (countries.length - 1),
-      );
+        (countries.length - 1);
+      cards.current.forEach((card, index) => {
+        if (!card) return;
+        const phase = progress - index;
+        const distance = Math.abs(phase);
+        const visible = distance <= 1.08;
+        card.style.setProperty("--phase", `${phase}`);
+        card.style.setProperty("--y", `${Math.pow(distance, 1.6) * 92}px`);
+        card.style.setProperty("--r", `${phase * 16}deg`);
+        card.style.setProperty("--s", `${1 - Math.min(distance * 0.12, 0.24)}`);
+        card.style.setProperty("--opacity", `${visible ? clamp(1.22 - distance) : 0}`);
+        card.style.setProperty("--z", `${Math.round(10 - distance * 2)}`);
+        card.style.pointerEvents = visible ? "auto" : "none";
+      });
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -103,7 +93,7 @@ export function CountryOrbit() {
                     "--i": index,
                     "--px": `${(index * 43) % 97}%`,
                     "--py": `${12 + ((index * 31) % 74)}%`,
-                  } as React.CSSProperties
+                  } as CSSProperties
                 }
               />
             ),
@@ -120,10 +110,8 @@ export function CountryOrbit() {
         </div>
         <div className="orbit-stage" aria-label="Study destinations">
           {countries.map((country, index) => {
-            const phase = progress - index;
+            const phase = -index;
             const distance = Math.abs(phase);
-            const realCount = counts[country.name.toLowerCase()] ?? 0;
-            const count = Math.round(realCount * clamp(phase + 1));
             const visible = distance <= 1.08;
             const opacity = visible ? clamp(1.22 - distance) : 0;
             const style = {
@@ -134,12 +122,13 @@ export function CountryOrbit() {
               "--opacity": opacity,
               "--z": Math.round(10 - distance * 2),
               pointerEvents: visible ? "auto" : "none",
-            } as React.CSSProperties;
+            } as CSSProperties;
             return (
               <a
                 className={`orbit-card ${country.accent} ${country.name === "More" ? "orbit-more" : ""}`}
                 href={country.href}
                 key={country.name}
+                ref={(card) => { cards.current[index] = card; }}
                 style={style}
                 aria-label={
                   country.name === "More"
@@ -149,14 +138,7 @@ export function CountryOrbit() {
               >
                 <span className="country-index">0{index + 1}</span>
                 <span className="country-count">
-                  {country.name === "More" ? (
-                    <small>Browse every</small>
-                  ) : (
-                    <>
-                      <strong>{count}</strong>
-                      <small>student journeys</small>
-                    </>
-                  )}
+                  <small>{country.name === "More" ? "Browse every" : "Student journeys"}</small>
                 </span>
                 <img
                   src={country.image}

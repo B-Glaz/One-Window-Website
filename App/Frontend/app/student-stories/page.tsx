@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronDown, MapPin } from "lucide-react";
+import { ChevronDown, MapPin } from "lucide-react";
 import { Navigation } from "../components/navigation";
 
 // ─── Types and Configuration ───
@@ -91,8 +91,8 @@ export default function StudentStoriesPage() {
         <div className="shell">
           <div className="stories-toolbar">
             <p>
-              <strong>{filtered.length.toLocaleString()} students</strong> from{" "}
-              {country === "All countries" ? "every direction" : country}
+              Student stories from{" "}
+              <strong>{country === "All countries" ? "every direction" : country}</strong>
             </p>
             <label>
               <MapPin size={15} />
@@ -134,13 +134,6 @@ export default function StudentStoriesPage() {
                     <p className="story-university">{student.program}</p>
                   </div>
                   <p className="story-program">{student.university}</p>
-                  <button
-                    className="story-arrow"
-                    type="button"
-                    aria-label={`View story for ${student.name}`}
-                  >
-                    <ArrowRight size={20} />
-                  </button>
                 </article>
               );
             })}

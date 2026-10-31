@@ -74,11 +74,11 @@ export default async function CountryDetailPage({
               return (
                 <section key={`${section.slice(0, 24)}-${index}`}>
                   {heading ? <h2>{heading.replace(/:$/, "")}</h2> : null}
-                  {lines.map((line) =>
+                  {lines.map((line, lineIndex) =>
                     /^[-•]\s/.test(line) ? (
-                      <li key={line}>{line.replace(/^[-•]\s*/, "")}</li>
+                      <li key={`${lineIndex}-${line}`}>{line.replace(/^[-•]\s*/, "")}</li>
                     ) : (
-                      <p key={line}>{line}</p>
+                      <p key={`${lineIndex}-${line}`}>{line}</p>
                     ),
                   )}
                 </section>

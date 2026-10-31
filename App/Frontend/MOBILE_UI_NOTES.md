@@ -10,6 +10,10 @@ Keep these behaviours when updating the site or reusing the USA and UK landing p
 - Country choices keep their full labels visible on phones, including New Zealand and Dubai / UAE.
 - Utility pages such as Premium, Newsroom and Free Resources need a dark hero surface when the saved site theme is dark so headings remain legible. Institution hero secondary links also need readable contrast.
 - Keyboard focus should remain visible across links, buttons and form controls, and phone inputs should use at least 16 px text to avoid mobile browser zoom.
+- Keep primary mobile controls at least 42px high and page actions at least 44px high. This includes the header theme switch, counselling CTA, menu trigger, mobile-menu links, pagination and testimonial actions.
+- Embedded Zoho forms need enough fixed mobile height to expose the complete form without clipping; the shared mobile baseline is 720px and landing-page heroes may override it with a taller value.
+- Do not restore the nonfunctional arrow button on student cards. Interactive-looking controls must have a real action.
+- Keep the mobile footer logo inside the content edge and make footer links comfortably tappable.
 - When adding another destination landing page, edit its content file and check for country-specific copy, official links and image alt text. Keep the shared section structure and verify the mobile hero, horizontal tabs, cost table, visa section, consultation links and footer.
 
 Before shipping a mobile change, review the home page, countries list and detail, student stories, country chooser, and every landing page in a phone viewport. Also check the landing consultation links, header menu, section tabs, phone link and saved dark theme navigation. Run `npm run build` from the repository root.

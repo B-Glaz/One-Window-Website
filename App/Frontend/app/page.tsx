@@ -4,6 +4,7 @@ import { CountryOrbit } from "./components/country-orbit";
 import { ZohoContactForm } from "./components/zoho-contact-form";
 import { Footer } from "./components/footer";
 import { Navigation } from "./components/navigation";
+import { StudentTestimonials } from "./components/student-testimonials";
 import { articles } from "./blog/blog";
 
 // ─── Homepage Content ───
@@ -339,26 +340,7 @@ export default function Home() {
             <p className="eyebrow">Student voices</p>
             <h2>Guidance that feels personal.</h2>
           </div>
-          <div className="testimonial-grid">
-            <article className="glass reveal">
-              <p>“The right questions made my options feel much clearer.”</p>
-              <span>One Window student</span>
-            </article>
-            <article className="glass reveal">
-              <p>
-                “I could see the next step instead of trying to solve everything
-                at once.”
-              </p>
-              <span>One Window student</span>
-            </article>
-            <article className="glass reveal">
-              <p>
-                “The process felt considered, practical and genuinely
-                supportive.”
-              </p>
-              <span>One Window student</span>
-            </article>
-          </div>
+          <StudentTestimonials />
         </div>
       </section>
       <section className="section-pad homepage-journal">

@@ -909,10 +909,12 @@ h3 {
   background: linear-gradient(150deg, rgba(255, 255, 255, .96), rgba(241, 246, 255, .84));
   box-shadow: 0 26px 60px -30px rgba(20, 51, 105, .44), inset 0 1px rgba(255, 255, 255, .9);
   opacity: var(--opacity);
-  transform: translateX(calc(-50% + var(--phase) * min(36vw, 430px))) translateY(var(--y)) rotate(var(--r)) scale(var(--s));
+  transform: translate3d(calc(-50% + var(--phase) * min(36vw, 430px)), var(--y), 0) rotate(var(--r)) scale(var(--s));
   transform-origin: 50% 110%;
-  transition: transform .8s cubic-bezier(.22, .8, .25, 1), opacity .65s ease, box-shadow .3s ease, border-color .3s ease;
+  transition: box-shadow .3s ease, border-color .3s ease;
   will-change: transform, opacity;
+  backface-visibility: hidden;
+  contain: layout paint;
   backdrop-filter: blur(18px);
 }
 
@@ -2318,7 +2320,7 @@ h3 {
   .orbit-card {
     width: min(66vw, 274px);
     border-radius: 28px;
-    transform: translateX(calc(-50% + var(--phase) * 70vw)) translateY(var(--y)) rotate(var(--r)) scale(var(--s));
+    transform: translate3d(calc(-50% + var(--phase) * 70vw), var(--y), 0) rotate(var(--r)) scale(var(--s));
   }
 
   .country-name {
@@ -3115,8 +3117,10 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 6px 18px;
-  border-left: 1px solid rgba(255, 255, 255, .28);
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .045);
 }
 
 .strategy-proof-item strong {
@@ -5894,6 +5898,135 @@ html[data-theme="dark"] .nav-mobile-menu a {
   color: var(--navy)
 }
 
+.testimonial-card {
+  display: flex;
+  min-height: 340px;
+  flex-direction: column;
+  gap: 20px
+}
+
+.testimonial-grid .testimonial-name {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-size: 22px;
+  font-weight: 800
+}
+
+.testimonial-grid .testimonial-outcome {
+  display: block;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45
+}
+
+.testimonial-grid .testimonial-summary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65
+}
+
+.testimonial-card>button {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 52px;
+  margin-top: auto;
+  padding: 11px 14px;
+  border: 1px solid rgba(12,113,195,.16);
+  border-radius: 16px;
+  color: var(--navy);
+  background: rgba(237,245,255,.72);
+  cursor: pointer;
+  text-align: left;
+  transition: transform .25s ease, border-color .25s ease, background .25s ease
+}
+
+.testimonial-card>button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(12,113,195,.34);
+  background: #edf5ff
+}
+
+.testimonial-card>button span {
+  color: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.35
+}
+
+.testimonial-card>button svg { color: var(--blue); }
+
+.testimonial-modal {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(7,24,52,.56);
+  backdrop-filter: blur(12px)
+}
+
+.testimonial-modal-card {
+  position: relative;
+  width: min(480px, 100%);
+  padding: 34px;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 28px;
+  color: var(--navy);
+  background: #f8fbff;
+  box-shadow: 0 32px 90px -30px rgba(7,24,52,.68)
+}
+
+.testimonial-modal-card>svg { margin-bottom: 18px; color: var(--blue); }
+.testimonial-modal-card .eyebrow { margin-bottom: 8px; }
+.testimonial-modal-card h3 { margin: 0 36px 12px 0; font-size: 27px; line-height: 1.12; }
+.testimonial-modal-card>p:last-of-type { margin: 0; color: var(--muted); line-height: 1.55; }
+
+.testimonial-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(20,51,105,.12);
+  border-radius: 50%;
+  color: var(--navy);
+  background: white;
+  cursor: pointer
+}
+
+.testimonial-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 26px
+}
+
+.testimonial-modal-actions button,
+.testimonial-modal-actions a {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px 17px;
+  border: 1px solid rgba(20,51,105,.14);
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer
+}
+
+.testimonial-modal-actions button { color: var(--navy); background: white; }
+.testimonial-modal-actions a { color: white; background: var(--navy); }
+
 .journal-card {
   display: flex;
   flex-direction: column;
@@ -6002,6 +6135,14 @@ html[data-theme="dark"] .testimonial-grid article p {
   color: #f0f8ff
 }
 
+html[data-theme="dark"] .testimonial-grid .testimonial-summary { color: #c7d8ea; }
+html[data-theme="dark"] .testimonial-card>button { color: #edf6ff; border-color: rgba(133,204,255,.24); background: rgba(8,35,75,.7); }
+html[data-theme="dark"] .testimonial-modal-card { color: #edf6ff; border-color: rgba(133,204,255,.25); background: #0b2b59; }
+html[data-theme="dark"] .testimonial-modal-card h3 { color: #f3f8ff; }
+html[data-theme="dark"] .testimonial-modal-card>p:last-of-type { color: #c7d8ea; }
+html[data-theme="dark"] .testimonial-modal-close,
+html[data-theme="dark"] .testimonial-modal-actions button { color: #edf6ff; border-color: rgba(133,204,255,.22); background: #123b72; }
+
 @media(max-width:760px) {
 
   .homepage-proof-grid,
@@ -6015,6 +6156,13 @@ html[data-theme="dark"] .testimonial-grid article p {
     box-shadow: none;
     margin-top: 8px
   }
+
+  .testimonial-card { min-height: 0; padding: 22px; }
+  .testimonial-modal-card { padding: 28px 22px 22px; border-radius: 22px; }
+  .testimonial-modal-card h3 { font-size: 23px; }
+  .testimonial-modal-actions { align-items: stretch; flex-direction: column-reverse; }
+  .testimonial-modal-actions button,
+  .testimonial-modal-actions a { width: 100%; }
 }
 
 /* Keep the hero copy and orbit cards in one responsive vertical layout. */
@@ -6183,10 +6331,21 @@ html[data-theme="dark"] .stories-page select { color: #f7fbff; background: rgba(
     overflow-wrap: anywhere;
   }
   .stories-page .stories-pagination { flex-wrap: wrap; gap: 8px; }
-  .stories-page .stories-pagination button { width: auto; min-width: 36px; min-height: 36px; padding: 0 8px; aspect-ratio: auto; }
+  .stories-page .stories-pagination button { width: auto; min-width: 44px; min-height: 44px; padding: 0 10px; aspect-ratio: auto; }
   .stories-page .stories-pagination button:first-child,
   .stories-page .stories-pagination button:last-child { padding-inline: 12px; }
   .your-country-name { white-space: normal; overflow: visible; line-height: 1.15; }
+  .blog-read-label,
+  .development-text-link,
+  .institution-hero .text-link { display: inline-flex; min-height: 44px; align-items: center; }
+  .site-footer { padding-top: 52px; }
+  .site-footer .footer-brand { min-height: 44px; margin-left: 0; }
+  .site-footer .footer-grid a:not(.brand) { display: inline-flex; min-height: 40px; align-items: center; }
+  .site-footer .footer-bottom { margin-top: 28px; }
+  .zoho-form-shell,
+  .zoho-form-shell iframe { height: 720px; }
+  main :where(button, .button, [role="button"]) { min-height: 44px; }
+  .ai-float { right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); min-height: 46px; }
 }
 
 /* Compact, self-contained mobile navigation. */
@@ -6239,23 +6398,29 @@ html[data-theme="dark"] .stories-page select { color: #f7fbff; background: rgba(
     display: none;
   }
 
+  .site-header .brand {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+  }
+
   .site-header .nav-actions {
     gap: 6px;
     margin-left: auto;
   }
 
   .site-header .theme-toggle {
-    width: 30px;
-    height: 30px;
-    flex: 0 0 30px;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
   }
 
   .site-header .nav-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 34px;
-    padding: 7px 10px;
+    min-height: 42px;
+    padding: 8px 10px;
     font-size: 11px;
     line-height: 1;
     white-space: nowrap;
@@ -6263,15 +6428,15 @@ html[data-theme="dark"] .stories-page select { color: #f7fbff; background: rgba(
 
   .site-header .nav-mobile-menu {
     position: static;
-    flex: 0 0 34px;
-    width: 34px;
+    flex: 0 0 42px;
+    width: 42px;
   }
 
   .site-header .nav-mobile-menu summary {
     display: grid;
     place-items: center;
-    width: 34px;
-    height: 34px;
+    width: 42px;
+    height: 42px;
     padding: 0;
     border-radius: 50%;
     font-size: 17px;
@@ -6298,6 +6463,9 @@ html[data-theme="dark"] .stories-page select { color: #f7fbff; background: rgba(
   }
 
   .site-header .nav-mobile-panel a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
     padding: 10px 12px;
     font-size: 14px;
     line-height: 1.25;
@@ -6307,20 +6475,22 @@ html[data-theme="dark"] .stories-page select { color: #f7fbff; background: rgba(
     background: rgba(8, 35, 75, .96);
     border-color: rgba(133, 204, 255, .28);
   }
+
+  .scroll-cue { display: none; }
 }
 
 @media (max-width: 360px) {
   .site-header .brand {
-    flex-basis: 94px;
-    width: 94px;
+    flex-basis: 88px;
+    width: 88px;
   }
 
   .site-header .brand .logo-mobile {
-    width: 94px;
+    width: 88px;
   }
 
   .site-header .nav-cta {
-    padding-inline: 8px;
+    padding-inline: 7px;
     font-size: 10px;
   }
 }
@@ -6511,6 +6681,22 @@ html[data-theme="dark"] .development-hero {
 html[data-theme="dark"] .development-description { color: #c8d9f3; }
 html[data-theme="dark"] .development-text-link { color: #a9dcff; }
 html[data-theme="dark"] .institution-hero .text-link { color: #8ed8ff; }
+
+/* Corner safety net: explicit component radii still take precedence. */
+:where(
+  article,
+  button,
+  input,
+  select,
+  textarea,
+  iframe,
+  [class$="-card"],
+  [class$="-panel"],
+  [class$="-tile"],
+  [class$="-item"]
+) {
+  border-radius: 16px;
+}
 
 :where(a, button, summary, input, select, textarea):focus-visible {
   outline: 3px solid #2ea3f2;
