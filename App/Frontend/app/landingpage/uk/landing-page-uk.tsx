@@ -80,9 +80,9 @@ export function UkLandingPage() {
 
   return (
     <main className={styles.page}>
-      <Navigation disableThemeToggle counsellingHref="#uk-enquiry-form" />
+      <Navigation disableThemeToggle counsellingHref="#uk-hero-form" />
 
-      {/* HERO: Edit hero copy and image in content.ts. */}
+      {/* HERO: Edit hero copy and form labels in content.ts. */}
       <section className={styles.hero}>
         <div className={styles.canvas}>
           <div className={styles.heroCopy}>
@@ -90,7 +90,7 @@ export function UkLandingPage() {
             <h1>{content.hero.title}</h1>
             <p className={styles.heroDescription}>{content.hero.description}</p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href="#uk-enquiry-form">
+              <a className={styles.primaryButton} href="#uk-hero-form">
                 {content.hero.primaryCta} <ArrowRight size={17} />
               </a>
               <a className={styles.phoneLink} href={content.phone.href}>
@@ -103,16 +103,45 @@ export function UkLandingPage() {
               ))}
             </div>
           </div>
-          <div className={styles.heroMedia}>
+          <div className={styles.heroForm} id="uk-hero-form">
+            <p>{content.hero.formEyebrow}</p>
+            <h2>{content.hero.formTitle}</h2>
+            <ZohoContactForm country="UK" loading="eager" />
+          </div>
+        </div>
+      </section>
+
+      {/* COUNTRY HERO: Keep immediately after the form-first hero. */}
+      <section className={styles.countryHero} aria-label="Explore studying in the UK">
+        <div className={styles.countryCanvas}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>{content.hero.eyebrow}</p>
+            <h2>{content.hero.title}</h2>
+            <p className={styles.heroDescription}>{content.hero.description}</p>
+            <div className={styles.heroActions}>
+              <a className={styles.primaryButton} href="#uk-hero-form">
+                {content.hero.primaryCta} <ArrowRight size={17} />
+              </a>
+              <a className={styles.phoneLink} href={content.phone.href}>
+                <Phone size={16} /> {content.hero.secondaryCta}
+              </a>
+            </div>
+            <div className={styles.heroProof} aria-label="What One Window can help with">
+              {content.hero.proofPoints.map((point) => (
+                <span key={point}><CheckCircle2 size={16} />{point}</span>
+              ))}
+            </div>
+          </div>
+          <div className={styles.countryMedia}>
             <Image
               alt={content.hero.imageAlt}
               fill
               priority
-              sizes="(max-width: 720px) calc(100vw - 32px), (max-width: 1200px) calc(100vw - 72px), 1120px"
+              sizes="(max-width: 980px) calc(100vw - 32px), 560px"
               src={content.hero.image}
               unoptimized
             />
-            <div className={styles.heroBadge}>
+            <div className={styles.countryBadge}>
               <span>One clear plan</span>
               <strong>Shortlist · Applications · Visa</strong>
             </div>

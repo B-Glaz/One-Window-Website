@@ -13,3 +13,11 @@ Keep these behaviours when updating the site or reusing the USA and UK landing p
 - When adding another destination landing page, edit its content file and check for country-specific copy, official links and image alt text. Keep the shared section structure and verify the mobile hero, horizontal tabs, cost table, visa section, consultation links and footer.
 
 Before shipping a mobile change, review the home page, countries list and detail, student stories, country chooser, and every landing page in a phone viewport. Also check the landing consultation links, header menu, section tabs, phone link and saved dark theme navigation. Run `npm run build` from the repository root.
+
+## Landing page hero
+
+- Keep landing pages light-only, independent of the main website theme.
+- Use the conversion-first hero pattern: guidance copy and proof points beside the embedded Zoho form on desktop, stacked copy-first on screens below 980px.
+- Place a country-specific visual hero immediately after the form-first hero on every destination landing page.
+- Keep the form embedded in the page rather than in a popup. Country-specific hero text and form labels belong in that landing page's `content.ts` file.
+- Preserve a minimum 44px touch target for hero CTAs and verify there is no horizontal overflow at 390px.

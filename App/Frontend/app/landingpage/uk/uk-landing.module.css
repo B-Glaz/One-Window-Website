@@ -20,32 +20,37 @@
 }
 
 .hero {
+  position: relative;
   padding: 104px 0 0;
-  background: linear-gradient(180deg, #dfe6f3, #eef1f7);
+  overflow: hidden;
+  background: radial-gradient(circle at 10% 12%, rgba(107,212,242,.24), transparent 28%), radial-gradient(circle at 92% 72%, rgba(255,151,180,.2), transparent 30%), linear-gradient(180deg, #f8fbff, #eaf2fb);
 }
 
 .canvas {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) minmax(420px, .9fr);
   gap: clamp(18px, 2.8vw, 36px);
   align-items: stretch;
   overflow: hidden;
   padding: clamp(18px, 2.5vw, 30px);
   border: 1px solid rgba(255,255,255,.86);
   border-radius: 34px 34px 0 0;
-  background: #f8f8fa;
+  background: rgba(255,255,255,.8);
+  backdrop-filter: blur(18px);
   box-shadow: 0 34px 90px -50px rgba(20, 34, 67, .55);
 }
 
 .heroCopy {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 620px;
   margin: 0;
   padding: clamp(40px, 5vw, 68px) clamp(18px, 3vw, 38px);
   text-align: left;
 }
+
+.hero .heroCopy { padding-top: clamp(44px, 4vw, 58px); }
 
 .eyebrow,
 .sectionHeading > p {
@@ -60,7 +65,12 @@
 .hero h1 {
   max-width: 620px;
   margin: 0 0 22px;
-  color: var(--usa-ink);
+  padding-bottom: .08em;
+  color: var(--usa-navy);
+  background: linear-gradient(105deg, var(--usa-navy) 0 62%, #e6418d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: clamp(44px, 5vw, 62px);
   font-weight: 700;
   line-height: .96;
@@ -136,23 +146,6 @@
 
 .heroProof svg { color: var(--usa-blue); }
 
-.heroMedia {
-  position: relative;
-  min-height: 560px;
-  overflow: hidden;
-  border-radius: 26px;
-  background: #c8d2e4;
-}
-
-.heroMedia::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 48%, rgba(10, 25, 51, .5));
-  pointer-events: none;
-}
-
-.heroMedia img,
 .lifeMedia img {
   width: 100%;
   height: 100%;
@@ -160,7 +153,73 @@
   object-fit: cover;
 }
 
-.heroBadge {
+.heroForm {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  min-width: 0;
+  margin: 20px 0;
+  padding: clamp(18px, 2.5vw, 28px);
+  border: 1px solid rgba(20,51,105,.12);
+  border-radius: 28px;
+  background: rgba(255,255,255,.93);
+  box-shadow: 0 28px 70px -38px rgba(20,51,105,.52);
+  scroll-margin-top: 110px;
+}
+.heroForm > p { margin: 0 0 7px; color: var(--usa-blue); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.heroForm > h2 { margin: 0 0 18px; color: var(--usa-navy); font-size: clamp(25px, 2.5vw, 34px); line-height: 1.08; letter-spacing: -.035em; }
+.heroForm :global(.zoho-form-shell),
+.heroForm :global(.zoho-form-shell iframe) { height: 720px; }
+.heroForm :global(.zoho-form-shell) { border-radius: 20px; box-shadow: none; }
+
+.countryHero {
+  position: relative;
+  z-index: 2;
+  padding: 34px 0;
+  background: linear-gradient(180deg, #eaf2fb, #dfe6f3);
+  box-shadow: 0 -22px 42px -34px rgba(20,51,105,.58);
+}
+
+.countryCanvas {
+  width: min(1180px, calc(100% - 32px));
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.8vw, 36px);
+  margin-inline: auto;
+  padding: clamp(18px, 2.5vw, 30px) 0;
+}
+
+.countryHero h2 {
+  max-width: 620px;
+  margin: 0 0 22px;
+  padding-bottom: .08em;
+  color: var(--usa-ink);
+  font-size: clamp(44px, 5vw, 62px);
+  font-weight: 700;
+  line-height: .96;
+  letter-spacing: -.06em;
+  text-wrap: balance;
+}
+
+.countryMedia {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #c8d2e4;
+}
+
+.countryMedia::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 48%, rgba(10,25,51,.5));
+  pointer-events: none;
+}
+
+.countryMedia img { object-fit: cover; }
+
+.countryBadge {
   position: absolute;
   z-index: 1;
   right: 24px;
@@ -170,12 +229,12 @@
   border: 1px solid rgba(255,255,255,.5);
   border-radius: 18px;
   color: white;
-  background: rgba(20, 38, 75, .74);
+  background: rgba(20,38,75,.74);
   backdrop-filter: blur(16px);
 }
 
-.heroBadge span { font-size: 11px; opacity: .78; }
-.heroBadge strong { font-size: 14px; }
+.countryBadge span { font-size: 11px; opacity: .78; }
+.countryBadge strong { font-size: 14px; }
 
 .sectionNav {
   position: sticky;
@@ -558,8 +617,10 @@
 
 @media (max-width: 980px) {
   .canvas { grid-template-columns: 1fr; }
+  .countryCanvas { grid-template-columns: 1fr; }
   .heroCopy { max-width: 760px; }
-  .heroMedia { min-height: 0; height: 500px; }
+  .heroForm { width: 100%; margin: 0; }
+  .countryMedia { min-height: 0; height: 500px; }
   .highlightGrid { grid-template-columns: 1fr 1fr; }
   .highlightGrid article:first-child { grid-column: span 2; }
   .reasonGrid, .eligibilityGrid, .scholarshipGrid { grid-template-columns: repeat(2, 1fr); }
@@ -573,9 +634,14 @@
   .canvas { width: calc(100% - 16px); padding: 8px; border-radius: 24px 24px 0 0; }
   .heroCopy { padding: 42px 16px 34px; }
   .hero h1 { font-size: clamp(42px, 13vw, 62px); }
-  .heroMedia { height: 420px; border-radius: 20px; }
-  .heroMedia img { object-position: 55% center; }
-  .heroBadge { right: 14px; bottom: 14px; }
+  .heroForm { padding: 16px; border-radius: 20px; scroll-margin-top: 138px; }
+  .heroForm :global(.zoho-form-shell),
+  .heroForm :global(.zoho-form-shell iframe) { height: 900px; }
+  .countryHero { padding: 16px 0 24px; }
+  .countryCanvas { width: calc(100% - 32px); padding: 8px 0; }
+  .countryMedia { height: 420px; border-radius: 20px; }
+  .countryMedia img { object-position: 55% center; }
+  .countryBadge { right: 14px; bottom: 14px; }
   .sectionNav { top: 66px; padding: 8px; }
   .sectionNav > div { justify-content: flex-start; }
   .section { padding: 64px 0; scroll-margin-top: 126px; }
@@ -614,8 +680,8 @@
   .heroActions { align-items: stretch; flex-direction: column; }
   .primaryButton { width: 100%; }
   .phoneLink { justify-content: center; min-height: 44px; }
-  .heroMedia { height: 350px; }
-  .heroBadge { left: 12px; right: 12px; }
+  .countryMedia { height: 350px; }
+  .countryBadge { left: 12px; right: 12px; }
   .sectionHeading h2, .consultation h2 { font-size: 38px; }
   .heroProof { display: grid; justify-content: start; width: fit-content; margin-inline: 0; text-align: left; }
 }

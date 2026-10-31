@@ -22,12 +22,13 @@ export const usaLandingContent = {
       "Get a university shortlist based on your profile, a realistic budget view and an application roadmap built around your course, intake and goals.",
     primaryCta: "Plan my USA applications",
     secondaryCta: "Call a USA advisor",
+    formEyebrow: "Free USA consultation",
+    formTitle: "Tell us where you want to go.",
     proofPoints: [
       "Profile based shortlist",
       "Application roadmap",
       "Funding and visa guidance",
     ],
-    // HERO IMAGE: Replace with a wide 16:10 campus image. Keep descriptive alt text.
     image:
       "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1800&q=82",
     imageAlt:

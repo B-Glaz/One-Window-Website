@@ -80,9 +80,9 @@ export function UsaLandingPage() {
 
   return (
     <main className={styles.page}>
-      <Navigation disableThemeToggle counsellingHref="#usa-enquiry-form" />
+      <Navigation disableThemeToggle counsellingHref="#usa-hero-form" />
 
-      {/* HERO: Edit hero copy and image in content.ts. */}
+      {/* HERO: Edit hero copy and form labels in content.ts. */}
       <section className={styles.hero}>
         <div className={styles.canvas}>
           <div className={styles.heroCopy}>
@@ -90,7 +90,7 @@ export function UsaLandingPage() {
             <h1>{content.hero.title}</h1>
             <p className={styles.heroDescription}>{content.hero.description}</p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href="#usa-enquiry-form">
+              <a className={styles.primaryButton} href="#usa-hero-form">
                 {content.hero.primaryCta} <ArrowRight size={17} />
               </a>
               <a className={styles.phoneLink} href={content.phone.href}>
@@ -103,16 +103,45 @@ export function UsaLandingPage() {
               ))}
             </div>
           </div>
-          <div className={styles.heroMedia}>
+          <div className={styles.heroForm} id="usa-hero-form">
+            <p>{content.hero.formEyebrow}</p>
+            <h2>{content.hero.formTitle}</h2>
+            <ZohoContactForm country="USA" loading="eager" />
+          </div>
+        </div>
+      </section>
+
+      {/* PREVIOUS HERO: Retained beneath the conversion hero as requested. */}
+      <section className={styles.previousHero} aria-label="Explore studying in the USA">
+        <div className={styles.previousCanvas}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>{content.hero.eyebrow}</p>
+            <h2>{content.hero.title}</h2>
+            <p className={styles.heroDescription}>{content.hero.description}</p>
+            <div className={styles.heroActions}>
+              <a className={styles.primaryButton} href="#usa-hero-form">
+                {content.hero.primaryCta} <ArrowRight size={17} />
+              </a>
+              <a className={styles.phoneLink} href={content.phone.href}>
+                <Phone size={16} /> {content.hero.secondaryCta}
+              </a>
+            </div>
+            <div className={styles.heroProof} aria-label="What One Window can help with">
+              {content.hero.proofPoints.map((point) => (
+                <span key={point}><CheckCircle2 size={16} />{point}</span>
+              ))}
+            </div>
+          </div>
+          <div className={styles.previousMedia}>
             <Image
               alt={content.hero.imageAlt}
               fill
               priority
-              sizes="(max-width: 720px) calc(100vw - 32px), (max-width: 1200px) calc(100vw - 72px), 1120px"
+              sizes="(max-width: 980px) calc(100vw - 32px), 560px"
               src={content.hero.image}
               unoptimized
             />
-            <div className={styles.heroBadge}>
+            <div className={styles.previousBadge}>
               <span>One clear plan</span>
               <strong>Shortlist · Applications · Visa</strong>
             </div>

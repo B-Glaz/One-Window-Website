@@ -7,6 +7,8 @@ export const ukLandingContent = {
     description: "Build a focused university shortlist, understand the real cost of study and move from course research to CAS and visa preparation with a plan built around your goals.",
     primaryCta: "Plan my UK applications",
     secondaryCta: "Call a UK advisor",
+    formEyebrow: "Free UK consultation",
+    formTitle: "Tell us where you want to go.",
     proofPoints: ["Profile based shortlist", "UCAS and direct application guidance", "Funding and visa preparation"],
     image: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=1800&q=82",
     imageAlt: "Big Ben and the Palace of Westminster in London",
