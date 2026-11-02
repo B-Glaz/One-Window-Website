@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PopupBanner } from "./components/popup-banner";
 import "./globals.css";
 export const metadata: Metadata = {
   title: "One Window | Study Abroad Guidance",
@@ -24,7 +25,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <PopupBanner />
+      </body>
     </html>
   );
 }

@@ -86,6 +86,7 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
     ["About Us", "/about"],
     ...serviceLinks,
     ...resourceLinks,
+    ["Events", "/events"],
     ["Premium", "/premium"],
   ];
   return (
@@ -131,6 +132,7 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
             onToggle={() => setOpenMenu((current) => current === "resources" ? null : "resources")}
             onClose={() => setOpenMenu(null)}
           />
+          <Link href="/events">Events</Link>
           <Link className="nav-premium" href="/premium">
             Premium
           </Link>
