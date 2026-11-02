@@ -68,9 +68,10 @@
   padding-bottom: .08em;
   color: var(--usa-navy);
   background: linear-gradient(105deg, var(--usa-navy) 0 62%, #e6418d 100%);
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
   font-size: clamp(44px, 5vw, 62px);
   font-weight: 700;
   line-height: .96;
@@ -168,9 +169,9 @@
 }
 .heroForm > p { margin: 0 0 7px; color: var(--usa-blue); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
 .heroForm > h2 { margin: 0 0 18px; color: var(--usa-navy); font-size: clamp(25px, 2.5vw, 34px); line-height: 1.08; letter-spacing: -.035em; }
-.heroForm :global(.zoho-form-shell),
-.heroForm :global(.zoho-form-shell iframe) { height: 720px; }
-.heroForm :global(.zoho-form-shell) { border-radius: 20px; box-shadow: none; }
+.heroForm [class~="zoho-form-shell"],
+.heroForm [class~="zoho-form-shell"] iframe { height: 720px; }
+.heroForm [class~="zoho-form-shell"] { border-radius: 20px; box-shadow: none; }
 
 .previousHero {
   position: relative;
@@ -338,9 +339,7 @@
 }
 
 .introStatement a,
-.introStatement button,
 .fieldPanel a,
-.fieldPanel button,
 .inlineCta,
 .officialLink {
   display: inline-flex;
@@ -455,8 +454,7 @@
 .fieldPanel > span { color: #aebfde; font-size: 12px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
 .fieldPanel > div { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0; }
 .fieldPanel i { padding: 8px 11px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; font-size: 13px; font-style: normal; }
-.fieldPanel a,
-.fieldPanel button { margin-top: auto; color: white; }
+.fieldPanel a { margin-top: auto; color: white; }
 
 .eligibilityGrid {
   display: grid;
@@ -592,26 +590,7 @@
 .callCard strong { color: white; font-size: 17px; }
 .consultationForm { min-width: 0; padding: clamp(16px, 2vw, 24px); border: 1px solid rgba(255,255,255,.18); border-radius: 28px; background: rgba(255,255,255,.08); scroll-margin-top: 150px; }
 .consultationForm h3 { margin: 0 0 16px; color: white; font-size: clamp(22px, 2.5vw, 30px); }
-.consultationForm :global(.zoho-form-shell), .consultationForm :global(.zoho-form-shell iframe) { height: 900px; }
-
-.nextSteps {
-  padding: clamp(26px, 4vw, 42px);
-  border: 1px solid rgba(255,255,255,.18);
-  border-radius: 28px;
-  background: linear-gradient(145deg, rgba(12,113,195,.34), rgba(170,174,254,.16));
-}
-.nextSteps > span { color: #bcd8f1; font-size: 11px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
-.nextSteps ol { display: grid; gap: 0; margin: 24px 0 28px; padding: 0; list-style: none; counter-reset: next-step; }
-.nextSteps li { position: relative; padding: 18px 0 18px 50px; border-top: 1px solid rgba(255,255,255,.15); counter-increment: next-step; }
-.nextSteps li::before { content: counter(next-step, decimal-leading-zero); position: absolute; left: 0; top: 20px; color: var(--usa-aqua); font-size: 12px; font-weight: 800; }
-.nextSteps strong { color: white; font-size: 18px; }
-.nextSteps p { margin: 6px 0 0; color: #cdd9ea; line-height: 1.5; }
-
-.sources { padding: 28px 0; color: #9eabc0; background: #101d38; }
-.sources .container { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
-.sources strong { color: white; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
-.sources .container > div { display: flex; flex-wrap: wrap; gap: 8px 18px; }
-.sources a { font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
+.consultationForm [class~="zoho-form-shell"], .consultationForm [class~="zoho-form-shell"] iframe { height: 900px; }
 
 .mobileConversionBar { display: none; }
 
@@ -635,8 +614,8 @@
   .heroCopy { padding: 42px 16px 34px; }
   .hero h1 { font-size: clamp(42px, 13vw, 62px); }
   .heroForm { padding: 16px; border-radius: 20px; scroll-margin-top: 138px; }
-  .heroForm :global(.zoho-form-shell),
-  .heroForm :global(.zoho-form-shell iframe) { height: 900px; }
+  .heroForm [class~="zoho-form-shell"],
+  .heroForm [class~="zoho-form-shell"] iframe { height: 900px; }
   .previousHero { padding: 16px 0 24px; }
   .previousCanvas { width: calc(100% - 32px); padding: 8px 0; }
   .previousMedia { height: 420px; border-radius: 20px; }
@@ -653,7 +632,6 @@
   .sourceNote a { grid-column: 2; }
   .eligibilityGrid article, .scholarshipGrid article, .careerGrid article { min-height: 0; }
   .lifeMedia { height: 360px; }
-  .sources .container { grid-template-columns: 1fr; }
   .conversionBand { align-items: flex-start; flex-direction: column; gap: 22px; }
   .mobileConversionBar {
     position: fixed;

@@ -1,9 +1,10 @@
 export const usaLandingContent = {
-  // EDIT HERE: Update the phone number, CTA labels, and section navigation.
+  // SHARED CONTACT
   phone: {
     display: "9154 89 89 44",
     href: "tel:+919154898944",
   },
+  // SECTION NAVIGATION
   navigation: [
     ["Overview", "overview"],
     ["Universities", "universities"],
@@ -15,6 +16,7 @@ export const usaLandingContent = {
     ["Careers", "careers"],
     ["FAQs", "faqs"],
   ],
+  // 01. HERO
   hero: {
     eyebrow: "USA admissions guidance for Indian students",
     title: "Turn your USA ambition into a clear application plan.",
@@ -34,21 +36,7 @@ export const usaLandingContent = {
     imageAlt:
       "Students walking through a leafy university campus in the United States",
   },
-  conversion: {
-    bandEyebrow: "Not sure where your profile fits?",
-    bandTitle: "Turn your grades, budget and goals into a focused university shortlist.",
-    bandCta: "Get my shortlist plan",
-    formEyebrow: "Your next step",
-    formTitle: "Get a personalised USA study roadmap.",
-    formDescription:
-      "Share your academic background, preferred course and intended intake. One Window will help you identify the decisions, documents and timelines that matter next.",
-    formBenefits: [
-      "University options matched to your profile",
-      "A clearer application and intake timeline",
-      "Practical guidance on budget, funding and visa preparation",
-    ],
-    mobileCta: "Get guidance",
-  },
+  // 02. OVERVIEW
   highlights: [
     ["Flexible study", "Explore majors, minors, electives and interdisciplinary pathways."],
     ["Research ecosystem", "Learn through labs, faculty projects and work connected to industry."],
@@ -60,6 +48,7 @@ export const usaLandingContent = {
     ["Learning beyond lectures", "Projects, laboratories, campus organisations and eligible practical training can connect classroom learning with real world contexts."],
     ["A global classroom", "International students study alongside people from varied cultures, industries and academic backgrounds."],
   ],
+  // 03. UNIVERSITIES AND FIELDS
   universities: {
     intro:
       "The right university is the one that fits your academic profile, budget, learning style and career direction. Rankings are one input, not the entire decision.",
@@ -80,12 +69,20 @@ export const usaLandingContent = {
       "Data Science",
     ],
   },
+  // 04. ELIGIBILITY
   eligibility: [
     ["Academic record", "Secondary school credentials for undergraduate study or a recognised bachelor’s degree for postgraduate study. Required grades and prerequisites differ by programme."],
     ["English proficiency", "Universities may accept tests such as TOEFL, IELTS, PTE or Duolingo English Test. Minimum scores and waiver rules vary."],
     ["Standardised tests", "SAT, ACT, GRE or GMAT policies vary by institution. Many programmes make tests optional, while others still require or recommend scores."],
     ["Application materials", "Transcripts, recommendations, essays or statements, a résumé for some programmes, and portfolios or prerequisites for selected courses."],
   ],
+  // 05. ELIGIBILITY CTA
+  eligibilityCta: {
+    eyebrow: "Not sure where your profile fits?",
+    title: "Turn your grades, budget and goals into a focused university shortlist.",
+    label: "Get my shortlist plan",
+  },
+  // 06. ADMISSIONS PROCESS
   admissions: [
     ["01", "Define your direction", "Clarify course interests, preferred locations, budget and intake."],
     ["02", "Build a balanced shortlist", "Compare curriculum, outcomes, requirements, total cost and campus fit."],
@@ -94,18 +91,21 @@ export const usaLandingContent = {
     ["05", "Evaluate decisions", "Compare offers, funding, conditions, programme fit and total cost before committing."],
     ["06", "Prepare for your visa", "After accepting an offer, work through the I-20, SEVIS and F-1 process."],
   ],
+  // 07. COSTS
   costs: [
     ["Public four year tuition & fees", "$9,800 average", "NCES 2022 to 2023 public institution average; international rates are often higher than local resident rates."],
     ["Private nonprofit tuition & fees", "$40,700 average", "NCES 2022 to 2023 private nonprofit average before institutional aid."],
     ["Housing, food & daily living", "Varies widely", "City, accommodation type, transport and personal spending materially change the budget."],
     ["Health insurance, books & fees", "Plan separately", "University insurance, programme fees, supplies and travel may sit outside headline tuition."],
   ],
+  // 08. SCHOLARSHIPS AND FUNDING
   scholarships: [
     ["University merit awards", "Often linked to academic strength, leadership, talent or the overall application."],
     ["Aid based on financial need", "Available at some institutions; policies for international applicants differ substantially."],
     ["Department and graduate funding", "Assistantships, fellowships or tuition support may exist for eligible graduate students."],
     ["External scholarships", "Foundations, trusts, employers and professional bodies may support specific subjects or applicant groups."],
   ],
+  // 09. VISA PROCESS
   visaSteps: [
     "Receive admission from an institution approved by SEVP and obtain Form I-20.",
     "Pay the required SEVIS I-901 fee and keep the receipt.",
@@ -114,11 +114,13 @@ export const usaLandingContent = {
     "Prepare your passport, I-20, DS-160 confirmation, academic records and funding evidence.",
     "Attend the interview. A visa permits travel to a U.S. port of entry; admission is decided by CBP.",
   ],
+  // 10. INTAKES
   intakes: [
     ["Fall · August to September", "The broadest programme choice. Many undergraduate deadlines fall between November and January for the following academic year."],
     ["Spring · Jan", "A useful alternative for selected universities and programmes; availability and funding may be narrower."],
     ["Summer · May to June", "More common for selected courses, pathway programmes and short term study than for full degree entry."],
   ],
+  // 11. STUDENT LIFE
   life: {
     // STUDENT LIFE IMAGE: Replace with a wide image showing genuine campus activity.
     image:
@@ -130,11 +132,13 @@ export const usaLandingContent = {
       ["What to budget for", "Plan for deposits, utilities, local transport, phone service, winter clothing and travel, not only rent and food."],
     ],
   },
+  // 12. CAREERS
   careers: [
     ["Campus and curricular experience", "Eligible students may explore work on campus or authorised Curricular Practical Training where it forms part of the curriculum. Rules must be confirmed with the university DSO."],
     ["Optional Practical Training", "Eligible F-1 students may apply for temporary work authorisation related to their field of study. Approval is not automatic and students must follow USCIS and SEVP requirements."],
     ["STEM OPT extension", "Qualifying graduates with eligible STEM degrees may be able to seek a 24 month extension after completing OPT, subject to current rules and employer requirements."],
   ],
+  // 13. FAQS
   faqs: [
     ["When should I start planning for the USA?", "Ideally 12 to 18 months before your intended intake. This gives you time for research, tests if required, essays, recommendations, funding and visa preparation."],
     ["Do all U.S. universities require the SAT, GRE or GMAT?", "No. Testing policies vary by university, programme and intake. Check the official admissions page for every programme on your shortlist."],
@@ -143,6 +147,20 @@ export const usaLandingContent = {
     ["Does an F-1 visa guarantee entry or employment?", "No. A visa allows you to seek entry at a U.S. port of entry, and CBP makes the admission decision. Employment and practical training require separate eligibility and authorisation."],
     ["Can One Window help after I receive offers?", "Yes. The team can help you compare programme fit, funding, conditions, documentation and the next steps toward enrolment and visa preparation."],
   ],
+  // 14. FINAL CONSULTATION CTA
+  finalCta: {
+    eyebrow: "Your next step",
+    title: "Get a personalised USA study roadmap.",
+    description:
+      "Share your academic background, preferred course and intended intake. One Window will help you identify the decisions, documents and timelines that matter next.",
+    benefits: [
+      "University options matched to your profile",
+      "A clearer application and intake timeline",
+      "Practical guidance on budget, funding and visa preparation",
+    ],
+  },
+  mobileCta: "Get guidance",
+  // REFERENCE LINKS
   sources: [
     ["EducationUSA: complete your application", "https://educationusa.state.gov/your-5-steps-us-study/complete-your-application/undergraduate"],
     ["EducationUSA: finance your studies", "https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies"],

@@ -249,11 +249,11 @@ export function UkLandingPage() {
           </div>
           <aside className={styles.conversionBand}>
             <div>
-              <span>{content.conversion.bandEyebrow}</span>
-              <h3>{content.conversion.bandTitle}</h3>
+              <span>{content.eligibilityCta.eyebrow}</span>
+              <h3>{content.eligibilityCta.title}</h3>
             </div>
             <a href="#uk-enquiry-form">
-              {content.conversion.bandCta} <ArrowRight size={17} />
+              {content.eligibilityCta.label} <ArrowRight size={17} />
             </a>
           </aside>
         </div>
@@ -411,11 +411,11 @@ export function UkLandingPage() {
       <section className={styles.consultation} id="uk-consultation">
         <div className={`${styles.container} ${styles.consultationGrid}`}>
           <div>
-            <p className={styles.eyebrow}>{content.conversion.formEyebrow}</p>
-            <h2>{content.conversion.formTitle}</h2>
-            <p>{content.conversion.formDescription}</p>
+            <p className={styles.eyebrow}>{content.finalCta.eyebrow}</p>
+            <h2>{content.finalCta.title}</h2>
+            <p>{content.finalCta.description}</p>
             <ul className={styles.consultationBenefits}>
-              {content.conversion.formBenefits.map((benefit) => (
+              {content.finalCta.benefits.map((benefit) => (
                 <li key={benefit}><CheckCircle2 size={18} />{benefit}</li>
               ))}
             </ul>
@@ -431,7 +431,7 @@ export function UkLandingPage() {
       <Footer />
       {showMobileBar ? <aside className={styles.mobileConversionBar} aria-label="UK counselling actions">
         <a href={content.phone.href}><Phone size={17} /> Call</a>
-        <a href="#uk-enquiry-form">{content.conversion.mobileCta} <ArrowRight size={16} /></a>
+        <a href="#uk-enquiry-form">{content.mobileCta} <ArrowRight size={16} /></a>
       </aside> : null}
     </main>
   );

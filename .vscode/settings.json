@@ -4,5 +4,8 @@
   "editor.minimap.enabled": false,
   "editor.formatOnSave": true,
   "files.trimTrailingWhitespace": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "css.customData": [".vscode/css-custom-data.json"],
+  "scss.customData": [".vscode/css-custom-data.json"],
+  "less.customData": [".vscode/css-custom-data.json"]
 }

@@ -1,0 +1,337 @@
+.maltaPage {
+  --usa-ink: #172638;
+  --usa-navy: #133f55;
+  --usa-blue: #0786a7;
+  --usa-red: #f28a72;
+  --usa-lilac: #8ecbc8;
+  --usa-aqua: #4fd5d0;
+  --usa-soft: #eefaf8;
+  --usa-line: rgba(19, 78, 95, .14);
+  background: #e7f1ef;
+}
+
+.maltaPage h1 {
+  background: linear-gradient(105deg, #123e55 0 48%, #058ba7 66%, #ef7d68 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 8% 18%, rgba(79, 213, 208, .34), transparent 29%),
+    radial-gradient(circle at 92% 68%, rgba(242, 138, 114, .28), transparent 31%),
+    linear-gradient(150deg, #f7fffd 0%, #e8f8f5 48%, #fff0e9 100%);
+}
+
+.hero::before,
+.imageHero::before {
+  position: absolute;
+  content: "";
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: rgba(255, 205, 138, .24);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero::before {
+  top: 10%;
+  right: 9%;
+}
+
+.heroCanvas {
+  border-color: rgba(255, 255, 255, .92);
+  background: linear-gradient(145deg, rgba(255, 255, 255, .84), rgba(244, 255, 252, .68));
+  box-shadow: 0 38px 96px -52px rgba(14, 78, 91, .62);
+}
+
+.heroForm,
+.consultationForm {
+  overflow: hidden;
+  padding: 18px 0 0;
+  border-color: transparent;
+  background: #fff;
+  box-shadow: none;
+}
+
+.consultationForm {
+  padding: 18px 0 0;
+  border: 0;
+  background: #fff;
+}
+
+.consultationForm h3 {
+  margin-right: 20px;
+  margin-left: 20px;
+  color: var(--usa-navy);
+}
+
+.heroForm > p,
+.heroForm > h2 {
+  margin-right: clamp(20px, 2.5vw, 28px);
+  margin-left: clamp(20px, 2.5vw, 28px);
+}
+
+.maltaPage [class~="zoho-form-shell"] {
+  overflow: hidden;
+  border-radius: 0;
+  background: #fff;
+}
+
+.maltaPage [class~="zoho-form-shell"] iframe {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  background: #fff;
+}
+
+.imageHero {
+  position: relative;
+  background: linear-gradient(180deg, #e8f8f5, #e7f1ef);
+}
+
+.imageHero::before {
+  left: 12%;
+  bottom: -80px;
+}
+
+.previousMedia,
+.lifeMedia {
+  border: 1px solid rgba(255, 255, 255, .8);
+  box-shadow: 0 28px 60px -38px rgba(10, 72, 92, .65);
+}
+
+.softSection {
+  background:
+    radial-gradient(circle at 92% 12%, rgba(242, 138, 114, .11), transparent 28%),
+    #eef8f6;
+}
+
+.fieldPanel,
+.navySection,
+.consultation {
+  background:
+    radial-gradient(circle at 92% 12%, rgba(79, 213, 208, .18), transparent 30%),
+    linear-gradient(145deg, #123e55, #075d73 58%, #087f91);
+}
+
+.conversionBand {
+  background: linear-gradient(115deg, #123f55, #087e93 62%, #ef806c);
+  box-shadow: 0 24px 54px -32px rgba(8, 86, 105, .72);
+}
+
+.sourceNote {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  background: linear-gradient(115deg, rgba(225, 246, 242, .92), rgba(255, 239, 230, .9));
+}
+
+.sourceNote p {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.sourceNote a {
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.sourceNote a svg {
+  flex: 0 0 auto;
+}
+
+.visaCard {
+  background: linear-gradient(155deg, #123e55, #08758a 62%, #0b8e99);
+  box-shadow: 0 26px 60px -38px rgba(7, 74, 91, .78);
+}
+
+.visaCard a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+  color: #eaffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.intakeSection {
+  background:
+    radial-gradient(circle at 16% 32%, rgba(79, 213, 208, .18), transparent 30%),
+    linear-gradient(135deg, #e2f6f4, #fff0e7);
+}
+
+.careerSection {
+  background:
+    radial-gradient(circle at 88% 18%, rgba(242, 138, 114, .12), transparent 28%),
+    #edf6f4;
+}
+
+.highlightGrid,
+.reasonGrid,
+.typeGrid,
+.eligibilityGrid,
+.scholarshipGrid,
+.intakeGrid,
+.careerSection .careerGrid {
+  align-items: start;
+}
+
+.highlightGrid {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+}
+
+.highlightGrid article:first-child {
+  grid-row: span 2;
+  min-height: 0;
+  height: auto;
+}
+
+.highlightGrid article,
+.typeGrid article,
+.eligibilityGrid article,
+.scholarshipGrid article,
+.intakeGrid article,
+.careerSection .careerGrid article {
+  height: auto;
+  min-height: 0;
+}
+
+.highlightGrid h3,
+.reasonGrid h3,
+.typeGrid h3,
+.eligibilityGrid h3,
+.scholarshipGrid h3,
+.intakeGrid h3,
+.careerSection .careerGrid h3 {
+  margin-top: 12px;
+}
+
+.careerSection .careerGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.reasonGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 30px;
+}
+
+.eligibilityGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.scholarshipGrid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.scholarshipGrid article:nth-child(-n + 3) {
+  grid-column: span 4;
+}
+
+.scholarshipGrid article:nth-child(n + 4) {
+  grid-column: span 6;
+}
+
+.careerSection .careerGrid article {
+  min-height: 0;
+}
+
+.maltaPage article,
+.maltaPage details,
+.maltaPage a {
+  transition:
+    transform .45s cubic-bezier(.22, .61, .36, 1),
+    box-shadow .45s cubic-bezier(.22, .61, .36, 1),
+    border-color .45s ease,
+    background-color .45s ease,
+    color .45s ease;
+}
+
+.maltaPage article:hover {
+  border-color: rgba(7, 134, 167, .24);
+  box-shadow: 0 22px 50px -38px rgba(7, 94, 117, .65);
+}
+
+.mobileConversionBar a:last-child {
+  background: linear-gradient(110deg, #087a94, #0aa6aa 62%, #ef846e);
+}
+
+@media (max-width: 980px) {
+  .scholarshipGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .scholarshipGrid article:nth-child(n) {
+    grid-column: auto;
+  }
+
+  .scholarshipGrid article:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    background:
+      radial-gradient(circle at 18% 12%, rgba(79, 213, 208, .28), transparent 30%),
+      radial-gradient(circle at 86% 62%, rgba(242, 138, 114, .22), transparent 30%),
+      linear-gradient(160deg, #f7fffd, #edf9f6 52%, #fff4ed);
+  }
+
+  .heroCanvas {
+    background: rgba(255, 255, 255, .82);
+  }
+
+  .heroForm {
+    padding-top: 20px;
+  }
+
+  .heroForm > p,
+  .heroForm > h2 {
+    margin-right: 18px;
+    margin-left: 18px;
+  }
+
+  .reasonGrid,
+  .eligibilityGrid,
+  .scholarshipGrid,
+  .careerGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .scholarshipGrid article:nth-child(n) {
+    grid-column: auto;
+  }
+
+  .careerGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sourceNote a {
+    flex: 1 0 auto;
+  }
+
+  .highlightGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlightGrid article:first-child {
+    grid-row: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maltaPage article,
+  .maltaPage details,
+  .maltaPage a {
+    transition-duration: 0ms;
+  }
+}

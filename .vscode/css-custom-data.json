@@ -1,0 +1,21 @@
+{
+  "version": 1.1,
+  "properties": [
+    {
+      "name": "text-fill-color",
+      "description": "Standard companion to -webkit-text-fill-color. Browsers that do not recognize it ignore the declaration."
+    }
+  ],
+  "atDirectives": [],
+  "pseudoClasses": [],
+  "pseudoElements": [
+    {
+      "name": "::-webkit-scrollbar",
+      "description": "WebKit scrollbar pseudo-element."
+    },
+    {
+      "name": "::-webkit-details-marker",
+      "description": "WebKit disclosure marker pseudo-element."
+    }
+  ]
+}
