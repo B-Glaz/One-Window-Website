@@ -81,7 +81,7 @@ export default function EventsPage() {
               </span>
               <span>
                 <Clock3 aria-hidden="true" size={19} />
-                3:30 PM IST
+                6:30 PM IST
               </span>
             </div>
 
@@ -98,7 +98,7 @@ export default function EventsPage() {
           >
             <Image
               className={styles.poster}
-              src="/campaigns/malta-dream-destination-or-detour.png"
+              src="/campaigns/malta-webinar-event-page.png"
               alt="Malta Dream Destination or Expensive Detour live webinar poster"
               width={1122}
               height={1402}

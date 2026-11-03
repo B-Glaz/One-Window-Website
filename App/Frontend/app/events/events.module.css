@@ -440,12 +440,12 @@
 @media (max-width: 760px) {
   .hero {
     min-height: auto;
-    padding: 92px 0 66px;
+    padding: 88px 0 58px;
   }
 
   .heroGrid {
     grid-template-columns: 1fr;
-    gap: 42px;
+    gap: 32px;
   }
 
   .heroContent {
@@ -453,7 +453,17 @@
   }
 
   .hero h1 {
-    font-size: clamp(42px, 12vw, 60px);
+    max-width: 570px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: clamp(38px, 10.5vw, 54px);
+    line-height: 1;
+  }
+
+  .hero h1 span {
+    margin-top: 5px;
+    font-size: 0.94em;
+    line-height: 1.02;
   }
 
   .lead,
@@ -494,11 +504,24 @@
   }
 
   .hero h1 {
-    font-size: clamp(39px, 12vw, 50px);
+    font-size: clamp(36px, 9.8vw, 44px);
+  }
+
+  .lead {
+    margin-top: 22px;
+    font-size: 19px;
+    line-height: 1.35;
   }
 
   .intro {
-    font-size: 16px;
+    max-width: 344px;
+    font-size: 15.5px;
+    line-height: 1.56;
+  }
+
+  .eventMeta {
+    margin-top: 22px;
+    margin-bottom: 18px;
   }
 
   .eventMeta {

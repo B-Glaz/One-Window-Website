@@ -41,6 +41,13 @@ export function PopupBanner() {
       aria-label={popupBanner.title}
       aria-hidden={!isReady}
     >
+      <button
+        className={`${styles.mobileBackdrop} ${isReady && isExpanded ? styles.mobileBackdropVisible : ""}`}
+        type="button"
+        aria-label={`Dismiss ${popupBanner.title}`}
+        onClick={collapseBanner}
+      />
+
       <div
         className={`${styles.panel} ${isReady && isExpanded ? styles.panelOpen : ""}`}
       >

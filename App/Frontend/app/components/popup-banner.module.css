@@ -11,6 +11,10 @@
   pointer-events: auto;
 }
 
+.mobileBackdrop {
+  display: none;
+}
+
 .panel {
   position: absolute;
   right: 0;
@@ -160,8 +164,37 @@
 
 @media (max-width: 620px) {
   .root {
-    right: 14px;
+    right: auto;
+    left: 14px;
     bottom: max(14px, env(safe-area-inset-bottom));
+  }
+
+  .mobileBackdrop {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    display: block;
+    width: 100vw;
+    height: 100dvh;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: rgba(3, 17, 40, 0.42);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 420ms ease,
+      visibility 0s linear 420ms;
+    backdrop-filter: blur(7px) saturate(0.82);
+    -webkit-backdrop-filter: blur(7px) saturate(0.82);
+  }
+
+  .mobileBackdropVisible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
   }
 
   .panel {
@@ -170,6 +203,7 @@
     bottom: auto;
     left: 50%;
     top: 50%;
+    z-index: 2;
     width: min(390px, calc(100vw - 32px));
     transform: translate3d(-50%, calc(-50% + 24px), 0) scale(0.92);
     transform-origin: center;
@@ -187,6 +221,8 @@
   }
 
   .bubble {
+    position: relative;
+    z-index: 3;
     min-height: 0;
     padding: 6px;
     border-radius: 14px;
@@ -201,7 +237,8 @@
 @media (prefers-reduced-motion: reduce) {
   .panel,
   .bubble,
-  .closeButton {
+  .closeButton,
+  .mobileBackdrop {
     transition-duration: 0ms;
   }
 }
