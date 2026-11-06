@@ -8,19 +8,31 @@ import { ThemeToggle } from "./theme-toggle";
 // ─── Navigation Configuration ───
 
 type NavLink = [string, string];
+const aboutLinks: NavLink[] = [
+  ["Our consultants", "/about/consultants"],
+  ["Our results", "/about/results"],
+  ["Our story", "/about/story"],
+  ["Careers", "/careers"],
+];
+const countryLinks: NavLink[] = [
+  ["USA", "/countries/usa"],
+  ["UK", "/countries/uk"],
+  ["Australia", "/countries/australia"],
+  ["Ireland", "/countries/ireland"],
+  ["France", "/countries/france"],
+  ["Germany", "/countries/germany"],
+  ["Canada", "/countries/canada"],
+  ["Dubai", "/countries/dubai"],
+  ["All countries", "/countries"],
+];
 const serviceLinks: NavLink[] = [
-  ["For Schools", "/for-schools"],
-  ["For Foreign Universities", "/for-foreign-universities"],
-  ["For Indian Universities", "/for-indian-universities"],
-  ["Undergraduate preparation", "/undergraduate-preparation"],
-  ["Undergraduate admissions", "/undergraduate-admissions"],
-  ["Postgraduate admissions", "/postgraduate-admissions"],
-  ["Education counselling", "/#consultation"],
+  ["Bachelors", "/for-foreign-universities/bachelors-recruitment"],
+  ["Masters", "/for-foreign-universities/masters-recruitment"],
+  ["Master of Business Administration", "/for-foreign-universities/masters-recruitment"],
 ];
 const resourceLinks: NavLink[] = [
-  ["Blogs", "/blog"],
-  ["Free resources", "/free-resources"],
-  ["Student stories", "/student-stories"],
+  ["Tools", "/resources/tools"],
+  ["Do it yourself", "/resources/do-it-yourself"],
 ];
 function Menu({
   label,
@@ -83,10 +95,13 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
     };
   }, []);
   const mobileLinks: NavLink[] = [
-    ["About Us", "/about"],
+    ["About us", "/about"],
+    ...aboutLinks,
+    ["Countries", "/countries"],
+    ...countryLinks,
     ...serviceLinks,
     ...resourceLinks,
-    ["Events", "/events"],
+    ["Event", "/events"],
     ["Premium", "/premium"],
   ];
   return (
@@ -117,7 +132,20 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
           />
         </Link>
         <div className="nav-links">
-          <Link href="/about">About Us</Link>
+          <Menu
+            label="About us"
+            links={aboutLinks}
+            open={openMenu === "about"}
+            onToggle={() => setOpenMenu((current) => current === "about" ? null : "about")}
+            onClose={() => setOpenMenu(null)}
+          />
+          <Menu
+            label="Countries"
+            links={countryLinks}
+            open={openMenu === "countries"}
+            onToggle={() => setOpenMenu((current) => current === "countries" ? null : "countries")}
+            onClose={() => setOpenMenu(null)}
+          />
           <Menu
             label="Services"
             links={serviceLinks}
@@ -132,7 +160,7 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
             onToggle={() => setOpenMenu((current) => current === "resources" ? null : "resources")}
             onClose={() => setOpenMenu(null)}
           />
-          <Link href="/events">Events</Link>
+          <Link href="/events">Event</Link>
           <Link className="nav-premium" href="/premium">
             Premium
           </Link>
