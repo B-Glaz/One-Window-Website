@@ -1461,6 +1461,118 @@ h3 {
   color: white;
 }
 
+/* Consultant-led homepage panel */
+.consultant-home-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.consultant-home-grid {
+  display: grid;
+  grid-template-columns: minmax(250px, .8fr) minmax(0, 1.6fr);
+  gap: clamp(28px, 6vw, 88px);
+  align-items: center;
+}
+
+.consultant-home-copy h2 {
+  max-width: 520px;
+  margin: 10px 0 16px;
+}
+
+.consultant-home-copy > p:not(.eyebrow) {
+  max-width: 430px;
+  color: var(--muted);
+}
+
+.consultant-home-copy .button {
+  margin-top: 24px;
+}
+
+.consultant-home-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.consultant-home-card {
+  min-height: 280px;
+  padding: 22px;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.consultant-home-card:nth-child(2) {
+  transform: translateY(-18px);
+}
+
+.consultant-home-card:nth-child(3) {
+  transform: translateY(10px);
+}
+
+.consultant-avatar {
+  width: 86px;
+  height: 86px;
+  margin-bottom: auto;
+  display: grid;
+  place-items: center;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #d0e1ff, #aaaefe);
+  color: var(--navy);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.consultant-home-card h3 {
+  margin: 28px 0 4px;
+}
+
+.consultant-home-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.consultant-home-card .consultant-role {
+  color: var(--blue);
+  font-size: .85rem;
+  font-weight: 650;
+  margin-bottom: 10px;
+}
+
+html[data-theme="dark"] .consultant-home-card {
+  background: linear-gradient(145deg, rgba(39, 93, 155, .38), rgba(12, 49, 100, .3));
+  border-color: rgba(147, 206, 255, .25);
+}
+
+html[data-theme="dark"] .consultant-home-card p {
+  color: rgba(231, 242, 255, .78);
+}
+
+@media (max-width: 900px) {
+  .consultant-home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .consultant-home-cards {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 620px) {
+  .consultant-home-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .consultant-home-card,
+  .consultant-home-card:nth-child(2),
+  .consultant-home-card:nth-child(3) {
+    min-height: 210px;
+    transform: none;
+  }
+}
+
 .section-heading.light h2,
 .section-heading.light p {
   color: white;

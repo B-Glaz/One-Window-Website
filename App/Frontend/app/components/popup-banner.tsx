@@ -93,7 +93,7 @@ export function PopupBanner() {
       >
         <span className={styles.bubbleDate} aria-hidden="true">
           <small>NOV</small>
-          <strong>05</strong>
+          <strong>18</strong>
         </span>
         <span>{popupBanner.bubbleLabel}</span>
       </button>

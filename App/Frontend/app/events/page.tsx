@@ -77,7 +77,7 @@ export default function EventsPage() {
             <div className={styles.eventMeta} aria-label="Webinar schedule">
               <span>
                 <CalendarDays aria-hidden="true" size={19} />
-                5 November
+                18 November
               </span>
               <span>
                 <Clock3 aria-hidden="true" size={19} />

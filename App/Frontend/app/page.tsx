@@ -73,6 +73,11 @@ const proof = [
   ["98%", "Admissions & Visas Approved"],
   ["$ 12 Million", "Successful Scholarships"],
 ] as const;
+const consultants = [
+  ["AM", "Aarav Mehta", "Senior student advisor", "Clarity for your next decision."],
+  ["MT", "Maya Thomas", "Country & university specialist", "Helping you find the right fit."],
+  ["NM", "Nisha Menon", "Student success advisor", "Your success, our priority."],
+] as const;
 export default function Home() {
   return (
     <main>
@@ -89,6 +94,33 @@ export default function Home() {
         <ArrowRight size={15} />
       </a>
       <CountryOrbit />
+
+      {/* Consultant-led guidance */}
+      <section className="section-pad consultant-home-section">
+        <div className="shell consultant-home-grid">
+          <div className="consultant-home-copy reveal">
+            <p className="eyebrow">Meet our consultants</p>
+            <h2>Your personal study abroad team.</h2>
+            <p>
+              From course clarity to university selection, get thoughtful guidance
+              that keeps your goals and the details in view.
+            </p>
+            <a className="button button-secondary" href="/about/consultants">
+              Meet the full team <ArrowRight size={17} />
+            </a>
+          </div>
+          <div className="consultant-home-cards">
+            {consultants.map(([initials, name, role, note]) => (
+              <article className="consultant-home-card glass reveal" key={name}>
+                <div className="consultant-avatar" aria-hidden="true">{initials}</div>
+                <h3>{name}</h3>
+                <p className="consultant-role">{role}</p>
+                <p>{note}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Trust and Accreditation */}
       <section className="strategy-proof">

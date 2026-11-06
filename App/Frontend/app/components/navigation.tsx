@@ -10,8 +10,8 @@ import { ThemeToggle } from "./theme-toggle";
 type NavLink = [string, string];
 const aboutLinks: NavLink[] = [
   ["Our consultants", "/about/consultants"],
-  ["Our results", "/about/results"],
-  ["Our story", "/about/story"],
+  ["Our results", "/about/our-results"],
+  ["Our story", "/about/ourstory"],
   ["Careers", "/careers"],
 ];
 const countryLinks: NavLink[] = [
