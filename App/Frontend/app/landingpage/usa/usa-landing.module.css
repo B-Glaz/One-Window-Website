@@ -580,6 +580,7 @@
 
 .consultation { padding: clamp(52px, 5vw, 72px) 0; color: white; background: var(--usa-navy); scroll-margin-top: 140px; }
 .consultationGrid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(38px, 7vw, 90px); align-items: start; }
+.singleColumn { grid-template-columns: minmax(0, 1fr); }
 .consultation h2 { color: white; }
 .consultationGrid > div > p:not(.eyebrow) { color: #cbd5e6; }
 .consultationBenefits { display: grid; gap: 12px; margin: 28px 0 0; padding: 0; list-style: none; }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, X } from "lucide-react";
-import { ZohoContactForm } from "../../components/zoho-contact-form";
+import { ZohoContactForm } from "../components/zoho-contact-form";
 
 export function CountryCounselling({ country }: { country: string }) {
   const [modalOpen, setModalOpen] = useState(false);

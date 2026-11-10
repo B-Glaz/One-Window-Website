@@ -16,7 +16,7 @@ import {
 import { Navigation } from "../../components/navigation";
 import { Footer } from "../../components/footer";
 import { ZohoContactForm } from "../../components/zoho-contact-form";
-import { usaLandingContent as content } from "./content";
+import { usaLandingContent as content } from "../../countries-content/usa-landing";
 import styles from "./usa-landing.module.css";
 
 const sectionIcons = [GraduationCap, BookOpen, Landmark];
@@ -39,9 +39,10 @@ function SectionHeading({
   );
 }
 
-export function UsaLandingPage() {
+export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top" | "bottom" }) {
   const [activeSection, setActiveSection] = useState("overview");
   const [showMobileBar, setShowMobileBar] = useState(false);
+  const formTarget = formPlacement === "top" ? "#usa-hero-form" : "#usa-enquiry-form";
 
   useLayoutEffect(() => {
     const root = document.documentElement;
@@ -80,17 +81,17 @@ export function UsaLandingPage() {
 
   return (
     <main className={styles.page}>
-      <Navigation disableThemeToggle counsellingHref="#usa-hero-form" />
+      <Navigation disableThemeToggle counsellingHref={formTarget} />
 
       {/* HERO: Edit hero copy and form labels in content.ts. */}
-      <section className={styles.hero}>
+      {formPlacement === "top" ? <section className={styles.hero}>
         <div className={styles.canvas}>
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>{content.hero.eyebrow}</p>
             <h1>{content.hero.title}</h1>
             <p className={styles.heroDescription}>{content.hero.description}</p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href="#usa-hero-form">
+              <a className={styles.primaryButton} href={formTarget}>
                 {content.hero.primaryCta} <ArrowRight size={17} />
               </a>
               <a className={styles.phoneLink} href={content.phone.href}>
@@ -103,13 +104,13 @@ export function UsaLandingPage() {
               ))}
             </div>
           </div>
-          <div className={styles.heroForm} id="usa-hero-form">
+          {formPlacement === "top" ? <div className={styles.heroForm} id="usa-hero-form">
             <p>{content.hero.formEyebrow}</p>
             <h2>{content.hero.formTitle}</h2>
             <ZohoContactForm country="USA" loading="eager" />
-          </div>
+          </div> : null}
         </div>
-      </section>
+      </section> : null}
 
       {/* PREVIOUS HERO: Retained beneath the conversion hero as requested. */}
       <section className={styles.previousHero} aria-label="Explore studying in the USA">
@@ -119,7 +120,7 @@ export function UsaLandingPage() {
             <h2>{content.hero.title}</h2>
             <p className={styles.heroDescription}>{content.hero.description}</p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href="#usa-hero-form">
+              <a className={styles.primaryButton} href={formTarget}>
                 {content.hero.primaryCta} <ArrowRight size={17} />
               </a>
               <a className={styles.phoneLink} href={content.phone.href}>
@@ -176,7 +177,7 @@ export function UsaLandingPage() {
             />
             <div className={styles.introStatement}>
               <strong>One Window helps you turn a large set of options into a focused shortlist based on evidence.</strong>
-              <a href="#usa-enquiry-form">Discuss your profile <ArrowRight size={16} /></a>
+              <a href={formTarget}>Discuss your profile <ArrowRight size={16} /></a>
             </div>
           </div>
           <div className={styles.highlightGrid}>
@@ -224,7 +225,7 @@ export function UsaLandingPage() {
               <div>
                 {content.universities.fields.map((field) => <i key={field}>{field}</i>)}
               </div>
-              <a href="#usa-enquiry-form">Find universities that fit your goals <ArrowRight size={16} /></a>
+              <a href={formTarget}>Find universities that fit your goals <ArrowRight size={16} /></a>
             </aside>
           </div>
         </div>
@@ -252,7 +253,7 @@ export function UsaLandingPage() {
               <span>{content.eligibilityCta.eyebrow}</span>
               <h3>{content.eligibilityCta.title}</h3>
             </div>
-            <a href="#usa-enquiry-form">
+            <a href={formTarget}>
               {content.eligibilityCta.label} <ArrowRight size={17} />
             </a>
           </aside>
@@ -275,7 +276,7 @@ export function UsaLandingPage() {
               </article>
             ))}
           </div>
-          <a className={styles.lightButton} href="#usa-enquiry-form">
+          <a className={styles.lightButton} href={formTarget}>
             Get help with your applications <ArrowRight size={17} />
           </a>
         </div>
@@ -319,7 +320,7 @@ export function UsaLandingPage() {
               <article key={title}><CheckCircle2 size={20} /><h3>{title}</h3><p>{text}</p></article>
             ))}
           </div>
-          <a className={styles.inlineCta} href="#usa-enquiry-form">Explore scholarship opportunities <ArrowRight size={16} /></a>
+          <a className={styles.inlineCta} href={formTarget}>Explore scholarship opportunities <ArrowRight size={16} /></a>
         </div>
       </section>
 
@@ -409,7 +410,7 @@ export function UsaLandingPage() {
 
       {/* CONSULTATION CTA */}
       <section className={styles.consultation} id="usa-consultation">
-        <div className={`${styles.container} ${styles.consultationGrid}`}>
+        <div className={`${styles.container} ${styles.consultationGrid} ${formPlacement === "top" ? styles.singleColumn : ""}`}>
           <div>
             <p className={styles.eyebrow}>{content.finalCta.eyebrow}</p>
             <h2>{content.finalCta.title}</h2>
@@ -421,17 +422,17 @@ export function UsaLandingPage() {
             </ul>
             <a className={styles.callCard} href={content.phone.href}><Phone size={20} /><span>Prefer to speak now?<strong>{content.phone.display}</strong></span></a>
           </div>
-          <div className={styles.consultationForm} id="usa-enquiry-form">
+          {formPlacement === "bottom" ? <div className={styles.consultationForm} id="usa-enquiry-form">
             <h3>Tell us about your study plans</h3>
             <ZohoContactForm country="USA" />
-          </div>
+          </div> : null}
         </div>
       </section>
 
       <Footer />
       {showMobileBar ? <aside className={styles.mobileConversionBar} aria-label="USA counselling actions">
         <a href={content.phone.href}><Phone size={17} /> Call</a>
-        <a href="#usa-enquiry-form">{content.mobileCta} <ArrowRight size={16} /></a>
+        <a href={formTarget}>{content.mobileCta} <ArrowRight size={16} /></a>
       </aside> : null}
     </main>
   );

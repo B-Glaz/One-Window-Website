@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { ArrowRight, Check, GraduationCap } from "lucide-react";
-import { destinationPages, getDestination } from "../content";
+import { destinationPages, getDestination } from "../countries-content/destination-pages";
 import { Footer } from "../components/footer";
 import { ZohoContactForm } from "../components/zoho-contact-form";
 import { Navigation } from "../components/navigation";

@@ -1,0 +1,10 @@
+
+  Another vinext dev server is already running.
+  
+  - Local:        http://127.0.0.1:5173
+  - PID:          12664
+  - Dir:          C:\Digital Manager\CODE\OW Website\Main site\site\App\Frontend
+  
+  You can access the existing server at http://127.0.0.1:5173,
+  or run `taskkill /PID 12664 /F` to stop it and start a new one.
+

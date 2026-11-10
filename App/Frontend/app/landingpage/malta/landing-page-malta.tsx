@@ -16,7 +16,7 @@ import {
 import { Footer } from "../../components/footer";
 import { Navigation } from "../../components/navigation";
 import { ZohoContactForm } from "../../components/zoho-contact-form";
-import { maltaLandingContent as content } from "./content";
+import { maltaLandingContent as content } from "../../countries-content/malta-landing";
 import styles from "../usa/usa-landing.module.css";
 import theme from "./malta-landing.module.css";
 
@@ -40,9 +40,10 @@ function SectionHeading({
   );
 }
 
-export function MaltaLandingPage() {
+export function MaltaLandingPage({ formPlacement = "top" }: { formPlacement?: "top" | "bottom" }) {
   const [activeSection, setActiveSection] = useState("overview");
   const [showMobileBar, setShowMobileBar] = useState(false);
+  const formTarget = formPlacement === "top" ? "#malta-hero-form" : "#malta-enquiry-form";
 
   useLayoutEffect(() => {
     const root = document.documentElement;
@@ -86,16 +87,16 @@ export function MaltaLandingPage() {
 
   return (
     <main className={`${styles.page} ${theme.maltaPage}`}>
-      <Navigation disableThemeToggle counsellingHref="#malta-hero-form" />
+      <Navigation disableThemeToggle counsellingHref={formTarget} />
 
-      <section className={`${styles.hero} ${theme.hero}`}>
+      {formPlacement === "top" ? <section className={`${styles.hero} ${theme.hero}`}>
         <div className={`${styles.canvas} ${theme.heroCanvas}`}>
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>{content.hero.eyebrow}</p>
             <h1>{content.hero.title}</h1>
             <p className={styles.heroDescription}>{content.hero.description}</p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href="#malta-hero-form">
+              <a className={styles.primaryButton} href={formTarget}>
                 {content.hero.primaryCta} <ArrowRight size={17} />
               </a>
               <a className={styles.phoneLink} href={content.phone.href}>
@@ -114,13 +115,13 @@ export function MaltaLandingPage() {
               ))}
             </div>
           </div>
-          <div className={`${styles.heroForm} ${theme.heroForm}`} id="malta-hero-form">
+          {formPlacement === "top" ? <div className={`${styles.heroForm} ${theme.heroForm}`} id="malta-hero-form">
             <p>{content.hero.formEyebrow}</p>
             <h2>{content.hero.formTitle}</h2>
             <ZohoContactForm country="Malta" loading="eager" />
-          </div>
+          </div> : null}
         </div>
-      </section>
+      </section> : null}
 
       <section
         className={`${styles.previousHero} ${theme.imageHero}`}
@@ -135,7 +136,7 @@ export function MaltaLandingPage() {
               choosing an institution.
             </p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href="#malta-enquiry-form">
+              <a className={styles.primaryButton} href={formTarget}>
                 Get my Malta profile check <ArrowRight size={17} />
               </a>
             </div>
@@ -182,7 +183,7 @@ export function MaltaLandingPage() {
             />
             <div className={styles.introStatement}>
               <strong>{content.overview.statement}</strong>
-              <a href="#malta-enquiry-form">
+              <a href={formTarget}>
                 Discuss your profile <ArrowRight size={16} />
               </a>
             </div>
@@ -236,7 +237,7 @@ export function MaltaLandingPage() {
                   <i key={field}>{field}</i>
                 ))}
               </div>
-              <a href="#malta-enquiry-form">
+              <a href={formTarget}>
                 Find recognised courses that fit <ArrowRight size={16} />
               </a>
             </aside>
@@ -265,7 +266,7 @@ export function MaltaLandingPage() {
               <span>{content.eligibilityCta.eyebrow}</span>
               <h3>{content.eligibilityCta.title}</h3>
             </div>
-            <a href="#malta-enquiry-form">
+            <a href={formTarget}>
               {content.eligibilityCta.label} <ArrowRight size={17} />
             </a>
           </aside>
@@ -293,7 +294,7 @@ export function MaltaLandingPage() {
               </article>
             ))}
           </div>
-          <a className={styles.lightButton} href="#malta-enquiry-form">
+          <a className={styles.lightButton} href={formTarget}>
             Get help with your Malta application <ArrowRight size={17} />
           </a>
         </div>
@@ -347,7 +348,7 @@ export function MaltaLandingPage() {
               </article>
             ))}
           </div>
-          <a className={styles.inlineCta} href="#malta-enquiry-form">
+          <a className={styles.inlineCta} href={formTarget}>
             Review my Malta budget <ArrowRight size={16} />
           </a>
           <a
@@ -502,7 +503,7 @@ export function MaltaLandingPage() {
         className={`${styles.consultation} ${theme.consultation}`}
         id="malta-consultation"
       >
-        <div className={`${styles.container} ${styles.consultationGrid}`}>
+        <div className={`${styles.container} ${styles.consultationGrid} ${formPlacement === "top" ? styles.singleColumn : ""}`}>
           <div>
             <p className={styles.eyebrow}>{content.finalCta.eyebrow}</p>
             <h2>{content.finalCta.title}</h2>
@@ -523,10 +524,10 @@ export function MaltaLandingPage() {
               </span>
             </a>
           </div>
-          <div className={`${styles.consultationForm} ${theme.consultationForm}`} id="malta-enquiry-form">
+          {formPlacement === "bottom" ? <div className={`${styles.consultationForm} ${theme.consultationForm}`} id="malta-enquiry-form">
             <h3>Tell us about your Malta study plans</h3>
             <ZohoContactForm country="Malta" />
-          </div>
+          </div> : null}
         </div>
       </section>
 
@@ -540,7 +541,7 @@ export function MaltaLandingPage() {
           <a href={content.phone.href}>
             <Phone size={17} /> Call
           </a>
-          <a href="#malta-enquiry-form">
+          <a href={formTarget}>
             {content.mobileCta} <ArrowRight size={16} />
           </a>
         </aside>

@@ -4,36 +4,7 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
-
-// ─── Navigation Configuration ───
-
-type NavLink = [string, string];
-const aboutLinks: NavLink[] = [
-  ["Our consultants", "/about/consultants"],
-  ["Our results", "/about/our-results"],
-  ["Our story", "/about/ourstory"],
-  ["Careers", "/careers"],
-];
-const countryLinks: NavLink[] = [
-  ["USA", "/countries/usa"],
-  ["UK", "/countries/uk"],
-  ["Australia", "/countries/australia"],
-  ["Ireland", "/countries/ireland"],
-  ["France", "/countries/france"],
-  ["Germany", "/countries/germany"],
-  ["Canada", "/countries/canada"],
-  ["Dubai", "/countries/dubai"],
-  ["All countries", "/countries"],
-];
-const serviceLinks: NavLink[] = [
-  ["Bachelors", "/for-foreign-universities/bachelors-recruitment"],
-  ["Masters", "/for-foreign-universities/masters-recruitment"],
-  ["Master of Business Administration", "/for-foreign-universities/masters-recruitment"],
-];
-const resourceLinks: NavLink[] = [
-  ["Tools", "/resources/tools"],
-  ["Do it yourself", "/resources/do-it-yourself"],
-];
+import { aboutLinks, countryLinks, resourceLinks, serviceLinks, type NavLink } from "../navigation/config";
 function Menu({
   label,
   links,
@@ -60,7 +31,13 @@ function Menu({
       </button>
       <div aria-hidden={!open} className="nav-menu-panel">
         {links.map(([text, href]) => (
-          <Link href={href} key={href} onClick={onClose} tabIndex={open ? 0 : -1}>
+          <Link
+            className={href === "/countries" ? "nav-directory-link" : undefined}
+            href={href}
+            key={href}
+            onClick={onClose}
+            tabIndex={open ? 0 : -1}
+          >
             {text}
           </Link>
         ))}
@@ -176,7 +153,11 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
           </summary>
           <div className="nav-mobile-panel">
             {mobileLinks.map(([text, href]) => (
-              <Link href={href} key={`${text}-${href}`}>
+              <Link
+                className={text === "All countries" ? "nav-directory-link" : undefined}
+                href={href}
+                key={`${text}-${href}`}
+              >
                 {text}
               </Link>
             ))}
