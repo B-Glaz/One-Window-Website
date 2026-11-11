@@ -11,7 +11,7 @@ import { Footer } from "../components/footer";
 import { Navigation } from "../components/navigation";
 import styles from "./events.module.css";
 
-const registrationUrl = "https://forms.zohopublic.in/onewindow/form/MaltaWebinar/formperma/63OBncjY2W2We-z7gI7dru8anDUgKvzkvBDmAXny_Zo";
+const registrationUrl = "https://meet.zoho.in/mwqd-dbi-ajk";
 
 const sessionTopics = [
   {
@@ -81,7 +81,7 @@ export default function EventsPage() {
               </span>
               <span>
                 <Clock3 aria-hidden="true" size={19} />
-                6:00 PM IST
+                6:30 PM IST
               </span>
             </div>
 
