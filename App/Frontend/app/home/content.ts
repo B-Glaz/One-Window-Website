@@ -27,7 +27,7 @@ export const proof = [
 ] as const;
 
 export const consultants = [
-  ["AM", "Aarav Mehta", "Senior student advisor", "Clarity for your next decision."],
-  ["MT", "Maya Thomas", "Country & university specialist", "Helping you find the right fit."],
-  ["NM", "Nisha Menon", "Student success advisor", "Your success, our priority."],
+  ["AM", "Anurag Jain", "Senior student advisor", "Clarity for your next decision."],
+  ["MT", "Ankit Jain", "Country & university specialist", "Helping you find the right fit."],
+  ["NM", "Rakesh", "Student success advisor", "Your success, our priority."],
 ] as const;

@@ -81,7 +81,7 @@ export function UkLandingPage({ formPlacement = "top" }: { formPlacement?: "top"
 
   return (
     <main className={styles.page}>
-      <Navigation disableThemeToggle counsellingHref={formTarget} />
+      <Navigation disableThemeToggle={formPlacement === "top"} counsellingHref={formTarget} />
 
       {/* HERO: Edit hero copy and form labels in content.ts. */}
       {formPlacement === "top" ? <section className={styles.hero}>

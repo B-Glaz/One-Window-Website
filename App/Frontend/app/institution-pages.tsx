@@ -14,6 +14,11 @@ export type InstitutionPage = {
   offers: Array<[string, string]>;
   initiatives: Array<[string, string]>;
   related?: Array<[string, string]>;
+  destinations?: Array<[string, string, string]>;
+  programmes?: Array<[string, string[], string[]]>;
+  journey?: Array<[string, string, string]>;
+  testimonials?: Array<[string, string, string]>;
+  faqs?: Array<[string, string]>;
 };
 
 // ─── Institution Content ───
@@ -182,37 +187,72 @@ export const institutionPages: Record<string, InstitutionPage> = {
 export const servicePages: Record<string, InstitutionPage> = {
   "bachelors-recruitment": {
     audience: "Bachelor recruitment",
-    title: "Meet the next generation of global learners.",
+    title: "Make your first degree a launchpad, not a leap.",
     intro:
-      "Empower undergraduate programmes with innovative recruitment strategies, personalised outreach, and meaningful student connections.",
+      "The right bachelor’s choice can shape your confidence, career and world. We help you turn a big ambition into a course, country and application plan you can actually move on.",
     visual: "/monument-australia.webp",
     offers: [
       [
-        "Audience-led outreach",
-        "Reach prospective undergraduates through the communities, campuses, and conversations that matter to them.",
+        "Profile-first planning",
+        "Understand strengths, interests and goals before shortlisting a country, course or university.",
       ],
       [
-        "Programme storytelling",
-        "Translate your course experience into a clear story students and families can understand.",
+        "Course and university fit",
+        "Compare entry requirements, teaching style, outcomes and budget across the routes that fit.",
       ],
       [
-        "Campus engagement",
-        "Create information sessions, workshops, and university showcases that move interest forward.",
+        "Application readiness",
+        "Build the documents, tests, timeline and profile evidence needed for a confident application.",
       ],
     ],
     initiatives: [
       [
-        "School and college campaigns",
-        "Build awareness early with focused campus initiatives.",
+        "Counselling and profile review",
+        "Start with a free conversation that turns uncertainty into a realistic study plan.",
       ],
       [
-        "Student-parent conversations",
-        "Make entry requirements, affordability, and transition feel clear.",
+        "Course and university selection",
+        "Shortlist by academic fit, entry requirements, career relevance and budget.",
       ],
       [
-        "Application readiness",
-        "Help prospective students understand the next practical step.",
+        "Milestone planning",
+        "Coordinate tests, documents, deadlines, essays, applications, offers and visa preparation.",
       ],
+    ],
+    destinations: [
+      ["US", "USA", "Flexible degrees, a strong research culture and a wide choice of majors."],
+      ["GB", "United Kingdom", "Focused, specialised degrees with a global academic reputation."],
+      ["CA", "Canada", "Welcoming campuses and clear pathways for international students."],
+      ["AU", "Australia", "Practical learning, vibrant cities and strong industry links."],
+      ["SG", "Singapore", "An Asian education and business hub with top-ranked universities."],
+      ["CH", "Switzerland and Italy", "Leading European science, engineering and business schools."],
+    ],
+    programmes: [
+      ["Business and management", ["Business administration", "International business", "Marketing"], ["Business analyst", "Marketing manager", "Entrepreneur"]],
+      ["Finance and economics", ["Economics", "Finance", "Accounting"], ["Financial analyst", "Investment banker", "Policy economist"]],
+      ["Computing and data", ["Computer science", "Data science", "AI and machine learning"], ["Software engineer", "Data scientist", "AI specialist"]],
+      ["Engineering", ["Mechanical", "Electrical", "Civil", "Robotics"], ["Design engineer", "Project engineer", "Robotics engineer"]],
+      ["Health and life sciences", ["Biomedical science", "Nursing", "Psychology"], ["Clinical researcher", "Nurse", "Psychologist"]],
+      ["Design, law and social sciences", ["Design", "Architecture", "Law", "International relations"], ["UX designer", "Architect", "Lawyer", "Diplomat"]],
+    ],
+    journey: [
+      ["Discover your direction", "Free counselling and a profile assessment to understand your strengths and goals.", "Counselling, profile review"],
+      ["Shortlist courses and universities", "Compare by academic fit, entry requirements, career relevance and budget.", "Course and university selection"],
+      ["Prepare your application", "Plan documents, tests and deadlines, and strengthen your profile with purposeful activities.", "Milestone planning, profile development"],
+      ["Submit with confidence", "Bring essays, CVs, portfolios and recommendations together, then apply on time.", "Essay guidance, application coordination"],
+      ["Offers, scholarships and interviews", "Evaluate offers, prepare for interviews and plan the cost before you decide.", "Interview preparation, scholarship planning"],
+      ["Enrol and fly", "Accept your offer, then prepare for visa, accommodation and departure.", "Enrolment, pre-departure support"],
+    ],
+    testimonials: [
+      ["Ananya Sharma", "UK", "One Window made my study abroad dream feel possible. Today, I am studying at a university that fits me."],
+      ["Rohan Patel", "USA", "Their guidance was there from applications to visa. Highly recommend the support."],
+      ["Diya Mehta", "Canada", "Professional, supportive and always there when the next decision felt difficult."],
+    ],
+    faqs: [
+      ["How early should I start planning my bachelor’s degree abroad?", "Starting 12 to 18 months before intake gives you time for profile building, tests, applications, funding and visa preparation."],
+      ["Can you help me choose between countries and courses?", "Yes. We compare academic fit, costs, entry requirements, student experience and career direction before building a shortlist."],
+      ["Do you help with scholarships and affordability?", "We help you map scholarships, funding routes and a realistic cost plan alongside the university shortlist."],
+      ["Is the first counselling session free?", "The first conversation is designed to understand your goals and identify the most useful next step."],
     ],
   },
   "masters-recruitment": {
@@ -360,8 +400,10 @@ export function InstitutionalPage({
   page: InstitutionPage;
   related?: Array<[string, string]>;
 }) {
+  const isBachelors = page.audience === "Bachelor recruitment";
+
   return (
-    <main>
+    <main className={isBachelors ? "institution-page bachelors-page" : "institution-page"}>
       <Navigation />
       <section className="institution-hero">
         <div className="institution-hero-orb" />
@@ -390,6 +432,15 @@ export function InstitutionalPage({
           </div>
         </div>
       </section>
+      {isBachelors && (
+        <section className="bachelors-signal-strip" aria-label="Bachelor planning signals">
+          <div className="shell bachelors-signal-grid">
+            <div><strong>01</strong><span>Start with fit</span><small>Course, country and profile before applications.</small></div>
+            <div><strong>02</strong><span>See the whole route</span><small>Tests, deadlines, funding and visa in one view.</small></div>
+            <div><strong>03</strong><span>Move with clarity</span><small>One practical next step after every conversation.</small></div>
+          </div>
+        </section>
+      )}
       <section className="section-pad institution-section">
         <div className="shell">
           <div className="section-heading">
@@ -426,6 +477,120 @@ export function InstitutionalPage({
           </div>
         </div>
       </section>
+      {page.destinations && (
+        <section className="section-pad institution-section">
+          <div className="shell">
+            <div className="section-heading">
+              <p className="eyebrow">Destinations</p>
+              <h2>One goal, many world-class routes.</h2>
+              <p>Each destination offers something different. We help you compare them honestly.</p>
+            </div>
+            <div className="institution-destination-grid">
+              {page.destinations.map(([code, name, text]) => (
+                <article className="institution-destination-card" key={name}>
+                  <span>{code}</span>
+                  <h3>{name}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+      {isBachelors && (
+        <section className="bachelors-cta-band">
+          <div className="shell">
+            <div><p className="eyebrow">Your first move</p><h2>Not sure where to begin? Start with the questions.</h2></div>
+            <a className="button button-primary" href="/#consultation">Find my path <ArrowRight size={17} /></a>
+          </div>
+        </section>
+      )}
+      {page.programmes && (
+        <section className="section-pad institution-section institution-section-tinted">
+          <div className="shell">
+            <div className="section-heading">
+              <p className="eyebrow">Programmes and careers</p>
+              <h2>Find the degree that leads where you want to go.</h2>
+            </div>
+            <div className="institution-programme-grid">
+              {page.programmes.map(([title, programmes, careers]) => (
+                <article className="institution-programme-card" key={title}>
+                  <h3>{title}</h3>
+                  <span>Programmes</span>
+                  <div className="institution-pills">
+                    {programmes.map((item) => <em key={item}>{item}</em>)}
+                  </div>
+                  <span>Careers</span>
+                  <div className="institution-pills institution-pills-muted">
+                    {careers.map((item) => <em key={item}>{item}</em>)}
+                  </div>
+                  <a className="text-link" href="/#consultation">Talk to a counsellor <ArrowRight size={15} /></a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+      {page.journey && (
+        <section className="section-pad institution-section">
+          <div className="shell">
+            <div className="section-heading">
+              <p className="eyebrow">Your journey</p>
+              <h2>Six clear steps from interest to enrolment.</h2>
+            </div>
+            <div className="institution-journey-list">
+              {page.journey.map(([title, text, label], index) => (
+                <article key={title}>
+                  <strong>{index + 1}</strong>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                    <span>{label}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+      {page.testimonials && (
+        <section className="section-pad institution-section institution-section-tinted">
+          <div className="shell">
+            <div className="section-heading">
+              <p className="eyebrow">Student stories</p>
+              <h2>Real students. Real journeys.</h2>
+            </div>
+            <div className="institution-testimonial-grid">
+              {page.testimonials.map(([name, destination, quote]) => (
+                <article className="institution-testimonial-card" key={name}>
+                  <span>“</span>
+                  <p>{quote}</p>
+                  <strong>{name}</strong>
+                  <small>{destination}</small>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+      {page.faqs && (
+        <section className="section-pad institution-section">
+          <div className="shell">
+            <div className="section-heading">
+              <p className="eyebrow">Honest answers</p>
+              <h2>The questions every family asks.</h2>
+            </div>
+            <div className="institution-faq-list">
+              {page.faqs.map(([question, answer]) => (
+                <details key={question}>
+                  <summary>{question}</summary>
+                  <p>{answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       {(related ?? page.related) && (
         <section className="section-pad institution-related">
           <div className="shell">

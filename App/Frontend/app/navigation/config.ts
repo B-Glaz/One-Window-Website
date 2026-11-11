@@ -16,12 +16,22 @@ export const countryLinks: NavLink[] = [
 ];
 
 export const serviceLinks: NavLink[] = [
-  ["Bachelors", "/for-foreign-universities/bachelors-recruitment"],
+  ["Bachelors", "/services/bachelors"],
   ["Masters", "/for-foreign-universities/masters-recruitment"],
   ["Master of Business Administration", "/for-foreign-universities/masters-recruitment"],
+  ["Foreign Universities", "/for-foreign-universities"],
+  ["Indian Universities", "/for-indian-universities"],
+  ["Secondary Schools", "/for-schools"],
 ];
 
 export const resourceLinks: NavLink[] = [
+  ["Blogs", "/blog"],
   ["Tools", "/resources/tools"],
-  ["Do it yourself", "/resources/do-it-yourself"],
+  ["Success Stories", "/student-stories"],
+  ["DIY", "/resources/do-it-yourself"],
+];
+
+export const eventLinks: NavLink[] = [
+  ["Virtual events", "/events/virtual"],
+  ["In-person events", "/events/in-person"],
 ];

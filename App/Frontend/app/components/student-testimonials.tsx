@@ -48,6 +48,11 @@ const testimonials = [
   },
 ] as const;
 
+function getYoutubeThumbnail(videoUrl: string) {
+  const videoId = videoUrl.match(/youtu\.be\/([^?]+)/)?.[1];
+  return videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : "";
+}
+
 export function StudentTestimonials() {
   const [selected, setSelected] = useState<(typeof testimonials)[number] | null>(null);
 
@@ -65,6 +70,14 @@ export function StudentTestimonials() {
       <div className="testimonial-grid">
         {testimonials.map((testimonial) => (
           <article className="glass reveal testimonial-card" key={testimonial.name}>
+            <div className="testimonial-thumbnail">
+              <img
+                src={getYoutubeThumbnail(testimonial.video)}
+                alt={`${testimonial.name} student story thumbnail`}
+                loading="lazy"
+              />
+              <span aria-hidden="true"><PlayCircle size={20} /></span>
+            </div>
             <div>
               <p className="testimonial-name">{testimonial.name}</p>
               <span className="testimonial-outcome">{testimonial.outcome}</span>

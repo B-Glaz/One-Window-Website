@@ -669,3 +669,125 @@
   .page *, .page *::before, .page *::after { scroll-behavior: auto !important; transition-duration: 0ms !important; }
 }
 
+
+
+/* Country-page dark mode */
+:global(html[data-theme="dark"]) .page {
+  --usa-ink: #f1f7ff;
+  --usa-navy: #143369;
+  --usa-blue: #6bd4f2;
+  --usa-line: rgba(133, 204, 255, .22);
+  color: #f1f7ff;
+  background: radial-gradient(circle at 82% 8%, rgba(46, 163, 242, .18), transparent 28%), #071a38;
+}
+
+:global(html[data-theme="dark"]) .hero,
+:global(html[data-theme="dark"]) .previousHero,
+:global(html[data-theme="dark"]) .softSection,
+:global(html[data-theme="dark"]) .intakeSection,
+:global(html[data-theme="dark"]) .careerSection {
+  background: radial-gradient(circle at 82% 12%, rgba(46, 163, 242, .14), transparent 30%), #0a2144;
+}
+
+:global(html[data-theme="dark"]) .previousCanvas {
+  border-color: rgba(133, 204, 255, .22);
+  background: rgba(14, 56, 103, .54);
+  box-shadow: 0 30px 70px -46px rgba(0, 0, 0, .9), inset 0 1px rgba(255, 255, 255, .1);
+  backdrop-filter: blur(20px);
+}
+
+:global(html[data-theme="dark"]) .previousBadge {
+  border-color: rgba(133, 204, 255, .24);
+  background: rgba(8, 35, 72, .78);
+  color: #f1f7ff;
+  backdrop-filter: blur(16px);
+}
+
+:global(html[data-theme="dark"]) .sectionNav {
+  border-color: rgba(133, 204, 255, .2);
+  background: rgba(8, 35, 72, .86);
+  box-shadow: 0 16px 40px -28px rgba(0, 0, 0, .8);
+  backdrop-filter: blur(20px);
+}
+
+:global(html[data-theme="dark"]) .sectionNav a,
+:global(html[data-theme="dark"]) .page h1,
+:global(html[data-theme="dark"]) .page h2,
+:global(html[data-theme="dark"]) .page h3,
+:global(html[data-theme="dark"]) .sectionHeading h2,
+:global(html[data-theme="dark"]) .introStatement,
+:global(html[data-theme="dark"]) .heroForm h2,
+:global(html[data-theme="dark"]) .faqs summary,
+:global(html[data-theme="dark"]) .costTable strong {
+  color: #f1f7ff;
+}
+
+:global(html[data-theme="dark"]) .heroDescription,
+:global(html[data-theme="dark"]) .phoneLink,
+:global(html[data-theme="dark"]) .heroProof,
+:global(html[data-theme="dark"]) .sectionHeading p,
+:global(html[data-theme="dark"]) .reasonGrid p,
+:global(html[data-theme="dark"]) .typeGrid p,
+:global(html[data-theme="dark"]) .eligibilityGrid p,
+:global(html[data-theme="dark"]) .timeline p,
+:global(html[data-theme="dark"]) .scholarshipGrid p,
+:global(html[data-theme="dark"]) .lifeList p,
+:global(html[data-theme="dark"]) .careerGrid p,
+:global(html[data-theme="dark"]) .visaSteps li,
+:global(html[data-theme="dark"]) .faqs p,
+:global(html[data-theme="dark"]) .sourceNote {
+  color: #bfd3e8;
+}
+
+:global(html[data-theme="dark"]) .highlightGrid article,
+:global(html[data-theme="dark"]) .typeGrid article,
+:global(html[data-theme="dark"]) .eligibilityGrid article,
+:global(html[data-theme="dark"]) .timeline article,
+:global(html[data-theme="dark"]) .intakeGrid article,
+:global(html[data-theme="dark"]) .scholarshipGrid article,
+:global(html[data-theme="dark"]) .careerGrid article,
+:global(html[data-theme="dark"]) .fieldPanel,
+:global(html[data-theme="dark"]) .callCard,
+:global(html[data-theme="dark"]) .heroForm,
+:global(html[data-theme="dark"]) .consultationForm {
+  border-color: rgba(133, 204, 255, .22);
+  background: rgba(20, 69, 121, .5);
+  color: #f1f7ff;
+  box-shadow: 0 24px 58px -38px rgba(0, 0, 0, .82), inset 0 1px rgba(255, 255, 255, .08);
+  backdrop-filter: blur(20px);
+}
+
+:global(html[data-theme="dark"]) .costTable {
+  border-color: rgba(133, 204, 255, .22);
+  background: rgba(18, 61, 108, .58);
+}
+
+:global(html[data-theme="dark"]) .costTable > div,
+:global(html[data-theme="dark"]) .faqs,
+:global(html[data-theme="dark"]) .faqs details,
+:global(html[data-theme="dark"]) .reasonGrid article,
+:global(html[data-theme="dark"]) .lifeList article,
+:global(html[data-theme="dark"]) .visaSteps li {
+  border-color: rgba(133, 204, 255, .18);
+}
+
+:global(html[data-theme="dark"]) .conversionBand,
+:global(html[data-theme="dark"]) .visaCard,
+:global(html[data-theme="dark"]) .navySection,
+:global(html[data-theme="dark"]) .consultation {
+  background: linear-gradient(135deg, #0a2c59, #0d4778);
+  color: #f4f9ff;
+}
+
+:global(html[data-theme="dark"]) .inlineCta,
+:global(html[data-theme="dark"]) .officialLink,
+:global(html[data-theme="dark"]) .sourceNote a {
+  color: #6bd4f2;
+}
+
+:global(html[data-theme="dark"]) .lightButton {
+  border-color: rgba(133, 204, 255, .28);
+  background: rgba(242, 248, 255, .95);
+  color: #143369;
+}
+

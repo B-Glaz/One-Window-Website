@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { InstitutionalPage, servicePages } from "../../institution-pages";
 export default async function Page({
   params,
@@ -8,6 +8,9 @@ export default async function Page({
   }>;
 }) {
   const { service } = await params;
+  if (service === "bachelors-recruitment") {
+    redirect("/services/bachelors");
+  }
   const page = servicePages[service];
   if (!page) notFound();
   return (

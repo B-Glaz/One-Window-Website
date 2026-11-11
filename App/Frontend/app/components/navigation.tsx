@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
-import { aboutLinks, countryLinks, resourceLinks, serviceLinks, type NavLink } from "../navigation/config";
+import { aboutLinks, countryLinks, eventLinks, resourceLinks, serviceLinks, type NavLink } from "../navigation/config";
 function Menu({
   label,
   links,
@@ -32,9 +32,12 @@ function Menu({
       <div aria-hidden={!open} className="nav-menu-panel">
         {links.map(([text, href]) => (
           <Link
-            className={href === "/countries" ? "nav-directory-link" : undefined}
+            className={[
+              href === "/countries" ? "nav-directory-link" : "",
+              href === "/for-foreign-universities" ? "nav-section-start" : "",
+            ].filter(Boolean).join(" ") || undefined}
             href={href}
-            key={href}
+            key={`${text}-${href}`}
             onClick={onClose}
             tabIndex={open ? 0 : -1}
           >
@@ -78,7 +81,8 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
     ...countryLinks,
     ...serviceLinks,
     ...resourceLinks,
-    ["Event", "/events"],
+    ["Events", "/events"],
+    ...eventLinks,
     ["Premium", "/premium"],
   ];
   return (
@@ -137,7 +141,13 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
             onToggle={() => setOpenMenu((current) => current === "resources" ? null : "resources")}
             onClose={() => setOpenMenu(null)}
           />
-          <Link href="/events">Event</Link>
+          <Menu
+            label="Events"
+            links={eventLinks}
+            open={openMenu === "events"}
+            onToggle={() => setOpenMenu((current) => current === "events" ? null : "events")}
+            onClose={() => setOpenMenu(null)}
+          />
           <Link className="nav-premium" href="/premium">
             Premium
           </Link>
@@ -154,7 +164,10 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
           <div className="nav-mobile-panel">
             {mobileLinks.map(([text, href]) => (
               <Link
-                className={text === "All countries" ? "nav-directory-link" : undefined}
+                className={[
+                  text === "All countries" ? "nav-directory-link" : "",
+                  text === "Foreign Universities" ? "nav-section-start" : "",
+                ].filter(Boolean).join(" ") || undefined}
                 href={href}
                 key={`${text}-${href}`}
               >

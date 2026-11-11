@@ -87,7 +87,7 @@ export function MaltaLandingPage({ formPlacement = "top" }: { formPlacement?: "t
 
   return (
     <main className={`${styles.page} ${theme.maltaPage}`}>
-      <Navigation disableThemeToggle counsellingHref={formTarget} />
+      <Navigation disableThemeToggle={formPlacement === "top"} counsellingHref={formTarget} />
 
       {formPlacement === "top" ? <section className={`${styles.hero} ${theme.hero}`}>
         <div className={`${styles.canvas} ${theme.heroCanvas}`}>
