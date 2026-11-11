@@ -11,7 +11,8 @@ import { Footer } from "../components/footer";
 import { Navigation } from "../components/navigation";
 import styles from "./events.module.css";
 
-const registrationUrl = "https://meet.zoho.in/mwqd-dbi-ajk";
+const registrationUrl =
+  "https://forms.zohopublic.in/onewindow/form/MaltaWebinar/formperma/63OBncjY2W2We-z7gI7dru8anDUgKvzkvBDmAXny_Zo";
 
 const sessionTopics = [
   {
@@ -47,7 +48,7 @@ const sessionTopics = [
 ] as const;
 
 export const metadata: Metadata = {
-  title: "Malta Webinar | One Window Events",
+  title: "Event Updating | One Window Events",
   description:
     "Join One Window for a practical live session on studying in Malta, including costs, visas, institutions, work and career planning.",
 };
@@ -60,7 +61,7 @@ export default function EventsPage() {
       <section className={styles.hero}>
         <div className={`shell ${styles.heroGrid}`}>
           <div className={styles.heroContent}>
-            <p className={styles.eyebrow}>One Window live webinar</p>
+            <p className={styles.eyebrow}>Event updating</p>
             <h1>
               Studying in Malta:
               <span> Dream destination or expensive detour?</span>
@@ -81,7 +82,7 @@ export default function EventsPage() {
               </span>
               <span>
                 <Clock3 aria-hidden="true" size={19} />
-                6:30 PM IST
+                6:00 PM IST
               </span>
             </div>
 

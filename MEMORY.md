@@ -57,7 +57,18 @@
 - Production build after the dropdown simplification passed all 105 routes.
 - Made “All countries” visually distinct from the four featured destinations in both desktop and mobile navigation: it now appears as a separated, tinted directory action with stronger type and a directional arrow. Dark-mode styling is included.
 - Production build after the navigation hierarchy update passed all 105 routes.
+- Expanded Resources to Blogs, Tools, Success Stories, and DIY. Expanded Services into the existing degree services followed by a subtle divider and three institutional destinations: Foreign Universities, Indian Universities, and Secondary Schools.
+- Added smooth horizontal movement, soft gradient illumination, shadow transitions, and dark-mode hover states to every desktop dropdown link. Added matching section separation in the mobile navigation and fixed duplicate React keys for service links sharing a destination.
+- Production build after the navigation menu update passed all 105 routes.
+- Restyled desktop dropdowns as connected glass extensions of their trigger tabs: the open tab receives a subtle blue/lavender highlight and glow, while a small matching glass bridge visually joins it to the dropdown panel. Added equivalent dark-mode treatments and preserved the existing open/close motion.
+- Browser-verified the open Services dropdown alignment and hierarchy on the homepage. Production build continued to pass all 105 routes.
+- Reduced dropdown-item hover intensity: movement is now 2px instead of 4px, with lower-opacity illumination and a softer shadow in both light and dark modes. The connected dropdown and selected-tab treatment remain unchanged.
+- Production build after the hover refinement passed all 105 routes.
+- Removed all horizontal hover movement from dropdown links, including the All countries arrow. Hover feedback now uses only subtle colour, illumination, and shadow changes.
+- Production build after removing horizontal movement passed all 105 routes.
 
 ## Next time
 
 - Verify the updated artwork at desktop and mobile sizes in the browser.
+- Updated the event page registration destination to the Malta Webinar Zoho form, normalized the schedule to 18 November at 6:00 PM IST, and labelled the event update in `App/Frontend/app/events/page.tsx`. The existing event artwork already reflects the same date and time.
+- Production build compiled successfully through the optimized build step but exited during the environment TypeScript phase with `spawn EPERM`; no unrelated files were staged or changed for this event update.
