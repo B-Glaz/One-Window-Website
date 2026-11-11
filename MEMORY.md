@@ -72,3 +72,4 @@
 - Verify the updated artwork at desktop and mobile sizes in the browser.
 - Updated the event page registration destination to the Malta Webinar Zoho form, normalized the schedule to 18 November at 6:00 PM IST, and labelled the event update in `App/Frontend/app/events/page.tsx`. The existing event artwork already reflects the same date and time.
 - Production build compiled successfully through the optimized build step but exited during the environment TypeScript phase with `spawn EPERM`; no unrelated files were staged or changed for this event update.
+- Regenerated both Malta event artwork assets with the corrected schedule, `18 November` and `6:00 PM IST`, at `App/Frontend/public/campaigns/malta-webinar-event-page.png` and `malta-webinar-popup.png`.
