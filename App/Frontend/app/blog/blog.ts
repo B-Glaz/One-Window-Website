@@ -11,9 +11,78 @@ export type BlogArticle = {
     heading: string;
     paragraphs?: string[];
     bullets?: string[];
+    subsections?: Array<{
+      heading: string;
+      paragraphs: string[];
+    }>;
   }>;
 };
 const importedArticles: BlogArticle[] = [
+  {
+    slug: "fulbright-nehru-masters-fellowship-for-indian-students",
+    title: "Fulbright-Nehru Master's Fellowship for Indian Students",
+    tag: "Scholarships",
+    published: "One Window guide",
+    sourceUrl: "https://usief.org.in/Fellowships/Fulbright-Nehru-Fellowship",
+    imageUrl: "",
+    intro:
+      "The Fulbright-Nehru Master's Fellowships support exceptional Indian students who want to pursue selected master's programmes at U.S. colleges and universities. This guide covers the scholarship, funding, eligibility and application process.",
+    sections: [
+      {
+        heading: "About the scholarship",
+        paragraphs: [
+          "The Fulbright-Nehru Master's Fellowships are intended for exceptional Indians to pursue a master's degree programme at select U.S. colleges and universities in Economics, Environmental Science or Studies, Higher Education Administration, International Affairs, International Legal Studies, Journalism and Mass Communication, Public Administration, Public Health, Urban and Regional Planning, and Tourism.",
+          "The fellowships are for highly driven people who exhibit leadership skills, have earned the equivalent of a bachelor's degree in the United States, have at least three years of professional work experience, and are determined to return to their communities and give back. The fellowships last for one or two years.",
+        ],
+        bullets: [],
+      },
+      {
+        heading: "Scholarship overview",
+        paragraphs: [
+          "Study level: postgraduate.",
+          "Scholarship type: merit.",
+          "Country: USA.",
+          "Renewability, number of awards and award announcement date: check the current USIEF call because these details can change by cycle.",
+        ],
+        bullets: [],
+      },
+      {
+        heading: "Scholarship amount and benefits",
+        paragraphs: [
+          "The fellowship provides J-1 visa support, round-trip economy-class air travel from the fellow's home city to the host institution in the United States, funding for tuition and fees, living and related costs, and accident and sickness coverage under U.S. Government guidelines.",
+          "The Fulbright-Nehru Master's Fellowships do not provide financial support for dependants.",
+        ],
+        bullets: [],
+      },
+      {
+        heading: "Eligibility",
+        paragraphs: [],
+        bullets: [
+          "Complete an equivalent of a U.S. bachelor's degree from a recognised Indian university with at least 55% marks.",
+          "Hold a four-year bachelor's degree, a completed master's degree, or the recognised postgraduate qualification specified for a bachelor's degree of less than four years' duration.",
+          "Have at least three years of full-time paid professional work experience relevant to the proposed field by the application deadline.",
+          "Demonstrate leadership and community-service experience.",
+          "Not hold another degree from a U.S. university or be enrolled in a U.S. degree programme.",
+          "If employed, follow the employer-endorsement instructions and obtain the FNMasters Employer's Endorsement Form where applicable.",
+          "The employer must indicate that leave will be granted for the fellowship period.",
+        ],
+      },
+      {
+        heading: "Application process",
+        paragraphs: [
+          "Applications must be submitted online. Review the FNMasters Applicant Instructions before starting, use the FNMasters Applicant Checklist before submitting, and upload the required FNMasters Annexure and Employer's Endorsement Form where applicable.",
+        ],
+        bullets: [],
+      },
+      {
+        heading: "Official scholarship link",
+        paragraphs: [
+          "Always verify the current fields, deadline, eligibility rules and forms on the official USIEF scholarship page before applying.",
+        ],
+        bullets: [],
+      },
+    ],
+  },
   {
     slug: "wichita-state-university-digital-badge-program-2026-1",
     title: "Wichita State University Digital Badge Program 2026",
@@ -521,17 +590,12 @@ const importedArticles: BlogArticle[] = [
     imageUrl:
       "https://onewindow.co/wp-content/uploads/2026/07/sop-ow-works.png",
     intro:
-      "Your SOP cannot sound like ChatGPT wrote it. That may sound dramatic, but for 2026 applicants, it is a real concern. AI has changed the way students write. A clean-looking Statement of Purpose can now be generated in seconds. The grammar may be perfect. The vocabulary may sound impressive. The structure may look neat. But admissions teams are not only checking whether your English is polished. They are trying to understand something much harder: whether there is a real student behind the statement.",
+      "AI can generate a polished SOP in seconds. This guide explains why specificity, honest evidence and a voice you can defend matter more in 2026.",
     sections: [
-      {
-        heading:
-          "How to Write an SOP in 2026: Why Generic and AI-Written Statements Fail",
-        paragraphs: ["And that is where many SOPs fail."],
-        bullets: [],
-      },
       {
         heading: "Why This Matters More in 2026",
         paragraphs: [
+          "Your SOP cannot sound like ChatGPT wrote it. That may sound dramatic, but for 2026 applicants, it is a real concern. AI has changed the way students write. A clean-looking Statement of Purpose can now be generated in seconds. The grammar may be perfect. The vocabulary may sound impressive. The structure may look neat. But admissions teams are not only checking whether your English is polished. They are trying to understand something much harder: whether there is a real student behind the statement. And that is where many SOPs fail.",
           "AI is no longer a small trend. OpenAI reported around 700 million weekly ChatGPT users in 2025. That means students applying in 2026 are writing in a world where AI-assisted writing is completely normal.",
           "Application volumes are also high. Common App reported that through January 1, 2026, application volume to returning members rose 7%, from about 7.08 million applications in 2024–25 to about 7.61 million in 2025–26.",
           "So admissions teams are not reading a few hundred personal essays in a quiet room. They are reviewing huge numbers of applications, many of which now sound more polished than before.",
@@ -545,15 +609,17 @@ const importedArticles: BlogArticle[] = [
           "Most weak SOPs do not fail because the student is weak. They fail because the writing is too broad. A generic SOP usually says things like:",
         ],
         bullets: [],
-      },
-      {
-        heading: "“I want global exposure and career growth.”",
-        paragraphs: [
-          "These lines sound safe, but they do not tell the university anything useful. Passionate about what exactly? Why this course and not another one? What experience proves this interest? What career path are you actually preparing for?",
-          "A strong SOP answers these questions naturally. It does not just say, “I am interested in data science.” It explains how that interest developed. Maybe the student worked on a college project, handled messy Excel data during an internship, or noticed how businesses use analytics to make decisions. That small detail changes everything.",
-          "Generic writing tells. Human writing shows.",
+        subsections: [
+          {
+            heading: "The generic line",
+            paragraphs: [
+              "“I want global exposure and career growth.”",
+              "These lines sound safe, but they do not tell the university anything useful. Passionate about what exactly? Why this course and not another one? What experience proves this interest? What career path are you actually preparing for?",
+              "A strong SOP answers these questions naturally. It does not just say, “I am interested in data science.” It explains how that interest developed. Maybe the student worked on a college project, handled messy Excel data during an internship, or noticed how businesses use analytics to make decisions. That small detail changes everything.",
+              "Generic writing tells. Human writing shows.",
+            ],
+          },
         ],
-        bullets: [],
       },
       {
         heading: "Why AI-Written SOPs Are Risky",
@@ -561,24 +627,24 @@ const importedArticles: BlogArticle[] = [
           "The issue is not that AI is “bad.” AI can help students brainstorm, organize thoughts, check grammar, and improve readability. Even UCAS says AI can be useful when used correctly.",
           "The risk begins when students copy large parts of an AI-generated statement and submit it as their own. UCAS clearly warns that generating and submitting all or a large part of a personal statement from AI, while presenting it as your own, could be considered cheating and may affect offers. For 2026 entry onwards, UCAS has also moved to a more structured personal statement format with three questions, while keeping the total limit at 4,000 characters.",
           "Common App also treats misrepresenting AI-generated substantive content as your own as part of its fraud policy.",
-          "So the real question is not only, “Will my SOP be detected as AI?” The better question is:",
         ],
         bullets: [],
-      },
-      {
-        heading:
-          "Does my SOP sound like something I can honestly explain in an interview?",
-        paragraphs: ["If the answer is no, the SOP needs work."],
-        bullets: [],
-      },
-      {
-        heading: "What the Numbers Say About AI Detection",
-        paragraphs: [
-          "AI detection is becoming more common, but it is not perfect. Turnitin says that after one year of its AI writing detector, it had reviewed over 200 million submissions. Around 22 million, roughly 11%, showed at least 20% AI writing, and more than 6 million, around 3%, showed at least 80% AI writing.",
-          "But there is another side to this. A Stanford-linked study found that GPT detectors misclassified non-native English writing at a high rate. In one test, detectors wrongly flagged TOEFL essays by non-native English writers at an average false positive rate of about 61%. In the same study, 18 out of 91 TOEFL essays were unanimously marked as AI-generated by all seven detectors, even though they were human-written.",
-          "This is why students should not think only about “beating AI detection.” That is the wrong mindset. The safer and smarter goal is to write a statement that is genuinely yours: specific, verifiable, and connected to your real academic journey.",
+        subsections: [
+          {
+            heading: "The interview test",
+            paragraphs: [
+              "So the real question is not only, “Will my SOP be detected as AI?” The better question is: does my SOP sound like something I can honestly explain in an interview? If the answer is no, the SOP needs work.",
+            ],
+          },
+          {
+            heading: "What the numbers say about AI detection",
+            paragraphs: [
+              "AI detection is becoming more common, but it is not perfect. Turnitin says that after one year of its AI writing detector, it had reviewed over 200 million submissions. Around 22 million, roughly 11%, showed at least 20% AI writing, and more than 6 million, around 3%, showed at least 80% AI writing.",
+              "But there is another side to this. A Stanford-linked study found that GPT detectors misclassified non-native English writing at a high rate. In one test, detectors wrongly flagged TOEFL essays by non-native English writers at an average false positive rate of about 61%. In the same study, 18 out of 91 TOEFL essays were unanimously marked as AI-generated by all seven detectors, even though they were human-written.",
+              "This is why students should not think only about “beating AI detection.” That is the wrong mindset. The safer and smarter goal is to write a statement that is genuinely yours: specific, verifiable, and connected to your real academic journey.",
+            ],
+          },
         ],
-        bullets: [],
       },
       {
         heading: "What Universities Actually Want to See",
@@ -586,64 +652,74 @@ const importedArticles: BlogArticle[] = [
           "Universities are not asking for a movie-style life story. They are not expecting every student to have built a startup, published research, or solved a global problem. They are looking for clarity.",
           "Cornell’s graduate guidance says an SOP should show academic background, preparedness, fit with the program, motivation for graduate study, and readiness for graduate school. Princeton’s graduate guidance asks applicants to explain why they are applying, outline graduate study goals, discuss academic and career plans, and include relevant academic or professional experiences.",
           "In simple terms, a strong SOP should answer:",
+        ],
+        bullets: [
           "Why this subject?",
           "Why this course?",
           "Why this university?",
           "Why are you ready now?",
+          "Where do you want this degree to take you?",
         ],
-        bullets: [],
-      },
-      {
-        heading: "Where do you want this degree to take you?",
-        paragraphs: [
-          "If your SOP answers these clearly, it will already be stronger than most template-based drafts.",
-        ],
-        bullets: [],
       },
       {
         heading: "How to Make an SOP More Human",
         paragraphs: [
+          "If your SOP answers these clearly, it will already be stronger than most template-based drafts.",
           "A human SOP has small, believable details.",
-          "Instead of writing:",
-          "“I developed leadership and communication skills during my internship.”",
-          "Write:",
-          "“During my internship, I had to explain weekly campaign results to a sales team that did not work with data every day. That experience taught me how important clear communication is when numbers are used for business decisions.”",
-          "The second version works better because it gives the reader a real situation. It shows what happened, what the student did, and what they learned.",
-          "Instead of writing:",
-          "“I am passionate about artificial intelligence.”",
-          "Write:",
-          "“My interest in AI became more serious during a college project where I built a basic image classification model. The project taught me that accuracy was only one part of the challenge. Data quality, bias, and real-world application mattered just as much.”",
-          "The second version sounds more believable. It does not try too hard. It simply gives evidence.",
-          "The Right Way to Use AI for SOP Writing",
-          "Students can use AI, but carefully.",
-          "Use AI to:",
+        ],
+        bullets: [],
+        subsections: [
+          {
+            heading: "Replace claims with evidence",
+            paragraphs: [
+              "Instead of writing:",
+              "“I developed leadership and communication skills during my internship.”",
+              "Write:",
+              "“During my internship, I had to explain weekly campaign results to a sales team that did not work with data every day. That experience taught me how important clear communication is when numbers are used for business decisions.”",
+              "The second version works better because it gives the reader a real situation. It shows what happened, what the student did, and what they learned.",
+            ],
+          },
+          {
+            heading: "Show where the interest began",
+            paragraphs: [
+              "Instead of writing:",
+              "“I am passionate about artificial intelligence.”",
+              "Write:",
+              "“My interest in AI became more serious during a college project where I built a basic image classification model. The project taught me that accuracy was only one part of the challenge. Data quality, bias, and real-world application mattered just as much.”",
+              "The second version sounds more believable. It does not try too hard. It simply gives evidence.",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "The Right Way to Use AI for SOP Writing",
+        paragraphs: [
+          "Students can use AI, but carefully. Use it to support your thinking, not replace it.",
+        ],
+        bullets: [
           "Brainstorm possible points",
           "Organize rough notes",
           "Check if the structure is clear",
           "Simplify long sentences",
           "Find repetition",
           "Create a final review checklist",
-          "Do not use AI to:",
-          "Invent your motivation",
-          "Create fake university research",
-          "Write your full SOP",
         ],
-        bullets: [],
+        subsections: [
+          {
+            heading: "What AI should never do for you",
+            paragraphs: [
+              "Do not use AI to invent your motivation, create fake university research, write your full SOP, or make every sentence sound overly polished.",
+              "A good rule is simple: if you cannot explain a sentence confidently in an interview, remove it or rewrite it.",
+            ],
+          },
+        ],
       },
       {
-        heading: "Make every sentence sound overly polished",
+        heading: "Your SOP Should Sound Like You on Your Clearest Day",
         paragraphs: [
-          "A good rule is simple: if you cannot explain a sentence confidently in an interview, remove it or rewrite it.",
-          "Final Thought",
           "In 2026, a good SOP does not need to sound perfect. In fact, perfect can sometimes feel suspicious. What matters is whether the statement feels real.",
           "Admissions teams want to see your academic direction, your preparation, your reasons for choosing the course, and your understanding of the university. AI can help clean the draft, but it cannot replace your experiences, decisions, and goals.",
           "Your SOP should sound like you on your clearest day. Not like a prompt.",
-        ],
-        bullets: [],
-      },
-      {
-        heading: "Ready to Apply for the 2026 Intake?",
-        paragraphs: [
           "Get your SOP reviewed before submission. A strong SOP is not created in one AI prompt. It is built through reflection, research, structure, and honest editing.",
         ],
         bullets: [],

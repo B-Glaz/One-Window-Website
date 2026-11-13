@@ -16,6 +16,7 @@ import {
 import { Footer } from "../../components/footer";
 import { Navigation } from "../../components/navigation";
 import { ZohoContactForm } from "../../components/zoho-contact-form";
+import { SectionJumpNav } from "../../components/section-jump-nav";
 import { maltaLandingContent as content } from "../../countries-content/malta-landing";
 import styles from "../usa/usa-landing.module.css";
 import theme from "./malta-landing.module.css";
@@ -158,20 +159,7 @@ export function MaltaLandingPage({ formPlacement = "top" }: { formPlacement?: "t
         </div>
       </section>
 
-      <nav className={styles.sectionNav} aria-label="Malta study guide sections">
-        <div>
-          {content.navigation.map(([label, id]) => (
-            <a
-              aria-current={activeSection === id ? "location" : undefined}
-              data-active={activeSection === id ? "true" : undefined}
-              href={`#${id}`}
-              key={id}
-            >
-              {label}
-            </a>
-          ))}
-        </div>
-      </nav>
+      <SectionJumpNav activeSection={activeSection} ariaLabel="Malta study guide sections" items={content.navigation} />
 
       <section className={styles.section} id="overview">
         <div className={styles.container}>

@@ -13,6 +13,8 @@ export const usaLandingContent = {
     ["Cost", "cost"],
     ["Scholarships", "scholarships"],
     ["Visa", "visa"],
+    ["Intakes", "intakes"],
+    ["Student life", "student-life"],
     ["Careers", "careers"],
     ["FAQs", "faqs"],
   ],
@@ -38,15 +40,14 @@ export const usaLandingContent = {
   },
   // 02. OVERVIEW
   highlights: [
-    ["Flexible study", "Explore majors, minors, electives and interdisciplinary pathways."],
-    ["Research ecosystem", "Learn through labs, faculty projects and work connected to industry."],
-    ["Campus experience", "Access academic support, student clubs and diverse communities."],
+    ["Flexible course selection options", "Explore majors, minors, electives and interdisciplinary pathways across a wide range of programmes."],
+    ["Strong research and innovation ecosystem", "Learn through labs, faculty projects and research connected to industry and emerging fields."],
+    ["Multicultural campus experience", "Study alongside students from around the world while accessing academic support, student clubs and diverse communities."],
   ],
   reasons: [
-    ["Choice at every level", "Public universities, private colleges, liberal arts institutions and community colleges create different academic and budget pathways."],
-    ["Academic flexibility", "Many undergraduate programmes allow time to explore subjects before declaring a major, while graduate programmes range from professional to research focused."],
-    ["Learning beyond lectures", "Projects, laboratories, campus organisations and eligible practical training can connect classroom learning with real world contexts."],
-    ["A global classroom", "International students study alongside people from varied cultures, industries and academic backgrounds."],
+    ["Practical exposure", "Projects, laboratories, campus organisations and eligible practical training can connect classroom learning with real world contexts."],
+    ["Wide choice of universities & programmes", "Public universities, private colleges, liberal arts institutions and community colleges create different academic and budget pathways."],
+    ["Industry-linked learning opportunities", "Many programmes connect coursework with employers, research centres and applied projects, while graduate routes range from professional to research focused."],
   ],
   // 03. UNIVERSITIES AND FIELDS
   universities: {
@@ -78,9 +79,9 @@ export const usaLandingContent = {
   ],
   // 05. ELIGIBILITY CTA
   eligibilityCta: {
-    eyebrow: "Not sure where your profile fits?",
-    title: "Turn your grades, budget and goals into a focused university shortlist.",
-    label: "Get my shortlist plan",
+    eyebrow: "Find your fit",
+    title: "Find Universities That Match My Profile",
+    label: "Find Universities That Match My Profile",
   },
   // 06. ADMISSIONS PROCESS
   admissions: [
@@ -100,10 +101,19 @@ export const usaLandingContent = {
   ],
   // 08. SCHOLARSHIPS AND FUNDING
   scholarships: [
-    ["University merit awards", "Often linked to academic strength, leadership, talent or the overall application."],
-    ["Aid based on financial need", "Available at some institutions; policies for international applicants differ substantially."],
-    ["Department and graduate funding", "Assistantships, fellowships or tuition support may exist for eligible graduate students."],
-    ["External scholarships", "Foundations, trusts, employers and professional bodies may support specific subjects or applicant groups."],
+    ["Scholarships for bachelor's studies", "Explore funding opportunities that recognise achievement and support undergraduate ambitions. One Window can help identify suitable awards, understand eligibility and prepare focused applications."],
+    ["Academic merit scholarships", "Awards recognising strong academic performance and achievement."],
+    ["Need-based financial aid", "Support assessed against your family's financial circumstances; policies for international applicants differ substantially by institution."],
+    ["Leadership and talent scholarships", "Opportunities recognising community impact, leadership, sporting ability or creative talent."],
+    ["Tata Scholarship at Cornell University",
+      "Who can apply: Students who attended secondary school in India, receive undergraduate admission to Cornell and qualify for need-based financial aid. Funding: Need-based support determined by Cornell, rather than a fixed scholarship amount. Supports approximately 20 scholars at any one time. Duration: Up to eight semesters, or ten semesters for the five-year architecture programme, while financial need continues. Additional semesters for double majors or dual degrees are excluded. Selection preferences: Architecture, engineering, applied economics and management, sciences and social sciences. How to apply: Submit Cornell's admission application and financial aid application, including the CSS Profile. Eligible applicants are considered without a separate Tata scholarship application. International applicants must request aid when applying for admission. Official details: Cornell Tata Scholars."],
+    ["University and subject awards", "Funding linked to the chosen institution, programme or applicant background."],
+    ["Niche STEM scholarships", "Industry-funded awards may support participation in computing, including students from groups historically underrepresented in technology. The published 2025-26 North America round of the Generation Google Scholarship offered US$10,000 for US-based study to eligible bachelor's students in computer science, computer engineering or closely related fields. Check Google's next published call for current availability, eligibility and award values."],
+    ["Karsh International Scholarship at Duke University", "Who can apply: International first-degree applicants with strong academic preparation and demonstrated financial need. Applicants with US citizenship, including dual US citizenship, are ineligible. Funding: Tuition, accommodation, meals, mandatory fees, demonstrated need beyond those costs and three summers of funding for research, unpaid internships or related academic opportunities. How to apply: Apply to Duke and request financial aid, submitting the required financial documents. No separate scholarship application or nomination is required. Official details: Duke Karsh International Scholars Program."],
+    ["Cornelius Vanderbilt Scholarship at Vanderbilt University", "Who can apply: Outstanding first-year applicants, including international students, demonstrating academic achievement, leadership and contributions outside the classroom. Funding: Full tuition plus a one-time summer stipend for an immersive experience. Accommodation and meals are not automatically included in this merit award. Renewal: Renewable through four undergraduate years, subject to satisfactory academic performance. How to apply: Submit the admission application, then complete the scholarship application through MyAppVU. Published deadline: 1 December 2026 for the current application round. Official details: Cornelius Vanderbilt Scholarship."],
+    ["Inlaks Shivdasani and Fulbright Eligibility", "The following schemes support study after graduation and should appear under postgraduate funding on the website. Inlaks Shivdasani Foundation Scholarship: the published 2026 scheme provides up to US$120,000 towards tuition, living expenses, one-way travel, visa costs and a health allowance for eligible Indian graduates, subject to field exclusions and the next call's rules. Fulbright-Nehru Master's Fellowships: the published 2026-27 scheme requires qualifying bachelor's-level education with at least 55%, at least three years of relevant full-time paid work and leadership experience, with additional qualification rules for three-year bachelor's holders. J N Tata Endowment Loan Scholarship: overseas postgraduate, doctoral and postdoctoral study; undergraduate study is explicitly ineligible. The Endowment is a repayable loan scholarship distinct from Cornell's Tata Scholarship."],
+    ["Plan funding alongside admissions", "One Window helps students assess eligibility, prepare scholarship essays and financial documents, and track university-specific deadlines. Awards remain subject to the provider's selection and renewal conditions."],
+    ["How One Window Helps", "Get support with scholarship shortlisting, eligibility checks, essays, supporting documents, interview preparation and deadline planning. Awards depend on eligibility and selection. Availability, coverage and renewal conditions vary by scholarship and intake."],
   ],
   // 09. VISA PROCESS
   visaSteps: [
@@ -167,6 +177,13 @@ export const usaLandingContent = {
     ["NCES: price of undergraduate attendance", "https://nces.ed.gov/programs/coe/indicator/cua/undergrad-cost-attendance"],
     ["U.S. Department of State: student visas", "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html"],
     ["DHS Study in the States: practical training", "https://studyinthestates.dhs.gov/students/training-opportunities-in-the-united-states"],
+    ["Cornell University: first-year applicants", "https://admissions.cornell.edu/how-to-apply/first-year-applicants"],
+    ["Duke University: Karsh International Scholars Program", "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program/"],
+    ["Vanderbilt University: signature scholarships", "https://www.vanderbilt.edu/scholarships/signature/"],
+    ["Generation Google Scholarship", "https://www.google.com/about/careers/applications/buildyourfuture/scholarships/generation-google-scholarship"],
+    ["Inlaks Shivdasani Foundation Scholarship", "https://inlaksfoundation.org/opportunities/scholarship/"],
+    ["Fulbright-Nehru Master's Fellowships", "https://usief.org.in/fulbright-fellowships/fellowships-for-indian-citizen/fulbright-nehru-masters-fellowships/"],
+    ["J N Tata Endowment eligibility criteria", "https://jntataendowment.org/eligibility-criteria/"],
   ],
 } as const;
 

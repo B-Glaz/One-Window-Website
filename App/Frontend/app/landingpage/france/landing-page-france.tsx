@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Navigation } from "../../components/navigation";
 import { Footer } from "../../components/footer";
+import { SectionJumpNav } from "../../components/section-jump-nav";
 import { ZohoContactForm } from "../../components/zoho-contact-form";
 import { usaLandingContent as content } from "../../countries-content/france-landing";
 import styles from "./france-landing.module.css";
@@ -151,20 +152,7 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
       </section>
 
       {/* SECTION NAVIGATION: Labels and destinations are editable in content.ts. */}
-      <nav className={styles.sectionNav} aria-label="USA study guide sections">
-        <div>
-          {content.navigation.map(([label, id]) => (
-            <a
-              aria-current={activeSection === id ? "location" : undefined}
-              data-active={activeSection === id ? "true" : undefined}
-              href={`#${id}`}
-              key={id}
-            >
-              {label}
-            </a>
-          ))}
-        </div>
-      </nav>
+      <SectionJumpNav activeSection={activeSection} ariaLabel="France study guide sections" items={content.navigation} />
 
       {/* OVERVIEW */}
       <section className={styles.section} id="overview">

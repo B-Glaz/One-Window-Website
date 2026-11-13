@@ -11,7 +11,7 @@ const consultants = [
 ] as const;
 
 const teamMembers = [
-  ["Aarav Mehta", "Senior student advisor", "Helps students turn broad goals into a clear destination and course plan."],
+  ["Anurag Jain", "Senior student advisor", "Helps students turn broad goals into a clear destination and course plan."],
   ["Maya Thomas", "Country and university specialist", "Connects ambitions with the countries, universities and pathways that fit."],
   ["Nisha Menon", "Student success advisor", "Keeps applications organised, focused and moving at the right pace."],
   ["Rohan Kapoor", "Admissions strategy advisor", "Brings structure to profiles, deadlines, documents and next steps."],

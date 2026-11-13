@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   BookOpen,
@@ -15,11 +16,39 @@ import {
 } from "lucide-react";
 import { Navigation } from "../../components/navigation";
 import { Footer } from "../../components/footer";
+import { SectionJumpNav } from "../../components/section-jump-nav";
+import { AdaptiveContentGrid } from "../../components/adaptive-content-grid";
 import { ZohoContactForm } from "../../components/zoho-contact-form";
 import { usaLandingContent as content } from "../../countries-content/usa-landing";
 import styles from "./usa-landing.module.css";
 
 const sectionIcons = [GraduationCap, BookOpen, Landmark];
+
+function renderInlineBold(text: string) {
+  const tokens = text.split(/(\*\*.*?\*\*|\[\[size=\d+(?:px|rem)\]\].*?\[\[\/size\]\])/g);
+
+  return tokens.map((part, index) => {
+    const bold = part.match(/^\*\*(.*?)\*\*$/);
+    const sized = part.match(/^\[\[size=(\d+(?:px|rem))\]\](.*?)\[\[\/size\]\]$/);
+
+    if (bold) return <strong key={index}>{bold[1]}</strong>;
+    if (sized) return <span key={index} style={{ fontSize: sized[1] }}>{renderInlineBold(sized[2])}</span>;
+    return part;
+  });
+}
+
+function renderScholarshipText(text: string) {
+  return text.split(/\n+/).map((line, index) => {
+    const isBullet = line.trimStart().startsWith("- ");
+    const content = isBullet ? line.trimStart().slice(2) : line;
+
+    return isBullet ? (
+      <ul key={index}><li>{renderInlineBold(content)}</li></ul>
+    ) : (
+      <p key={index}>{renderInlineBold(content)}</p>
+    );
+  });
+}
 
 function SectionHeading({
   eyebrow,
@@ -98,11 +127,6 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
                 <Phone size={16} /> {content.hero.secondaryCta}
               </a>
             </div>
-            <div className={styles.heroProof} aria-label="What One Window can help with">
-              {content.hero.proofPoints.map((point) => (
-                <span key={point}><CheckCircle2 size={16} />{point}</span>
-              ))}
-            </div>
           </div>
           {formPlacement === "top" ? <div className={styles.heroForm} id="usa-hero-form">
             <p>{content.hero.formEyebrow}</p>
@@ -112,72 +136,36 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
         </div>
       </section> : null}
 
-      {/* PREVIOUS HERO: Retained beneath the conversion hero as requested. */}
-      <section className={styles.previousHero} aria-label="Explore studying in the USA">
-        <div className={styles.previousCanvas}>
-          <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>{content.hero.eyebrow}</p>
-            <h2>{content.hero.title}</h2>
-            <p className={styles.heroDescription}>{content.hero.description}</p>
-            <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href={formTarget}>
-                {content.hero.primaryCta} <ArrowRight size={17} />
-              </a>
-              <a className={styles.phoneLink} href={content.phone.href}>
-                <Phone size={16} /> {content.hero.secondaryCta}
-              </a>
-            </div>
-            <div className={styles.heroProof} aria-label="What One Window can help with">
-              {content.hero.proofPoints.map((point) => (
-                <span key={point}><CheckCircle2 size={16} />{point}</span>
-              ))}
-            </div>
-          </div>
-          <div className={styles.previousMedia}>
-            <Image
-              alt={content.hero.imageAlt}
-              fill
-              priority
-              sizes="(max-width: 980px) calc(100vw - 32px), 560px"
-              src={content.hero.image}
-              unoptimized
-            />
-            <div className={styles.previousBadge}>
-              <span>One clear plan</span>
-              <strong>Shortlist · Applications · Visa</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* SECTION NAVIGATION: Labels and destinations are editable in content.ts. */}
-      <nav className={styles.sectionNav} aria-label="USA study guide sections">
-        <div>
-          {content.navigation.map(([label, id]) => (
-            <a
-              aria-current={activeSection === id ? "location" : undefined}
-              data-active={activeSection === id ? "true" : undefined}
-              href={`#${id}`}
-              key={id}
-            >
-              {label}
-            </a>
-          ))}
-        </div>
-      </nav>
+      <SectionJumpNav activeSection={activeSection} ariaLabel="USA study guide sections" items={content.navigation} />
 
       {/* OVERVIEW */}
       <section className={styles.section} id="overview">
         <div className={styles.container}>
+          <div className={styles.overviewLead}>
+            <Image
+              alt={content.hero.imageAlt}
+              fill
+              sizes="(max-width: 980px) calc(100vw - 32px), 1200px"
+              src={content.hero.image}
+              unoptimized
+            />
+            <div className={styles.overviewLeadShade} />
+            <div className={styles.overviewLeadCopy}>
+              <p className={styles.eyebrow}>USA study guide</p>
+              <h2>Why study in the USA?</h2>
+              <p>The US higher education system offers flexibility, academic depth and opportunities to combine classroom learning with research, internships and campus experiences.</p>
+            </div>
+          </div>
           <div className={styles.introGrid}>
             <SectionHeading
               eyebrow="Why the USA"
-              title="Room to explore. Structure to move forward."
-              copy="The U.S. system offers a wide range of institutions and study formats. The opportunity is valuable, but only when your choices are grounded in fit, cost and a realistic admissions plan."
+              title="Why study in USA"
+              copy="The US higher education system offers flexibility, academic depth and opportunities to combine classroom learning with research, internships and campus experiences."
             />
             <div className={styles.introStatement}>
-              <strong>One Window helps you turn a large set of options into a focused shortlist based on evidence.</strong>
-              <a href={formTarget}>Discuss your profile <ArrowRight size={16} /></a>
+              <strong>Flexible study choices, academic depth and opportunities to combine classroom learning with research, internships and campus experiences.</strong>
+              <a href={formTarget}>Find Universities That Match My Profile <ArrowRight size={16} /></a>
             </div>
           </div>
           <div className={styles.highlightGrid}>
@@ -208,24 +196,27 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
         <div className={styles.container}>
           <SectionHeading
             eyebrow="Universities & courses"
-            title="Find the kind of institution where you can do your best work."
+            title="Types of Universities & Courses"
             copy={content.universities.intro}
           />
           <div className={styles.universityLayout}>
-            <div className={styles.typeGrid}>
+            <details className={styles.contentDropdown} open>
+              <summary>Explore university types <span>+</span></summary>
+              <div className={styles.typeGrid}>
               {content.universities.types.map(([title, text]) => (
                 <article key={title}>
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </article>
               ))}
-            </div>
+              </div>
+            </details>
             <aside className={styles.fieldPanel}>
               <span>Popular fields to explore</span>
               <div>
                 {content.universities.fields.map((field) => <i key={field}>{field}</i>)}
               </div>
-              <a href={formTarget}>Find universities that fit your goals <ArrowRight size={16} /></a>
+            <a href={formTarget}>Find Universities That Match My Profile <ArrowRight size={16} /></a>
             </aside>
           </div>
         </div>
@@ -236,10 +227,12 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
         <div className={styles.container}>
           <SectionHeading
             eyebrow="Eligibility"
-            title="Requirements vary by programme. Prepare the common building blocks early."
-            copy="Always verify the official international admissions page for each programme. Test policies, score expectations and document formats can change by university and intake."
+            title="Eligibility"
+            copy="Requirements vary by programme and institution. Verify the official admissions page for every course because grades, prerequisites, test policies and document formats can change by intake."
           />
-          <div className={styles.eligibilityGrid}>
+          <details className={styles.contentDropdown} open>
+            <summary>View eligibility requirements <span>+</span></summary>
+            <div className={styles.eligibilityGrid}>
             {content.eligibility.map(([title, text], index) => (
               <article key={title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -247,7 +240,8 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
                 <p>{text}</p>
               </article>
             ))}
-          </div>
+            </div>
+          </details>
           <aside className={styles.conversionBand}>
             <div>
               <span>{content.eligibilityCta.eyebrow}</span>
@@ -265,17 +259,20 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
         <div className={styles.container}>
           <SectionHeading
             eyebrow="Application process"
-            title="A clear sequence makes a complex application manageable."
-            copy="Start early, work backwards from each deadline and keep one reliable record of requirements, documents and decisions."
+            title="Application process"
+            copy="Start early, work backwards from each deadline and maintain one reliable record of requirements, documents and decisions."
           />
-          <div className={styles.timeline}>
-            {content.admissions.map(([number, title, text]) => (
-              <article key={number}>
-                <span>{number}</span>
-                <div><h3>{title}</h3><p>{text}</p></div>
-              </article>
-            ))}
-          </div>
+          <details className={styles.contentDropdown} open>
+            <summary>View the application process <span>+</span></summary>
+            <div className={styles.timeline}>
+              {content.admissions.map(([number, title, text]) => (
+                <article key={number}>
+                  <span>{number}</span>
+                  <div><h3>{title}</h3><p>{text}</p></div>
+                </article>
+              ))}
+            </div>
+          </details>
           <a className={styles.lightButton} href={formTarget}>
             Get help with your applications <ArrowRight size={17} />
           </a>
@@ -287,8 +284,8 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
         <div className={styles.container}>
           <SectionHeading
             eyebrow="Cost of study"
-            title="Plan the full cost of attendance, not only tuition."
-            copy="These figures are planning references, not quotes. Your actual budget depends on institution, programme, location, housing and lifestyle. Use every university’s published cost of attendance before making a decision."
+            title="Cost"
+            copy="Planning note: These USA figures are references rather than quotes. Use each institution's current published fees and cost-of-attendance guidance before deciding."
           />
           <div className={styles.costTable} role="table" aria-label="USA study cost planning reference">
             {content.costs.map(([item, figure, note]) => (
@@ -312,14 +309,30 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
         <div className={styles.container}>
           <SectionHeading
             eyebrow="Scholarships & aid"
-            title="Build funding research into your shortlist from the start."
-            copy="Funding is competitive and often partial. Admission and financial aid requirements may have different documents and deadlines."
+            title="Scholarships and funding"
+            copy="Funding options vary by study level, provider and intake. Awards remain subject to each provider's eligibility, selection and renewal conditions."
           />
-          <div className={styles.scholarshipGrid}>
-            {content.scholarships.map(([title, text]) => (
-              <article key={title}><CheckCircle2 size={20} /><h3>{title}</h3><p>{text}</p></article>
-            ))}
-          </div>
+          <details className={styles.contentDropdown} open>
+            <summary>Explore funding options <span>+</span></summary>
+            <div className={styles.scholarshipAdaptiveWrap}>
+              <AdaptiveContentGrid
+                items={content.scholarships.map(([title, text]) => ({ id: title, title, text }))}
+                rowSplits={[4, 1, 3, 1, 1, 2]}
+                renderItem={({ title, text }) => (
+                  <article className={styles.scholarshipCard}>
+                    <CheckCircle2 size={20} />
+                    <h3>{title}</h3>
+                    <div className={styles.scholarshipText}>{renderScholarshipText(text)}</div>
+                    {title === "Inlaks Shivdasani and Fulbright Eligibility" ? (
+                      <Link className={styles.scholarshipArticleLink} href="/blog/fulbright-nehru-masters-fellowship-for-indian-students">
+                        Read the Fulbright-Nehru Master&apos;s Fellowship guide <ArrowRight size={15} />
+                      </Link>
+                    ) : null}
+                  </article>
+                )}
+              />
+            </div>
+          </details>
           <a className={styles.inlineCta} href={formTarget}>Explore scholarship opportunities <ArrowRight size={16} /></a>
         </div>
       </section>
@@ -331,8 +344,8 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
             <div>
               <SectionHeading
                 eyebrow="Student visa"
-                title="The F-1 process starts after an eligible university admits you."
-                copy="Requirements, fees and appointment availability can change. Follow the U.S. Department of State, your embassy or consulate, SEVP and your university’s Designated School Official."
+                title="Student visa"
+                copy="The F-1 process begins after an eligible institution admits you. Requirements, fees and appointment availability can change, so use U.S. government guidance and your university's Designated School Official."
               />
               <ol className={styles.visaSteps}>
                 {content.visaSteps.map((step) => <li key={step}>{step}</li>)}
@@ -353,7 +366,7 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
 
       <section className={`${styles.section} ${styles.intakeSection}`} id="intakes">
         <div className={styles.container}>
-          <SectionHeading eyebrow="Intakes & deadlines" title="Choose the intake that matches your preparation, not only the calendar." />
+          <SectionHeading eyebrow="Intakes and deadlines" title="Intakes and deadlines" />
           <div className={styles.intakeGrid}>
             {content.intakes.map(([title, text]) => <article key={title}><h3>{title}</h3><p>{text}</p></article>)}
           </div>
@@ -373,7 +386,7 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
             />
           </div>
           <div>
-            <SectionHeading eyebrow="Student life" title="Plan for the experience around the classroom, too." />
+            <SectionHeading eyebrow="Student life" title="Student life" />
             <div className={styles.lifeList}>
               {content.life.items.map(([title, text]) => <article key={title}><h3>{title}</h3><p>{text}</p></article>)}
             </div>
@@ -386,8 +399,8 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
         <div className={styles.container}>
           <SectionHeading
             eyebrow="Career opportunities"
-            title="Understand practical training as regulated authorisation, not a job promise."
-            copy="Internships and training after graduation depend on your status, programme, timing and authorisation. Speak with the university DSO before accepting work or training."
+            title="Career opportunities"
+            copy="Practical training is regulated authorisation, not a job promise. Eligibility depends on immigration status, programme, timing and approval."
           />
           <div className={styles.careerGrid}>
             {content.careers.map(([title, text]) => <article key={title}><BriefcaseBusiness size={21} /><h3>{title}</h3><p>{text}</p></article>)}
@@ -399,10 +412,21 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
       {/* FAQ */}
       <section className={styles.section} id="faqs">
         <div className={`${styles.container} ${styles.faqLayout}`}>
-          <SectionHeading eyebrow="FAQs" title="Questions students and families ask before applying." />
+          <SectionHeading eyebrow="Frequently asked questions" title="Frequently asked questions" />
           <div className={styles.faqs}>
             {content.faqs.map(([question, answer]) => (
               <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={`${styles.section} ${styles.softSection}`} aria-labelledby="usa-sources-title">
+        <div className={styles.container}>
+          <SectionHeading eyebrow="Explore more" title="Official and supporting sources" />
+          <div className={styles.sourceLinks}>
+            {content.sources.map(([label, href]) => (
+              <a href={href} key={href} target="_blank" rel="noreferrer">{label}<ArrowRight size={15} /></a>
             ))}
           </div>
         </div>

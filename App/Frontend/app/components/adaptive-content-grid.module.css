@@ -1,0 +1,19 @@
+.grid { display: grid; gap: 12px; }
+.row { display: grid; align-items: stretch; gap: 12px; min-width: 0; }
+.row[data-split="1"] { grid-template-columns: 1fr; }
+.row[data-split="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.row[data-split="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.row[data-split="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cell { min-width: 0; display: flex; }
+.cell > * { width: 100%; height: 100%; }
+
+@media (max-width: 980px) {
+  .row[data-split="3"],
+  .row[data-split="4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .row[data-split="2"],
+  .row[data-split="3"],
+  .row[data-split="4"] { grid-template-columns: 1fr; }
+}
