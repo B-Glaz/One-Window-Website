@@ -6,6 +6,8 @@
 .row[data-split="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .cell { min-width: 0; display: flex; }
 .cell > * { width: 100%; height: 100%; }
+.row[data-content-driven="true"] { align-items: start; }
+.row[data-content-driven="true"] .cell > * { height: auto; }
 
 @media (max-width: 980px) {
   .row[data-split="3"],

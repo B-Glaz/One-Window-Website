@@ -330,7 +330,6 @@ export function MaltaLandingPage({ formPlacement = "top" }: { formPlacement?: "t
           <div className={`${styles.scholarshipGrid} ${theme.scholarshipGrid}`}>
             {content.scholarships.map(([title, text]) => (
               <article key={title}>
-                <CheckCircle2 size={20} />
                 <h3>{title}</h3>
                 <p>{text}</p>
               </article>

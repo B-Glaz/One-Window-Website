@@ -4,23 +4,13 @@ import { Footer } from "../../components/footer";
 import { Navigation } from "../../components/navigation";
 import styles from "./consultants.module.css";
 
-const consultants = [
-  ["Consultant image placeholder", "Senior student advisor", "Clarity for your next decision."],
-  ["Consultant image placeholder", "Country and university specialist", "The right fit starts with context."],
-  ["Consultant image placeholder", "Student success advisor", "Your success stays at the centre."],
-] as const;
-
 const teamMembers = [
-  ["Anurag Jain", "Senior student advisor", "Helps students turn broad goals into a clear destination and course plan."],
-  ["Maya Thomas", "Country and university specialist", "Connects ambitions with the countries, universities and pathways that fit."],
-  ["Nisha Menon", "Student success advisor", "Keeps applications organised, focused and moving at the right pace."],
-  ["Rohan Kapoor", "Admissions strategy advisor", "Brings structure to profiles, deadlines, documents and next steps."],
-  ["Ishita Rao", "Career pathway advisor", "Helps students think beyond admission and plan for the future after study."],
-  ["Kabir Singh", "Application support advisor", "Makes complex application moments easier to understand and act on."],
-  ["Ananya Sharma", "Destination advisor", "Offers practical context on student life, costs and everyday decisions abroad."],
-  ["Vihaan Shah", "Course discovery advisor", "Explores course choices with the student’s strengths and direction in view."],
-  ["Diya Patel", "Parent and student advisor", "Creates calm, useful conversations for families making a shared decision."],
-  ["Arjun Nair", "International education advisor", "Brings the wider picture together, from first question to final plan."],
+  ["Anurag Jain", "Executive Director", "Builds institutional partnerships and global relationships across international education markets."],
+  ["Ankit Jain", "Executive Director", "With 13 years in international education, Ankit focuses on institutional partnerships, global relationships and new approaches to education technology. He also represents One Window at international conferences and industry forums."],
+  ["Vanita Jain", "Executive Director", "Supports the leadership team in creating clear, student-first pathways across global destinations."],
+  ["Pratiksha Misra", "Growth Partner: Europe", "With 14+ years across international education, institutional strategy and academic programme development, Pratiksha leads European growth, partnerships and education programmes."],
+  ["Rakesh Laxmi Kommu", "Manager: Student Outreach", "A British Council-certified International Student Advisor and Visa Expert with 14 years of experience, specialising in UK, Australia and Europe admissions, scholarships and visa refusal case analysis."],
+  ["Sravanthi Gundu", "Manager: Student Outreach", "With 15 years in international education, Sravanthi specialises in USA, Canada and Germany, helping students with admissions strategy, visa interview preparation and pre-departure planning."],
 ] as const;
 
 export default function ConsultantsPage() {
@@ -29,7 +19,7 @@ export default function ConsultantsPage() {
       <Navigation />
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <span className={styles.kicker}>Our consultants</span>
+          <span className={styles.kicker}>Our Leadership Team</span>
           <h1>Expert guidance.<br /><em>A global</em> future.</h1>
           <p>Meet the people who make your study abroad plans easier to understand, with thoughtful guidance at every step of your journey.</p>
           <div className={styles.proofRow}>
@@ -43,28 +33,28 @@ export default function ConsultantsPage() {
 
       <section className={styles.teamSection}>
         <div className={styles.sectionIntro}>
-          <span className={styles.kicker}>Meet our consultants</span>
+          <span className={styles.kicker}>Meet our Leadership Team</span>
           <h2>Your personal study abroad team.</h2>
           <p>From career clarity to university selection, our consultants are here to guide you with expertise and care.</p>
           <Link className="button button-secondary" href="/#consultation">Meet the full team <ArrowRight size={17} /></Link>
         </div>
         <div className={styles.teamGrid}>
-          {consultants.map(([slot, role, text]) => (
-            <article className={styles.personCard} key={role}>
-              <div className={styles.personPlaceholder}>{slot}</div>
-              <h3>{role}</h3><p>{text}</p>
-              <Link href="/#consultation" aria-label={`Talk to a ${role}`}>↗</Link>
+          {teamMembers.slice(0, 3).map(([name, role, bio]) => (
+            <article className={styles.personCard} key={name}>
+              <div className={styles.personPlaceholder} aria-label={`${name} profile picture`}><strong>{name.split(" ").map((part) => part[0]).join("")}</strong></div>
+              <h3>{name}</h3><p className={styles.role}>{role}</p><p>{bio}</p>
+              <Link href="/#consultation" aria-label={`Talk to ${name}`}>↗</Link>
             </article>
           ))}
         </div>
       </section>
 
       <section className={styles.peopleSection}>
-        <div className={styles.peopleHeading}><span className={styles.kicker}>Meet the people behind the guidance</span><h2>A team for every next step.</h2><p>Every conversation is backed by a specialist who understands the detail behind your decision.</p></div>
+        <div className={styles.peopleHeading}><span className={styles.kicker}>Our Leadership Team</span><h2>A team for every next step.</h2><p>Every conversation is backed by a specialist who understands the detail behind your decision.</p></div>
         <div className={styles.peopleGrid}>
           {teamMembers.map(([name, role, bio], index) => (
             <article className={styles.personCard} key={name}>
-              <div className={styles.personPlaceholder}>Image placeholder <small>Profile {String(index + 1).padStart(2, "0")}</small></div>
+              <div className={styles.personPlaceholder} aria-label={`${name} profile picture`}><strong>{name.split(" ").map((part) => part[0]).join("")}</strong><small>Profile {String(index + 1).padStart(2, "0")}</small></div>
               <h3>{name}</h3><p className={styles.role}>{role}</p><p>{bio}</p>
               <Link href="/#consultation" aria-label={`Talk to ${name}`}>↗</Link>
             </article>

@@ -21,10 +21,12 @@ function splitFor(items: GridItem[], start: number) {
 export function AdaptiveContentGrid({
   items,
   rowSplits,
+  contentDriven = false,
   renderItem,
 }: {
   items: readonly GridItem[];
   rowSplits?: readonly number[];
+  contentDriven?: boolean;
   renderItem: (item: GridItem, index: number) => ReactNode;
 }) {
   const rows: GridItem[][] = [];
@@ -44,7 +46,7 @@ export function AdaptiveContentGrid({
   return (
     <div className={styles.grid}>
       {rows.map((row, index) => (
-        <div className={styles.row} data-split={row.length} key={`row-${index}`}>
+        <div className={styles.row} data-split={row.length} data-content-driven={contentDriven || undefined} key={`row-${index}`}>
           {row.map((item, itemIndex) => (
             <div className={styles.cell} key={item.id}>
               {renderItem(item, cursor - row.length + itemIndex)}

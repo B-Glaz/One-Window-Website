@@ -1,9 +1,8 @@
 export type NavLink = [string, string];
 
 export const aboutLinks: NavLink[] = [
-  ["Our consultants", "/about/consultants"],
-  ["Our results", "/about/our-results"],
-  ["Our story", "/about/ourstory"],
+  ["Our Leadership Team", "/about/consultants"],
+  ["Our success", "/about/oursuccess"],
   ["Careers", "/careers"],
 ];
 

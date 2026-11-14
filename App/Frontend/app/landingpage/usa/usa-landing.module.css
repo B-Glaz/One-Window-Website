@@ -504,9 +504,10 @@
 
 .contentDropdown {
   margin-bottom: 22px;
-  border: 1px solid var(--usa-line);
+  border: 1px solid rgba(25, 91, 166, .16);
   border-radius: 24px;
-  background: rgba(255,255,255,.62);
+  background: linear-gradient(145deg, #f2f7ff, #eaf1fb);
+  box-shadow: 0 22px 46px -34px rgba(20, 51, 105, .42);
   overflow: hidden;
 }
 
@@ -518,16 +519,20 @@
   cursor: pointer;
   list-style: none;
   color: var(--usa-ink);
+  font-size: 19px;
   font-weight: 800;
 }
 
 .contentDropdown summary::-webkit-details-marker { display: none; }
-.contentDropdown summary span { font-size: 24px; font-weight: 400; transition: transform .25s ease; }
-.contentDropdown[open] summary span { transform: rotate(45deg); }
+.contentDropdownToggle { font-size: 24px; font-weight: 400; transition: transform .25s ease; }
+.contentDropdown[open] .contentDropdownToggle { transform: rotate(45deg); }
 .contentDropdown > .typeGrid,
 .contentDropdown > .eligibilityGrid,
-.contentDropdown > .scholarshipGrid { padding: 0 18px 18px; }
+.contentDropdown > .scholarshipGrid,
+.contentDropdown > .timeline { padding: 0 18px 18px; }
 .scholarshipAdaptiveWrap { padding: 0 18px 18px; }
+.scholarshipAdaptiveWrap :global(.row) { align-items: start; }
+.scholarshipAdaptiveWrap :global(.cell) > * { height: auto; }
 
 .sourceLinks {
   display: grid;
@@ -633,12 +638,14 @@
 .navySection .sectionHeading h2 { color: white; }
 .navySection .sectionHeading > p { color: #9db8e4; }
 .navySection .sectionHeading > div { color: #ced8ea; }
+.navySection .contentDropdown { width: calc(100% + 32px); margin-inline: -16px; border-color: rgba(133, 204, 255, .24); background: #0d2c59; }
+.navySection .contentDropdown summary { color: #f5f9ff; }
 
 .timeline { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 36px; margin-bottom: 34px; }
-.timeline article { display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 22px 0; border-top: 1px solid rgba(255,255,255,.16); }
-.timeline article > span { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; color: #bad0f2; font-size: 12px; font-weight: 800; }
-.timeline h3 { margin: 0 0 6px; color: white; font-size: 19px; }
-.timeline p { margin: 0; color: #c6d2e5; }
+.timeline article { display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 22px; border: 1px solid rgba(133, 204, 255, .2); border-radius: 20px; background: rgba(17, 55, 108, .92); }
+.timeline article > span { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; color: #e7f2ff; font-size: 12px; font-weight: 800; }
+.timeline h3 { margin: 0 0 6px; color: #fff; font-size: 19px; }
+.timeline p { margin: 0; color: #dbe8f7; }
 .lightButton { color: var(--usa-navy); background: white; }
 
 .costTable { overflow: hidden; border: 1px solid var(--usa-line); border-radius: 24px; background: white; }
@@ -657,6 +664,18 @@
 .scholarshipGrid article { min-height: 235px; }
 .scholarshipGrid svg { color: var(--usa-blue); }
 .scholarshipCard { min-height: 235px; display: flex; flex-direction: column; }
+.scholarshipCard { min-height: 0; padding: 0; overflow: hidden; }
+.scholarshipCard summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 76px; padding: 20px 22px; color: var(--usa-ink); font-size: 15px; font-weight: 750; cursor: pointer; list-style: none; }
+.scholarshipCard summary > span:first-child { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.scholarshipCard[open] summary > span:first-child { overflow: visible; white-space: normal; text-overflow: clip; }
+.scholarshipCard summary::-webkit-details-marker { display: none; }
+.scholarshipCard summary b { flex: 0 0 auto; color: var(--usa-blue); font-size: 26px; font-weight: 400; transition: transform .3s ease; }
+.scholarshipCard[open] summary b { transform: rotate(45deg); }
+.scholarshipCard summary:hover { color: var(--usa-blue); background: #f7fbff; }
+.scholarshipCard summary:focus-visible { outline: 3px solid rgba(12, 113, 195, .26); outline-offset: -3px; }
+.scholarshipBody { padding: 0 26px 26px; animation: scholarship-reveal .3s ease both; }
+.scholarshipBody .scholarshipText { min-height: 0; }
+@keyframes scholarship-reveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 .scholarshipCard svg { color: var(--usa-blue); }
 .scholarshipCard p { flex: 1; }
 .scholarshipText { flex: 1; }
@@ -756,6 +775,7 @@
   .sectionNav { top: 66px; padding: 8px; }
   .sectionNav > div { justify-content: flex-start; }
   .section { padding: 64px 0; scroll-margin-top: 126px; }
+  .navySection .contentDropdown { width: 100%; margin-inline: 0; }
   .introGrid, .timeline { grid-template-columns: 1fr; }
   .highlightGrid, .typeGrid, .reasonGrid, .eligibilityGrid, .scholarshipGrid, .careerGrid, .intakeGrid { grid-template-columns: 1fr; }
   .highlightGrid article:first-child { grid-column: auto; }
@@ -763,6 +783,8 @@
   .sourceNote { grid-template-columns: auto 1fr; }
   .sourceNote a { grid-column: 2; }
   .eligibilityGrid article, .scholarshipGrid article, .careerGrid article { min-height: 0; }
+  .scholarshipCard summary { min-height: 68px; padding: 16px 18px; font-size: 14px; }
+  .scholarshipBody { padding: 0 20px 20px; }
   .lifeMedia { height: 360px; }
   .conversionBand { align-items: flex-start; flex-direction: column; gap: 22px; }
   .mobileConversionBar {
@@ -893,6 +915,19 @@
   box-shadow: 0 24px 58px -38px rgba(0, 0, 0, .82), inset 0 1px rgba(255, 255, 255, .08);
   backdrop-filter: blur(20px);
 }
+
+:global(html[data-theme="dark"]) .timeline article {
+  background: #153d76;
+  color: #f5f9ff;
+}
+
+:global(html[data-theme="dark"]) .navySection .contentDropdown {
+  background: #0d2c59;
+  border-color: rgba(133, 204, 255, .24);
+}
+
+:global(html[data-theme="dark"]) .timeline h3 { color: #fff; }
+:global(html[data-theme="dark"]) .timeline p { color: #dce9f8; }
 
 :global(html[data-theme="dark"]) .costTable {
   border-color: rgba(133, 204, 255, .22);

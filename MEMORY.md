@@ -122,6 +122,16 @@
 - Corrected scholarship source order so the explicit row plan now renders Tata alone in row 2, University and subject awards/Niche STEM/Karsh in row 3, Cornelius alone in row 4, Inlaks alone in row 5, and the two planning/help cards in row 6.
 - USA page cleanup: eyebrow labels are hidden across the page and the existing heading/body spacing is retained so sections flow without leftover label gaps.
 - Site-wide eyebrow cleanup: global selectors now hide shared and CSS-module eyebrow/kicker labels across homepage, country pages, landing pages, events, careers, resources, and shared reference templates without removing headings or body content.
+- Rolled back the About success/consultant prompt pass: restored the pre-prompt Consultants, Our Story, Our Results, and About navigation files from repository state. No `/about/our-success` route remains.
+- Consultant content update: replaced placeholder consultant data with the documented One Window leadership profiles from `Our Consultants.docx`, updated all consultant section labels and the About dropdown item to “Our Leadership Team”, and kept initials-based editable portrait placeholders because the document supplied no images.
+- Added `docs/OUR-STORY-AND-OUR-RESULTS-CONTENT.md`, documenting the full current copy, section order, stats, destinations, outcomes table, placeholders, CTA destinations, and shared layout notes for both About pages.
+- Added `/about/oursuccess` as a dedicated Our Success page using all documented Our Story and Our Results content, including the stats strip, services, destinations, outcomes table, student milestone cards, opportunity band, and final consultation CTA.
+- Added `/about/oursuccess` to the About navigation dropdown as “Our success”.
+- Verification: TypeScript passes after clearing generated route metadata; production compilation succeeds but the local Next.js type-check worker still exits with `spawn EPERM`.
+- About merge and leadership update: `/about/ourstory` now redirects to the consolidated `/about/our-results` page. `/about/consultants` is relabelled as the leadership-team experience and now uses the supplied consultant document's named leadership/advisor profiles with initials-based profile placeholders until real image assets are provided. TypeScript and targeted ESLint pass.
+- About canonical-page correction: merged the results content into the `/about/ourstory` route by reusing the existing results page implementation there, removed “Our results” from About navigation, and changed `/about/our-results` to a compatibility redirect back to `/about/ourstory`. Production build passes with 111 routes.
+- About route loop fix: `/about/ourstory` now reuses the stable `/about/results` implementation instead of the compatibility redirect, eliminating the redirect loop that caused the page to appear blank. TypeScript passes; the subsequent build hit the known local `spawn EPERM` worker issue.
+- About content merge completion: `/about/ourstory` now renders one combined Our Story + Our Results page with shared story, impact, destinations, outcomes, leadership/services, student quotes and proof metrics. `/about/our-results` remains a compatibility redirect only. Production build passes with 111 routes.
 - Added Unlighthouse `^0.19.1` as a development dependency for local performance, SEO, accessibility, and quality audits. Verified the CLI with `npm exec -- unlighthouse --version`; no production runtime code was changed.
 - Added `schema-dts` `^2.1.0` as a development dependency for typed Schema.org structured-data definitions. Verified the package is installed; no runtime code was changed.
 - Added Pagefind `^1.6.0` as a development dependency for static search-index generation. Verified the CLI with `npm exec -- pagefind --version`; no runtime search UI was added yet.
@@ -138,6 +148,23 @@
 - Changed `SectionJumpNav` to render expanded on initial page load, then use the existing five-second idle collapse. Replaced the static chevron with a three-stage directional energy cascade: it travels outward while collapsed and reverses inward while expanded, without moving the toggle itself; reduced-motion users receive a static three-chevron fallback.
 - Corrected the section-toggle chevrons so they no longer animate continuously. They now remain still at rest and perform one short staggered flip only when the navigator expands or collapses, with a static reduced-motion fallback.
 - Added the Fulbright-Nehru Master's Fellowship article at `/blog/fulbright-nehru-masters-fellowship-for-indian-students` from the supplied DOCX, and linked it from the USA scholarship section with a styled internal CTA. Production build passed with 111 generated routes; no commit or push performed.
+- YouTube testimonial polish: enlarged testimonial thumbnails into responsive 16:9 frames, added a YouTube-style red play treatment and thumbnail gradient, and restyled the watch CTA with a red platform accent while preserving the existing video modal and YouTube links. TypeScript passes; no commit or push performed.
+- Corrected the YouTube testimonial treatment after visual review: replaced the filled PlayCircle overlay with a proper white-triangle/red YouTube play button and removed the extra CTA pseudo-element that was forcing the arrow onto a second row. Browser review now shows aligned, compact watch controls.
+- Adjusted the testimonial thumbnail play button so its centre is solid white, matching the supplied YouTube reference treatment.
+- Changed testimonial video interactions from an external YouTube confirmation flow to an in-site responsive YouTube embed modal with autoplay and a single close control; thumbnails and CTA buttons no longer redirect users away from One Window.
+- Expanded the testimonial player to a large desktop-friendly modal (up to 1100px), added mobile sizing, and made the thumbnail itself an accessible video trigger in addition to the watch CTA.
+- Improved application-process readability on the USA landing page: timeline cards now use opaque navy surfaces with explicit high-contrast heading, description, and step-number colours in light and dark modes.
+- Removed the decorative check-circle icon from scholarship cards across the USA, UK, France, and Malta landing pages; proof-point and counselling benefit icons remain unchanged.
+- Reworked the USA application-process dropdown shell so the pale outer panel is replaced by a deep navy surface with a slightly lighter navy timeline-card contrast in both light and dark presentation contexts.
+- Added consistent inner padding around the application-process timeline so the expanded navy shell has more breathing room on desktop and mobile.
+- Slightly widened the desktop application-process shell beyond the content column while keeping mobile width constrained to the viewport.
+- Converted each USA scholarship card into its own collapsed native details tab with title-only summaries, animated reveal content, plus/close rotation, responsive spacing, and preserved Fulbright guide linking.
+- Fixed rotated scholarship titles: the parent funding-dropdown icon rule was unintentionally rotating nested title spans; the toggle animation is now scoped to its own icon class.
+- Refined the USA scholarship accordion shell with a soft blue gradient, restrained shadow, clearer tab separation, and accessible hover/focus states.
+- Made scholarship rows content-driven so opening one tab no longer stretches neighbouring closed tabs into empty space; increased the parent “Explore funding options” label size for clearer hierarchy.
+- Corrected the content-driven scholarship grid implementation by adding an explicit AdaptiveContentGrid flag and data attribute; CSS-module row selectors now reliably prevent closed cards from stretching.
+- Tightened scholarship tab typography and spacing so titles stay on one line on desktop, with safe ellipsis behavior for narrow mobile widths and aligned expand controls.
+- Updated expanded scholarship tabs to reveal the complete title instead of truncating it; closed tabs retain the compact single-line treatment.
 
 ## SOP article editorial redesign (2026-11-13)
 

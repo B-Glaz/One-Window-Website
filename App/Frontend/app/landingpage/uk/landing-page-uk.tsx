@@ -305,7 +305,7 @@ export function UkLandingPage({ formPlacement = "top" }: { formPlacement?: "top"
           />
           <div className={styles.scholarshipGrid}>
             {content.scholarships.map(([title, text]) => (
-              <article key={title}><CheckCircle2 size={20} /><h3>{title}</h3><p>{text}</p></article>
+              <article key={title}><h3>{title}</h3><p>{text}</p></article>
             ))}
           </div>
           <a className={styles.inlineCta} href={formTarget}>Explore scholarship opportunities <ArrowRight size={16} /></a>

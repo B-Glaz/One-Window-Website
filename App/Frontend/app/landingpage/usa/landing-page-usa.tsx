@@ -313,22 +313,24 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
             copy="Funding options vary by study level, provider and intake. Awards remain subject to each provider's eligibility, selection and renewal conditions."
           />
           <details className={styles.contentDropdown} open>
-            <summary>Explore funding options <span>+</span></summary>
+            <summary>Explore funding options <span className={styles.contentDropdownToggle}>+</span></summary>
             <div className={styles.scholarshipAdaptiveWrap}>
               <AdaptiveContentGrid
                 items={content.scholarships.map(([title, text]) => ({ id: title, title, text }))}
                 rowSplits={[4, 1, 3, 1, 1, 2]}
+                contentDriven
                 renderItem={({ title, text }) => (
-                  <article className={styles.scholarshipCard}>
-                    <CheckCircle2 size={20} />
-                    <h3>{title}</h3>
-                    <div className={styles.scholarshipText}>{renderScholarshipText(text)}</div>
-                    {title === "Inlaks Shivdasani and Fulbright Eligibility" ? (
-                      <Link className={styles.scholarshipArticleLink} href="/blog/fulbright-nehru-masters-fellowship-for-indian-students">
-                        Read the Fulbright-Nehru Master&apos;s Fellowship guide <ArrowRight size={15} />
-                      </Link>
-                    ) : null}
-                  </article>
+                  <details className={styles.scholarshipCard}>
+                    <summary><span>{title}</span><b aria-hidden="true">+</b></summary>
+                    <div className={styles.scholarshipBody}>
+                      <div className={styles.scholarshipText}>{renderScholarshipText(text)}</div>
+                      {title === "Inlaks Shivdasani and Fulbright Eligibility" ? (
+                        <Link className={styles.scholarshipArticleLink} href="/blog/fulbright-nehru-masters-fellowship-for-indian-students">
+                          Read the Fulbright-Nehru Master&apos;s Fellowship guide <ArrowRight size={15} />
+                        </Link>
+                      ) : null}
+                    </div>
+                  </details>
                 )}
               />
             </div>
