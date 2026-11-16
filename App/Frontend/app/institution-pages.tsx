@@ -401,9 +401,10 @@ export function InstitutionalPage({
   related?: Array<[string, string]>;
 }) {
   const isBachelors = page.audience === "Bachelor recruitment";
+  const isMasters = page.audience === "Masters recruitment";
 
   return (
-    <main className={isBachelors ? "institution-page bachelors-page" : "institution-page"}>
+    <main className={`institution-page${isBachelors ? " bachelors-page" : ""}${isMasters ? " masters-page" : ""}`}>
       <Navigation />
       <section className="institution-hero">
         <div className="institution-hero-orb" />

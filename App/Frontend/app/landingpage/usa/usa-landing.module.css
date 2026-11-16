@@ -12,7 +12,6 @@
   color: var(--usa-ink);
   background: #dfe6f3;
 }
-
 .canvas,
 .container {
   width: min(1180px, calc(100% - 32px));
@@ -308,9 +307,9 @@
   margin: 0 0 18px;
   color: var(--usa-ink);
   font-size: clamp(36px, 4.6vw, 58px);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -.055em;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -.015em;
   text-wrap: balance;
 }
 
@@ -324,9 +323,9 @@
 
 .introGrid {
   display: grid;
-  grid-template-columns: 1.25fr .75fr;
-  gap: clamp(34px, 7vw, 92px);
-  align-items: end;
+  grid-template-columns: minmax(0, 760px);
+  gap: 0;
+  align-items: start;
 }
 
 .overviewLead {
@@ -494,6 +493,7 @@
   display: grid;
   grid-template-columns: 1.25fr .75fr;
   gap: 18px;
+  align-items: start;
 }
 
 .typeGrid {
@@ -520,7 +520,7 @@
   list-style: none;
   color: var(--usa-ink);
   font-size: 19px;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .contentDropdown summary::-webkit-details-marker { display: none; }
@@ -570,12 +570,33 @@
   border-radius: 26px;
   color: white;
   background: var(--usa-navy);
+  max-height: 520px;
+  overflow: hidden;
+  transition: max-height .62s cubic-bezier(.16, 1, .3, 1), padding .62s cubic-bezier(.16, 1, .3, 1), border-radius .42s cubic-bezier(.16, 1, .3, 1), box-shadow .42s ease;
 }
 
 .fieldPanel > span { color: #aebfde; font-size: 12px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
 .fieldPanel > div { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0; }
 .fieldPanel i { padding: 8px 11px; border: 1px solid rgba(255,255,255,.16); border-radius: 999px; font-size: 13px; font-style: normal; }
 .fieldPanel a { margin-top: auto; color: white; }
+.universityLayout:not(:has(> .contentDropdown[open])) .fieldPanel {
+  max-height: 84px;
+  padding: 20px 24px;
+  border-radius: 22px;
+}
+.universityLayout:not(:has(> .contentDropdown[open])) .fieldPanel > span,
+.universityLayout:not(:has(> .contentDropdown[open])) .fieldPanel > div { max-height: 0; margin: 0; opacity: 0; overflow: hidden; }
+.universityLayout:not(:has(> .contentDropdown[open])) .fieldPanel a { margin-top: 0; white-space: nowrap; }
+.contentDropdown[open] > :not(summary) { animation: dropdown-settle .48s cubic-bezier(.16, 1, .3, 1) both; transform-origin: top center; }
+.scholarshipCard[open] > :not(summary) { animation: dropdown-settle .38s cubic-bezier(.16, 1, .3, 1) both; transform-origin: top center; }
+@keyframes dropdown-settle { from { opacity: 0; transform: translateY(-10px) scaleY(.96); } to { opacity: 1; transform: translateY(0) scaleY(1); } }
+@media (max-width: 700px) {
+  .universityLayout:not(:has(> .contentDropdown[open])) .fieldPanel { min-height: 84px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fieldPanel { transition: none; }
+  .contentDropdown[open] > :not(summary), .scholarshipCard[open] > :not(summary) { animation: none; }
+}
 
 .eligibilityGrid {
   display: grid;
@@ -633,6 +654,47 @@
   border: 0;
   cursor: pointer;
 }
+
+/* This early-page prompt should feel like an invitation into the guide, not a closing footer CTA. */
+.conversionBand {
+  align-items: flex-start;
+  margin-top: 18px;
+  padding: 28px 30px;
+  border: 1px solid rgba(25, 91, 166, .16);
+  color: var(--usa-navy);
+  background: linear-gradient(135deg, #eef7ff, #fff8f4);
+  box-shadow: 0 18px 42px -34px rgba(20, 51, 105, .5);
+}
+.conversionBand span { color: var(--usa-blue); }
+.conversionBand h3 { color: var(--usa-navy); }
+.conversionBand a,
+.conversionBand button { color: #fff; background: var(--usa-blue); box-shadow: 0 12px 26px -18px rgba(12, 113, 195, .8); }
+:global(html[data-theme="dark"]) .conversionBand { border-color: rgba(133, 204, 255, .2); color: #f5f9ff; background: linear-gradient(135deg, #102f5d, #3c2c4f); }
+:global(html[data-theme="dark"]) .conversionBand h3 { color: #f5f9ff; }
+
+/* Shared dropdown language: consistent tile, spacing and chevron affordance. */
+.contentDropdown { border-radius: 22px; }
+.contentDropdown > summary { min-height: 72px; padding: 18px 22px; border-radius: 22px; font-weight: 600; }
+.contentDropdown > summary > span,
+.scholarshipCard summary > b { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: var(--usa-blue); background: #e6f2ff; font-size: 0; font-weight: 600; }
+.contentDropdown > summary > span::before,
+.scholarshipCard summary > b::before { content: "→"; font-size: 20px; line-height: 1; transform: translateX(0); transition: transform .42s cubic-bezier(.16, 1, .3, 1); }
+.contentDropdown[open] > summary > span::before,
+.scholarshipCard[open] summary > b::before { content: "×"; font-size: 22px; transform: translateX(0) rotate(90deg); }
+.contentDropdown > summary:hover { background: rgba(247, 251, 255, .88); }
+.scholarshipCard summary > b { width: 34px; height: 34px; border-radius: 10px; }
+.scholarshipCard summary > b::before { font-size: 21px; }
+.scholarshipCard[open] summary > b { transform: none; }
+.faqLayout details { border-radius: 22px; }
+.faqLayout details summary { min-height: 72px; padding: 18px 22px; border-radius: 22px; }
+.faqLayout details summary > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: var(--usa-blue); background: #e6f2ff; font-size: 0; }
+.faqLayout details summary > span::before { content: "→"; font-size: 20px; transform: translateX(0); transition: transform .42s cubic-bezier(.16, 1, .3, 1); }
+.faqLayout details[open] summary > span::before { content: "×"; font-size: 22px; transform: rotate(90deg); }
+:global(html[data-theme="dark"]) .contentDropdown > summary > span,
+:global(html[data-theme="dark"]) .scholarshipCard summary > b,
+:global(html[data-theme="dark"]) .faqLayout details summary > span { color: #dff4ff; background: rgba(54, 139, 208, .3); }
+.contentDropdown[open] > summary > span { transform: none; }
+.scholarshipCard[open] summary > b { transform: none; }
 
 .navySection { color: white; background: var(--usa-navy); }
 .navySection .sectionHeading h2 { color: white; }
@@ -693,6 +755,24 @@
 .scholarshipGrid h3,
 .careerGrid h3 { margin-top: 30px; }
 .inlineCta { margin-top: 28px; }
+
+/* Funding options use a calm editorial accordion instead of a dense card mosaic. */
+.softSection#scholarships .contentDropdown { border: 0; border-radius: 28px; background: #fff; box-shadow: 0 24px 70px -50px rgba(20, 51, 105, .55); }
+.softSection#scholarships .contentDropdown > summary { padding: 26px 30px; border-bottom: 1px solid var(--usa-line); color: var(--usa-navy); font-size: clamp(22px, 2.5vw, 32px); font-weight: 600; }
+.softSection#scholarships .scholarshipAdaptiveWrap { padding: 0 30px 12px; }
+.softSection#scholarships .scholarshipAdaptiveWrap :global(.row) { display: block; }
+.softSection#scholarships .scholarshipAdaptiveWrap :global(.cell) { width: 100%; }
+.softSection#scholarships .scholarshipCard { border-bottom: 1px solid var(--usa-line); border-radius: 0; background: transparent; }
+.softSection#scholarships .scholarshipCard:last-child { border-bottom: 0; }
+.softSection#scholarships .scholarshipCard summary { min-height: 76px; padding: 22px 4px; font-size: 17px; }
+.softSection#scholarships .scholarshipCard summary > span:first-child { white-space: normal; overflow: visible; text-overflow: clip; }
+.softSection#scholarships .scholarshipCard summary:hover { background: linear-gradient(90deg, #f7fbff, transparent); }
+.softSection#scholarships .scholarshipBody { padding: 0 40px 26px 4px; color: #536279; }
+:global(html[data-theme="dark"]) .softSection#scholarships .contentDropdown { background: #0d2c59; }
+:global(html[data-theme="dark"]) .softSection#scholarships .contentDropdown > summary { border-color: rgba(133, 204, 255, .22); color: #f5f9ff; }
+:global(html[data-theme="dark"]) .softSection#scholarships .scholarshipCard { border-color: rgba(133, 204, 255, .18); }
+:global(html[data-theme="dark"]) .softSection#scholarships .scholarshipCard summary:hover { background: rgba(54, 139, 208, .16); }
+:global(html[data-theme="dark"]) .softSection#scholarships .scholarshipBody { color: #c5d7ec; }
 
 .visaLayout { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(44px, 7vw, 90px); align-items: start; }
 .visaSteps { display: grid; gap: 0; margin: 0 0 24px; padding: 0; counter-reset: visa-step; list-style: none; }
@@ -962,4 +1042,3 @@
   background: rgba(242, 248, 255, .95);
   color: #143369;
 }
-

@@ -126,6 +126,19 @@
   pointer-events: auto;
 }
 
+/* Keep the global navigation dropdown clear of the section controls. */
+:global(body:has(.nav-menu.is-open)) .nav[data-expanded="true"] {
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  border-radius: 999px;
+}
+:global(body:has(.nav-menu.is-open)) .nav[data-expanded="true"] .links {
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(16px) scale(.98);
+  pointer-events: none;
+}
+
 .links a {
   flex: 0 0 auto;
   padding: 10px 14px;

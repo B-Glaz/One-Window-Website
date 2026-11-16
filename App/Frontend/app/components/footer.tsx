@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { additionalServiceLinks } from "../navigation/config";
 export function Footer() {
   return (
     <footer className="site-footer">
@@ -25,6 +26,10 @@ export function Footer() {
           <a href="https://onewindow.co/contact/">Contact</a>
           <a href="mailto:info@onewindow.co">Email us</a>
           <a href="https://onewindow.co/privacy-policy/">Privacy policy</a>
+        </div>
+        <div>
+          <strong>Additional services</strong>
+          {additionalServiceLinks.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
         </div>
       </div>
       <div className="shell footer-bottom">

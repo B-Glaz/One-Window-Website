@@ -1,5 +1,40 @@
 # Project Memory
 
+## 2026-11-16 — Premium career counselling landing page
+
+- Removed long dash punctuation from the Premium page copy and replaced it with natural commas or connecting words.
+- Fixed the parent-decision headline contrast by explicitly keeping it white on the navy section; this prevents the global heading colour from producing navy-on-navy text.
+- Replaced the `/premium` development placeholder with a complete, responsive Premium Career Counselling & Personalised Mentorship landing page based on the supplied programme document.
+- The page now follows a parent-trust journey: decision questions, programme philosophy, five complete mentoring pillars, India/abroad positioning, a direct comparison with general counselling, parent-focused messaging and the existing Zoho enquiry form at the bottom.
+- Reused the shared navigation, footer, theme toggle and Zoho form; the navigation counselling CTA now targets `#premium-enquiry`, and the iframe preserves the `/premium` referrer attribution.
+- Added route-scoped Montserrat typography, editorial layouts, reduced-motion handling, light/dark themes and three locally stored Pexels photographs. No pricing, duration, guarantees or testimonials were invented.
+- Verification: targeted Premium page ESLint passes; `git diff --check` passes; the production build compiles successfully but the environment blocks the final TypeScript worker with `spawn EPERM`; standalone typecheck remains blocked by stale generated `.next` route types. Browser review passed at 1440×900 and 390×844 with no horizontal overflow, working anchor navigation and loaded local font/assets. Mobile Lighthouse: Accessibility 100, SEO 100, Agentic Browsing 100, Best Practices 96; the remaining browser issue is Zoho's third-party cookie warning.
+- Added a focused premium uplift without changing routes or form behaviour: private-mentorship signal in the hero, a student-profile working-view visual, a four-step journey strip, transparent “fit / not a fit” guidance, and a calmer private-invitation line above the enquiry form. Reused existing assets, icons, tokens, dark-mode rules and responsive breakpoints. Targeted ESLint and `git diff --check` pass.
+- Removed eyebrow/kicker labels from all Premium headings so the page uses direct editorial hierarchy without small uppercase heading lines. Updated paragraph selectors accordingly; targeted ESLint and `git diff --check` remain clean.
+- Tightened Premium section spacing to remove excessive blank bands between content blocks, including the navy question section, philosophy, profile preview, pillars, comparison, parent message, fit guidance and enquiry areas. Reduced internal note and pillar-list offsets while preserving responsive spacing.
+- Applied a Premium-inspired visual treatment to the existing Bachelor's and Master's service pages without changing their content, links, forms, or route behavior. Added route-level `bachelors-page` and `masters-page` styling for editorial hero proportions, rounded image treatment, refined section spacing, elevated cards, tinted surfaces, and dark-mode variants.
+- Moved Foreign Universities, Indian Universities, and Secondary Schools out of the Services navigation dropdown and into a new Footer group titled “Additional services”. Their existing destinations are unchanged; mobile navigation now also omits them from the dropdown.
+- Reworked `/careers` presentation from the usual two-column split into a full-width editorial composition: centred hero with a wide orbit motif, staggered contribution cards, a three-step process grid, and a centred enquiry section. Existing copy, form, route, navigation, and footer remain unchanged.
+- Simplified `/careers` at the user’s request to retain only the “Tell us where you can make a difference.” enquiry section, shared navigation, and footer. Removed the additional hero, contribution, and process content from the route.
+- Prevented the country section-navigation bar from overlapping open top-navigation dropdowns. It now collapses smoothly and becomes non-interactive while a dropdown is open, then returns when the dropdown closes.
+- Made the actual `SectionJumpNav` component collapse directly while a top-navigation dropdown is open, fixing the earlier selector targeting the wrong section-nav class.
+- Redesigned the USA scholarship funding section as a full-width editorial accordion: clearer section title, one scholarship per row, readable full titles, subtle dividers, animated detail reveal, and light/dark surface treatments. Scholarship content and links are unchanged.
+- Added the Fulbright–Nehru Master’s Fellowship guide link to every USA scholarship accordion item, using the existing blog destination and link styling.
+- Reworked the early USA “Find your fit” conversion band so it reads as an entry-point prompt rather than a page-ending CTA: lighter gradient surface, left-aligned content, restrained border/shadow, and a blue action button with dark-mode support. Copy and destination remain unchanged.
+- Standardized USA dropdowns and accordions with one shared visual language: consistent rounded tiles, spacing, indicator tile, and animated chevron for university, eligibility, application, scholarship, and FAQ disclosures. Content remains unchanged.
+- Loosened the consultants hero headline tracking and line-height so the stacked “Expert guidance. A global future.” heading no longer feels cramped or stuck together.
+- Added the supplied three-role typography system as global tokens: SF Pro Display for display headings, Geist for interface controls, and Inter for body copy, with safe system fallbacks until licensed font assets are available. Updated Premium to use the shared display/body roles.
+- Removed the repeated USA intro statement and duplicate “Find Universities That Match My Profile” CTA from the early overview, then collapsed the remaining intro grid to a single readable column so the section no longer leaves an empty side space.
+- Made blog “Read article” links more noticeable with a compact outlined pill, clearer interface typography, stronger colour contrast, hover lift, and dark-mode treatment.
+- Set the USA page’s university, eligibility, application, and funding content dropdowns to collapsed by default while keeping their title bars visible and interactive. Scholarship rows remain individually expandable.
+- Fixed the collapsed university dropdown leaving a large empty panel: the university layout now aligns grid items to the top instead of stretching the closed dropdown to the height of the popular-fields panel.
+- Removed literal plus characters from USA dropdown markup so each disclosure shows only the single styled chevron indicator.
+- Relaxed USA section-heading typography by reducing the aggressive negative tracking, slightly increasing line-height, and using a lighter semibold weight so long headings such as “Types of Universities & Courses” no longer look stuck together.
+- Linked the USA university dropdown and navy field panel visually: the panel now animates into a compact “Find Universities That Match My Profile” CTA while the dropdown is closed, and expands its fields when the dropdown opens. The panel remains in place and uses a smooth height/padding transition.
+- Refined USA dropdown motion with spring-like easing, stagger-free settle animations for opened content, and reduced-motion fallbacks. The navy panel now expands and compresses more gently without abrupt visual jumps.
+- Reduced USA dropdown heading weight from heavy bold to semibold, including the funding title, so the disclosure bars feel lighter and more balanced.
+- Replaced USA dropdown down-chevron icons with a directional arrow when closed and an animated close mark when open, preserving the existing indicator tile placement.
+
 ## Current milestone
 
 - Updated the Malta webinar date to **18 November** while keeping the time at **6:30 PM IST**.
@@ -165,6 +200,12 @@
 - Corrected the content-driven scholarship grid implementation by adding an explicit AdaptiveContentGrid flag and data attribute; CSS-module row selectors now reliably prevent closed cards from stretching.
 - Tightened scholarship tab typography and spacing so titles stay on one line on desktop, with safe ellipsis behavior for narrow mobile widths and aligned expand controls.
 - Updated expanded scholarship tabs to reveal the complete title instead of truncating it; closed tabs retain the compact single-line treatment.
+
+## Read-only website uplift audit (2026-11-14)
+
+- Audited the homepage structure, shared navigation, homepage conversion path, forms, country orbit, testimonials, events banner, metadata coverage, image payloads, lint, and tests without changing website code.
+- Highest-impact findings: two lint errors in internal navigation links, 16 lint warnings including unoptimized homepage/shared images and an unused testimonial import, a test runner blocked by Windows `spawn EPERM`, multiple homepage trust claims without visible evidence links, and very large monument SVG assets (roughly 3–5 MB each).
+- Recommended direction: make the homepage a trust-first guided journey with progressive choice points, proof-linked metrics, a visible counselling outcome, and restrained progress/reward mechanics rather than points or gimmicks.
 
 ## SOP article editorial redesign (2026-11-13)
 

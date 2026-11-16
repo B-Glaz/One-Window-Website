@@ -163,10 +163,6 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
               title="Why study in USA"
               copy="The US higher education system offers flexibility, academic depth and opportunities to combine classroom learning with research, internships and campus experiences."
             />
-            <div className={styles.introStatement}>
-              <strong>Flexible study choices, academic depth and opportunities to combine classroom learning with research, internships and campus experiences.</strong>
-              <a href={formTarget}>Find Universities That Match My Profile <ArrowRight size={16} /></a>
-            </div>
           </div>
           <div className={styles.highlightGrid}>
             {content.highlights.map(([title, text], index) => {
@@ -200,8 +196,8 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
             copy={content.universities.intro}
           />
           <div className={styles.universityLayout}>
-            <details className={styles.contentDropdown} open>
-              <summary>Explore university types <span>+</span></summary>
+            <details className={styles.contentDropdown}>
+            <summary>Explore university types <span aria-hidden="true" /></summary>
               <div className={styles.typeGrid}>
               {content.universities.types.map(([title, text]) => (
                 <article key={title}>
@@ -230,8 +226,8 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
             title="Eligibility"
             copy="Requirements vary by programme and institution. Verify the official admissions page for every course because grades, prerequisites, test policies and document formats can change by intake."
           />
-          <details className={styles.contentDropdown} open>
-            <summary>View eligibility requirements <span>+</span></summary>
+          <details className={styles.contentDropdown}>
+            <summary>View eligibility requirements <span aria-hidden="true" /></summary>
             <div className={styles.eligibilityGrid}>
             {content.eligibility.map(([title, text], index) => (
               <article key={title}>
@@ -262,8 +258,8 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
             title="Application process"
             copy="Start early, work backwards from each deadline and maintain one reliable record of requirements, documents and decisions."
           />
-          <details className={styles.contentDropdown} open>
-            <summary>View the application process <span>+</span></summary>
+          <details className={styles.contentDropdown}>
+            <summary>View the application process <span aria-hidden="true" /></summary>
             <div className={styles.timeline}>
               {content.admissions.map(([number, title, text]) => (
                 <article key={number}>
@@ -309,26 +305,24 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
         <div className={styles.container}>
           <SectionHeading
             eyebrow="Scholarships & aid"
-            title="Scholarships and funding"
+            title="Find the funding route that fits"
             copy="Funding options vary by study level, provider and intake. Awards remain subject to each provider's eligibility, selection and renewal conditions."
           />
-          <details className={styles.contentDropdown} open>
-            <summary>Explore funding options <span className={styles.contentDropdownToggle}>+</span></summary>
+          <details className={styles.contentDropdown}>
+            <summary>Explore funding options <span aria-hidden="true" className={styles.contentDropdownToggle} /></summary>
             <div className={styles.scholarshipAdaptiveWrap}>
               <AdaptiveContentGrid
                 items={content.scholarships.map(([title, text]) => ({ id: title, title, text }))}
-                rowSplits={[4, 1, 3, 1, 1, 2]}
+                rowSplits={content.scholarships.map(() => 1)}
                 contentDriven
                 renderItem={({ title, text }) => (
                   <details className={styles.scholarshipCard}>
-                    <summary><span>{title}</span><b aria-hidden="true">+</b></summary>
+                    <summary><span>{title}</span><b aria-hidden="true" /></summary>
                     <div className={styles.scholarshipBody}>
                       <div className={styles.scholarshipText}>{renderScholarshipText(text)}</div>
-                      {title === "Inlaks Shivdasani and Fulbright Eligibility" ? (
-                        <Link className={styles.scholarshipArticleLink} href="/blog/fulbright-nehru-masters-fellowship-for-indian-students">
-                          Read the Fulbright-Nehru Master&apos;s Fellowship guide <ArrowRight size={15} />
-                        </Link>
-                      ) : null}
+                      <Link className={styles.scholarshipArticleLink} href="/blog/fulbright-nehru-masters-fellowship-for-indian-students">
+                        Read the Fulbright-Nehru Master&apos;s Fellowship guide <ArrowRight size={15} />
+                      </Link>
                     </div>
                   </details>
                 )}
@@ -417,7 +411,7 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
           <SectionHeading eyebrow="Frequently asked questions" title="Frequently asked questions" />
           <div className={styles.faqs}>
             {content.faqs.map(([question, answer]) => (
-              <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>
+              <details key={question}><summary>{question}<span aria-hidden="true" /></summary><p>{answer}</p></details>
             ))}
           </div>
         </div>

@@ -18,6 +18,9 @@ export const serviceLinks: NavLink[] = [
   ["Bachelors", "/services/bachelors"],
   ["Masters", "/for-foreign-universities/masters-recruitment"],
   ["Master of Business Administration", "/for-foreign-universities/masters-recruitment"],
+];
+
+export const additionalServiceLinks: NavLink[] = [
   ["Foreign Universities", "/for-foreign-universities"],
   ["Indian Universities", "/for-indian-universities"],
   ["Secondary Schools", "/for-schools"],
