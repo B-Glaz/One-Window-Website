@@ -552,6 +552,14 @@
   background: rgba(255,255,255,.56);
   font-weight: 700;
 }
+.sourceLinks a svg,
+.costTable a svg,
+.officialLink svg,
+.inlineCta svg { transition: transform .42s cubic-bezier(.16, 1, .3, 1); }
+.sourceLinks a:hover svg,
+.costTable a:hover svg,
+.officialLink:hover svg,
+.inlineCta:hover svg { transform: rotate(360deg); }
 
 @media (max-width: 700px) {
   .sourceLinks { grid-template-columns: 1fr; }
@@ -680,8 +688,7 @@
 .contentDropdown > summary > span::before,
 .scholarshipCard summary > b::before { content: "→"; font-size: 20px; line-height: 1; transform: translateX(0); transition: transform .42s cubic-bezier(.16, 1, .3, 1); }
 .contentDropdown[open] > summary > span::before,
-.scholarshipCard[open] summary > b::before { content: "×"; font-size: 22px; transform: translateX(0) rotate(90deg); }
-.contentDropdown > summary:hover { background: rgba(247, 251, 255, .88); }
+.scholarshipCard[open] summary > b::before { content: "→"; transform: translateX(0) rotate(90deg); }
 .scholarshipCard summary > b { width: 34px; height: 34px; border-radius: 10px; }
 .scholarshipCard summary > b::before { font-size: 21px; }
 .scholarshipCard[open] summary > b { transform: none; }
@@ -689,12 +696,22 @@
 .faqLayout details summary { min-height: 72px; padding: 18px 22px; border-radius: 22px; }
 .faqLayout details summary > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: var(--usa-blue); background: #e6f2ff; font-size: 0; }
 .faqLayout details summary > span::before { content: "→"; font-size: 20px; transform: translateX(0); transition: transform .42s cubic-bezier(.16, 1, .3, 1); }
-.faqLayout details[open] summary > span::before { content: "×"; font-size: 22px; transform: rotate(90deg); }
+.faqLayout details[open] summary > span::before { content: "→"; transform: rotate(90deg); }
+.contentDropdown > summary:hover > span::before,
+.scholarshipCard summary:hover > b::before,
+.faqLayout details summary:hover > span::before { transform: rotate(360deg); }
+.contentDropdown[open] > summary:hover > span::before,
+.scholarshipCard[open] summary:hover > b::before,
+.faqLayout details[open] summary:hover > span::before { transform: rotate(450deg); }
 :global(html[data-theme="dark"]) .contentDropdown > summary > span,
 :global(html[data-theme="dark"]) .scholarshipCard summary > b,
 :global(html[data-theme="dark"]) .faqLayout details summary > span { color: #dff4ff; background: rgba(54, 139, 208, .3); }
+:global(html[data-theme="dark"]) .contentDropdown > summary:hover,
+:global(html[data-theme="dark"]) .scholarshipCard summary:hover { background: rgba(107, 212, 242, .1); transition: background .2s ease; }
 .contentDropdown[open] > summary > span { transform: none; }
 .scholarshipCard[open] summary > b { transform: none; }
+.contentDropdown > summary:hover,
+.scholarshipCard summary:hover { background: rgba(247, 251, 255, .72); transition: background .2s ease; }
 
 .navySection { color: white; background: var(--usa-navy); }
 .navySection .sectionHeading h2 { color: white; }
@@ -914,6 +931,43 @@
   background: radial-gradient(circle at 82% 8%, rgba(46, 163, 242, .18), transparent 28%), #071a38;
 }
 
+:global(html[data-theme="dark"]) .section,
+:global(html[data-theme="dark"]) .softSection,
+:global(html[data-theme="dark"]) .intakeSection,
+:global(html[data-theme="dark"]) .careerSection {
+  background: #081f42;
+}
+
+:global(html[data-theme="dark"]) .sectionHeading > div,
+:global(html[data-theme="dark"]) .consultationGrid > div > p:not(.eyebrow),
+:global(html[data-theme="dark"]) .introStatement,
+:global(html[data-theme="dark"]) .highlightGrid p,
+:global(html[data-theme="dark"]) .intakeGrid p,
+:global(html[data-theme="dark"]) .lifeList p {
+  color: #bfd3e8;
+}
+
+:global(html[data-theme="dark"]) .highlightGrid article:first-child,
+:global(html[data-theme="dark"]) .softSection#scholarships .contentDropdown {
+  border-color: rgba(133, 204, 255, .22);
+  background: linear-gradient(145deg, #12376a, #0d2b57);
+  color: #f1f7ff;
+  box-shadow: 0 24px 70px -50px rgba(0, 0, 0, .88), inset 0 1px rgba(255, 255, 255, .08);
+}
+
+:global(html[data-theme="dark"]) .softSection#scholarships .contentDropdown > summary,
+:global(html[data-theme="dark"]) .softSection#scholarships .scholarshipCard summary {
+  color: #f1f7ff;
+}
+
+:global(html[data-theme="dark"]) .softSection#scholarships .scholarshipCard summary:hover {
+  background: linear-gradient(90deg, rgba(107, 212, 242, .12), transparent);
+}
+
+:global(html[data-theme="dark"]) .softSection#scholarships .scholarshipBody {
+  color: #bfd3e8;
+}
+
 :global(html[data-theme="dark"]) .hero,
 :global(html[data-theme="dark"]) .previousHero,
 :global(html[data-theme="dark"]) .softSection,
@@ -1035,6 +1089,16 @@
 :global(html[data-theme="dark"]) .officialLink,
 :global(html[data-theme="dark"]) .sourceNote a {
   color: #6bd4f2;
+}
+
+:global(html[data-theme="dark"]) .sourceNote {
+  border: 1px solid rgba(133, 204, 255, .22);
+  background: #12376a;
+  color: #e6f1ff;
+}
+
+:global(html[data-theme="dark"]) .sourceNote p {
+  color: #e6f1ff;
 }
 
 :global(html[data-theme="dark"]) .lightButton {

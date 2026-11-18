@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Footer } from "../components/footer";
+import { MediaImage } from "../components/media-image";
 import { Navigation } from "../components/navigation";
 import { articles } from "./articles";
 const posts = articles;
@@ -24,11 +25,12 @@ export default function BlogPage() {
           <div className="blog-grid">
             {posts.map((article) => (
               <article className="blog-card" key={article.slug}>
-                <div
-                  className="blog-image-slot"
-                  aria-label="Featured image placeholder"
-                >
-                  Image coming soon
+                <div className="blog-image-slot">
+                  <MediaImage
+                    src={article.imageUrl}
+                    alt={`${article.title} featured image`}
+                    loading="lazy"
+                  />
                 </div>
                 <div className="blog-card-body">
                   <span className="blog-tag">{article.tag}</span>

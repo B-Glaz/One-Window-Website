@@ -9,7 +9,8 @@ const teamMembers = [
   ["Ankit Jain", "Executive Director", "With 13 years in international education, Ankit focuses on institutional partnerships, global relationships and new approaches to education technology. He also represents One Window at international conferences and industry forums."],
   ["Vanita Jain", "Executive Director", "Supports the leadership team in creating clear, student-first pathways across global destinations."],
   ["Pratiksha Misra", "Growth Partner: Europe", "With 14+ years across international education, institutional strategy and academic programme development, Pratiksha leads European growth, partnerships and education programmes."],
-  ["Rakesh Laxmi Kommu", "Manager: Student Outreach", "A British Council-certified International Student Advisor and Visa Expert with 14 years of experience, specialising in UK, Australia and Europe admissions, scholarships and visa refusal case analysis."],
+  ["Rakesh", "Manager: Student Outreach", "A British Council-certified International Student Advisor and Visa Expert with 14 years of experience, specialising in UK, Australia and Europe admissions, scholarships and visa refusal case analysis."],
+  ["Laxmi Kommu", "Manager: Student Outreach", "A British Council-certified International Student Advisor and Visa Expert with 14 years of experience, specialising in UK, Australia and Europe admissions, scholarships and visa refusal case analysis."],
   ["Sravanthi Gundu", "Manager: Student Outreach", "With 15 years in international education, Sravanthi specialises in USA, Canada and Germany, helping students with admissions strategy, visa interview preparation and pre-departure planning."],
 ] as const;
 

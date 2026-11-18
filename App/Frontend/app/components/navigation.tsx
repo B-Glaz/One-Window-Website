@@ -154,7 +154,7 @@ export function Navigation({ disableThemeToggle = false, counsellingHref = "/#co
         </div>
         <div className="nav-actions">
           {!disableThemeToggle ? <ThemeToggle /> : null}
-          <Link className="nav-cta" href={counsellingHref}>Free counselling</Link>
+          <Link className="nav-cta" href={counsellingHref}>Book a counselling</Link>
         </div>
         <details className="nav-mobile-menu">
           <summary aria-label="Open navigation menu">

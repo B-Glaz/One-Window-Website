@@ -34,6 +34,8 @@
 - Refined USA dropdown motion with spring-like easing, stagger-free settle animations for opened content, and reduced-motion fallbacks. The navy panel now expands and compresses more gently without abrupt visual jumps.
 - Reduced USA dropdown heading weight from heavy bold to semibold, including the funding title, so the disclosure bars feel lighter and more balanced.
 - Replaced USA dropdown down-chevron icons with a directional arrow when closed and an animated close mark when open, preserving the existing indicator tile placement.
+- Removed the duplicate “Why study in USA” heading and description block from the USA overview section, keeping the visual overview and highlight content unchanged.
+- Strengthened dark-mode coverage across shared country pages: hero headings, secondary actions, flow CTAs, inline counselling links, and hover surfaces now keep readable blue-glass contrast on every country route.
 
 ## Current milestone
 
@@ -76,6 +78,24 @@
 - Re-ran the production build after the USA-specific guide implementation: all 104 routes compiled, typechecked, and prerendered successfully.
 - Aligned the country renderer more closely with the supplied structured USA HTML: section navigation now derives from each country content block’s actual heading, and heading detection avoids promoting sentence-like paragraphs into headings. The shared renderer remains reusable for every explicit country route.
 - Re-ran the production build after the structured-content refinement: all 104 routes compiled, typechecked, and prerendered successfully.
+- Extended dark-mode coverage for the USA landing/country page so its light-only section backgrounds, scholarship surface, summary rows, and body copy now switch to readable blue-glass dark surfaces with the existing theme toggle.
+- Verification: `git diff --check` passes. Targeted ESLint was attempted but the first path was incorrect; no production build rerun yet.
+- Simplified USA dropdown interaction: removed summary hover glow/background changes and kept a single directional arrow that rotates 90 degrees when expanded across content, scholarship, and FAQ disclosures.
+- Added a subtle hover-only 360° rotation to the existing USA disclosure and outbound-link arrows; surfaces remain static without glow effects.
+- Expanded the shared footer using the live One Window footer’s information architecture and backlinks: Hand Book, Quick Links, Study Abroad destinations, Support, contact details, social links, and existing additional services. Kept the project’s navy footer styling and responsive grid.
+- Verification: production build compiles, but the environment still blocks Next.js TypeScript worker completion with `spawn EPERM`; `git diff --check` passes.
+- Corrected footer destinations so labels point to page-specific URLs rather than generic fallback pages, including student recruitment, alumni connect, policies, SOP review, test prep, scholarship, and courses.
+- Corrected the footer Courses link to the verified live destination `https://onewindow.co/major-and-degrees/` instead of the unavailable `/courses/` path.
+- Audited the footer against the live site’s linked destinations and corrected mismatches: UK uses `study-abroad-united-kingdom`, Netherlands uses `study-abroad-netherland`, Event/Resources use their live paths, SOP uses `review-your-statement-of-purpose`, and Support links use the live about/services/career pages. Singapore, Dubai, and Europe intentionally follow the live site’s current homepage destination.
+- Reordered the primary country dropdown and homepage country-orbit tabs to Dubai, Europe, Singapore, Canada, and All countries, with matching Dubai, Europe-region, Singapore, and Canada artwork and destinations.
+- Updated footer social destinations to the supplied YouTube, Instagram, LinkedIn, X, and Facebook accounts; replaced text glyphs with Lucide brand icons and added phone/mail icons beside contact links.
+- Replaced unavailable Lucide brand exports with accessible inline SVG brand marks for YouTube, Instagram, LinkedIn, X, and Facebook; phone and email continue to use Lucide icons. Build compiles before the environment’s TypeScript worker hits `spawn EPERM`.
+- Refined the footer social controls with consistent 36px outlined circles, balanced 17px marks, aqua hover state, and a subtle lift instead of oversized pale badges.
+- Set the YouTube brand mark to its expected red treatment while retaining the consistent footer icon controls.
+- Added reusable media/content primitives: `app/components/media-image.tsx` for safe image/fallback rendering, `app/content/media.ts` for YouTube IDs/thumbnails/embeds, and `app/content/testimonials.ts` as the editable testimonial source. Blog cards now render each article’s configured `imageUrl` through the shared image component instead of a hard-coded placeholder; testimonial cards use the centralized data and helpers.
+- Verification: production build compiles, then the environment blocks Next.js TypeScript worker completion with `spawn EPERM`; `git diff --check` passes.
+- Renamed the shared navigation CTA from “Free counselling” to “Book a counselling” while keeping its existing destination and behavior.
+- Restored a restrained hover tint for USA dropdown summaries while keeping the arrow-rotation interaction, and fixed the dark-mode NCES source note with an opaque blue surface and high-contrast text.
 - Rolled back the later typed country-guide experiment at the user's request. Removed `country-guide-shell.tsx`, `country-section-renderer.tsx`, the `CountrySection` model, country-controlled sidebar navigation, and the USA-specific typed guide.
 - Restored the earlier centralized country architecture: every explicit `/countries/[country]` route imports its own file from `App/Frontend/app/countries-content/` and renders the shared `App/Frontend/app/countries/country-landing-layout.tsx`. USA is again stored as the earlier verified `rawContent` profile.
 - Preserved unrelated homepage, navigation, about, event, landing-page, and source-organization work. No commit or push was performed.

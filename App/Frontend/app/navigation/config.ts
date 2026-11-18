@@ -7,10 +7,10 @@ export const aboutLinks: NavLink[] = [
 ];
 
 export const countryLinks: NavLink[] = [
-  ["USA", "/countries/usa"],
-  ["UK", "/countries/uk"],
+  ["Dubai", "/countries/dubai"],
+  ["Europe", "/countries"],
+  ["Singapore", "/countries/singapore"],
   ["Canada", "/countries/canada"],
-  ["Australia", "/countries/australia"],
   ["All countries", "/countries"],
 ];
 

@@ -157,13 +157,6 @@ export function UsaLandingPage({ formPlacement = "top" }: { formPlacement?: "top
               <p>The US higher education system offers flexibility, academic depth and opportunities to combine classroom learning with research, internships and campus experiences.</p>
             </div>
           </div>
-          <div className={styles.introGrid}>
-            <SectionHeading
-              eyebrow="Why the USA"
-              title="Why study in USA"
-              copy="The US higher education system offers flexibility, academic depth and opportunities to combine classroom learning with research, internships and campus experiences."
-            />
-          </div>
           <div className={styles.highlightGrid}>
             {content.highlights.map(([title, text], index) => {
               const Icon = sectionIcons[index];
