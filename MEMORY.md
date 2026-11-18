@@ -39,6 +39,8 @@
 
 ## Current milestone
 
+- Prepared reusable leadership and blog image upload locations under `App/Frontend/public/images/consultants/` and `App/Frontend/public/images/blog/`. Leadership profile paths are centralized in `app/about/consultants/page.tsx`; blog thumbnails remain controlled by `app/blog/blog.ts`.
+
 - Updated the Malta webinar date to **18 November** while keeping the time at **6:30 PM IST**.
 - Updated the event page copy, popup alt text, and collapsed popup date badge.
 - Updated the event-page and popup artwork in `App/Frontend/public/campaigns/`.

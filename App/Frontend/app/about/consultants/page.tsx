@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Compass, Heart, Users } from "lucide-react";
 import { Footer } from "../../components/footer";
 import { Navigation } from "../../components/navigation";
+import { MediaImage } from "../../components/media-image";
 import styles from "./consultants.module.css";
 
 const teamMembers = [
@@ -13,6 +14,16 @@ const teamMembers = [
   ["Laxmi Kommu", "Manager: Student Outreach", "A British Council-certified International Student Advisor and Visa Expert with 14 years of experience, specialising in UK, Australia and Europe admissions, scholarships and visa refusal case analysis."],
   ["Sravanthi Gundu", "Manager: Student Outreach", "With 15 years in international education, Sravanthi specialises in USA, Canada and Germany, helping students with admissions strategy, visa interview preparation and pre-departure planning."],
 ] as const;
+
+const consultantImages: Record<string, string> = {
+  "Anurag Jain": "/images/consultants/anurag-jain.webp",
+  "Ankit Jain": "/images/consultants/ankit-jain.webp",
+  "Vanita Jain": "/images/consultants/vanita-jain.webp",
+  "Pratiksha Misra": "/images/consultants/pratiksha-misra.webp",
+  Rakesh: "/images/consultants/rakesh.webp",
+  "Laxmi Kommu": "/images/consultants/laxmi-kommu.webp",
+  "Sravanthi Gundu": "/images/consultants/sravanthi-gundu.webp",
+};
 
 export default function ConsultantsPage() {
   return (
@@ -42,7 +53,7 @@ export default function ConsultantsPage() {
         <div className={styles.teamGrid}>
           {teamMembers.slice(0, 3).map(([name, role, bio]) => (
             <article className={styles.personCard} key={name}>
-              <div className={styles.personPlaceholder} aria-label={`${name} profile picture`}><strong>{name.split(" ").map((part) => part[0]).join("")}</strong></div>
+              <div className={styles.personPlaceholder} aria-label={`${name} profile picture`}>{consultantImages[name] ? <MediaImage src={consultantImages[name]} alt={`${name} profile picture`} /> : <strong>{name.split(" ").map((part) => part[0]).join("")}</strong>}</div>
               <h3>{name}</h3><p className={styles.role}>{role}</p><p>{bio}</p>
               <Link href="/#consultation" aria-label={`Talk to ${name}`}>↗</Link>
             </article>
@@ -55,7 +66,7 @@ export default function ConsultantsPage() {
         <div className={styles.peopleGrid}>
           {teamMembers.map(([name, role, bio], index) => (
             <article className={styles.personCard} key={name}>
-              <div className={styles.personPlaceholder} aria-label={`${name} profile picture`}><strong>{name.split(" ").map((part) => part[0]).join("")}</strong><small>Profile {String(index + 1).padStart(2, "0")}</small></div>
+              <div className={styles.personPlaceholder} aria-label={`${name} profile picture`}>{consultantImages[name] ? <MediaImage src={consultantImages[name]} alt={`${name} profile picture`} /> : <><strong>{name.split(" ").map((part) => part[0]).join("")}</strong><small>Profile {String(index + 1).padStart(2, "0")}</small></>}</div>
               <h3>{name}</h3><p className={styles.role}>{role}</p><p>{bio}</p>
               <Link href="/#consultation" aria-label={`Talk to ${name}`}>↗</Link>
             </article>
