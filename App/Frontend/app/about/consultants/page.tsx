@@ -20,7 +20,7 @@ const consultantImages: Record<string, string> = {
   "Ankit Jain": "/images/consultants/ankit-jain.webp",
   "Vanita Jain": "/images/consultants/vanita-jain.webp",
   "Pratiksha Misra": "/images/consultants/pratiksha-misra.webp",
-  Rakesh: "/images/consultants/rakesh.webp",
+  "Rakesh": "/images/consultants/rakesh.webp",
   "Laxmi Kommu": "/images/consultants/laxmi-kommu.webp",
   "Sravanthi Gundu": "/images/consultants/sravanthi-gundu.webp",
 };
@@ -52,7 +52,7 @@ export default function ConsultantsPage() {
         </div>
         <div className={styles.teamGrid}>
           {teamMembers.slice(0, 3).map(([name, role, bio]) => (
-            <article className={styles.personCard} key={name}>
+            <article className={styles.personCard} data-person={name.toLowerCase().replaceAll(" ", "-")} key={name}>
               <div className={styles.personPlaceholder} aria-label={`${name} profile picture`}>{consultantImages[name] ? <MediaImage src={consultantImages[name]} alt={`${name} profile picture`} /> : <strong>{name.split(" ").map((part) => part[0]).join("")}</strong>}</div>
               <h3>{name}</h3><p className={styles.role}>{role}</p><p>{bio}</p>
               <Link href="/#consultation" aria-label={`Talk to ${name}`}>↗</Link>
@@ -65,7 +65,7 @@ export default function ConsultantsPage() {
         <div className={styles.peopleHeading}><span className={styles.kicker}>Our Leadership Team</span><h2>A team for every next step.</h2><p>Every conversation is backed by a specialist who understands the detail behind your decision.</p></div>
         <div className={styles.peopleGrid}>
           {teamMembers.map(([name, role, bio], index) => (
-            <article className={styles.personCard} key={name}>
+            <article className={styles.personCard} data-person={name.toLowerCase().replaceAll(" ", "-")} key={name}>
               <div className={styles.personPlaceholder} aria-label={`${name} profile picture`}>{consultantImages[name] ? <MediaImage src={consultantImages[name]} alt={`${name} profile picture`} /> : <><strong>{name.split(" ").map((part) => part[0]).join("")}</strong><small>Profile {String(index + 1).padStart(2, "0")}</small></>}</div>
               <h3>{name}</h3><p className={styles.role}>{role}</p><p>{bio}</p>
               <Link href="/#consultation" aria-label={`Talk to ${name}`}>↗</Link>
