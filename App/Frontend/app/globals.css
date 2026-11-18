@@ -7938,3 +7938,13 @@ html[data-theme="dark"] .careers-page .careers-steps li { background:rgba(20,62,
   .careers-page .careers-area-grid { grid-template-columns:1fr; }
   .careers-page .careers-area-card:last-child { grid-column:auto; }
 }
+/* Universal image framing controls: override per image with CSS variables or MediaImage props. */
+img {
+  --image-scale: 1;
+  --image-position: center;
+  --image-fit: initial;
+  object-position: var(--image-position);
+  object-fit: var(--image-fit);
+  transform: scale(var(--image-scale));
+  transform-origin: center;
+}
